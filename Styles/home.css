@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  background: #F0F0F0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
+  background: #fff;
+}
+
+header .logo-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+header .logo-title span {
+  font-weight: 500;
+  font-size: 20px;
+  color: #3800D1;
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 20px;
+  color: #3800D1;
+  margin-left: 32px;
+  text-decoration: none;
+}
+
+.hero {
+  width: 100%;
+  height: 640px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.hero-text {
+  padding: 100px 86px;
+  background: #F0F0F0; /* fond blanc comme ta maquette */
+  color: #6A00FF;
+}
+
+.hero-text h1 {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
+  letter-spacing: -0.02em;
+}
+
+.hero-text p {
+  font-size: 32px;
+  color: rgba(0, 0, 0, 0.75);
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.hero-text .cta-button {
+  display: inline-block;
+  background: #3D23A5;
+  color: #F0F0F0;
+  font-size: 32px;
+  padding: 20px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.solutions {
+  padding: 100px 0;
+}
+
+.solutions h2 {
+  font-weight: 600;
+  font-size: 48px;
+  color: #6A00FF;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.solution-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.solution-card {
+  width: 405px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.solution-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.solution-card h3 {
+  font-weight: 500;
+  font-size: 36px;
+  color: #6A00FF;
+}
+
+.solution-card p {
+  font-size: 32px;
+  color: #828282;
+}
+
+.light-section {
+  padding: 100px 86px;
+}
+
+.light-section h2 {
+  font-weight: 600;
+  font-size: 48px;
+  color: #6A00FF;
+  margin-bottom: 40px;
+}
+
+.light-content {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.light-content .text-block {
+  flex: 1;
+  min-width: 320px;
+}
+
+.light-content .text-block h3 {
+  font-weight: 500;
+  font-size: 36px;
+  color: #6A00FF;
+  margin-top: 24px;
+}
+
+.light-content .text-block p {
+  font-size: 32px;
+  color: #828282;
+}
+
+.light-content .light-image {
+  flex: 1;
+  max-width: 644px;
+  border-radius: 8px 0 0 8px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.cta-buttons a {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 150%;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.cta-projects {
+  background: #3D23A5;
+  color: #fff;
+}
+
+.cta-catalogue {
+  background: #E6E6E6;
+  color: #3D23A5;
+}
+
+.testimonials {
+  padding: 80px 86px;
+}
+
+.testimonials h2 {
+  font-size: 48px;
+  font-weight: 600;
+  color: #6A00FF;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.testimonial-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background: #fff;
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  padding: 32px;
+  width: 405px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.testimonial-card p {
+  font-size: 24px;
+  font-weight: 500;
+  color: #6A00FF;
+}
+
+.testimonial-avatar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.testimonial-avatar img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.testimonial-avatar span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #6A00FF;
+}
+
+footer {
+  background: #fff;
+  padding: 80px;
+  text-align: left;
+  color: #6A00FF;
+  font-size: 14px;
+  border-top: 1px solid #E6E6E6;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+footer .social-icons img {
+  width: 40px;
+  height: 40px;
+}
