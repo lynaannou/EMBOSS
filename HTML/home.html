@@ -67,10 +67,11 @@
       </div>
       <img src="Image (1).png" alt="Embossé lumière" class="light-image"/>
     </div>
-    <div class="cta-buttons">
-      <a href="#" class="cta-projects">Voir nos projets</a>
-      <a href="#" class="cta-catalogue">Télécharger notre catalogue</a>
-    </div>
+    <div class="cta-container">
+  <button class="cta-projects">PROJECTS</button>
+  <button class="cta-catalogue">CATALOGUE</button>
+</div>
+
   </section>
 
   <section class="testimonials">
@@ -109,6 +110,30 @@
       <img src="instagram-icon.png" alt="Instagram" />
     </div>
   </footer>
+<script>
+  const container = document.querySelector('.cta-container');
+  const btnProjects = document.querySelector('.cta-projects');
+  const btnCatalogue = document.querySelector('.cta-catalogue');
+
+  btnProjects.addEventListener('mouseenter', () => {
+    container.classList.add('hover-projects');
+    container.classList.remove('hover-catalogue');
+  });
+
+  btnProjects.addEventListener('mouseleave', () => {
+    container.classList.remove('hover-projects');
+  });
+
+  btnCatalogue.addEventListener('mouseenter', () => {
+    container.classList.add('hover-catalogue');
+    container.classList.remove('hover-projects');
+  });
+
+  btnCatalogue.addEventListener('mouseleave', () => {
+    container.classList.remove('hover-catalogue');
+  });
+</script>
 
 </body>
+
 </html>

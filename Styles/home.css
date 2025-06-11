@@ -62,7 +62,9 @@ nav a {
   margin-left: 32px;
   text-decoration: none;
 }
-
+nav a:hover {
+    color: #996FD1;
+}
 /* HERO */
 .hero {
   width: 100%;
@@ -120,7 +122,9 @@ nav a {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-
+.hero-text .cta-button:hover {
+  background: #132963;
+}
 
 .solutions {
   padding: 100px 0;
@@ -222,15 +226,58 @@ nav a {
   text-align: center;
 }
 
+.cta-container {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 150%;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.cta-projects, .cta-catalogue {
+  padding: 16px 36px; /* bigger padding */
+  font-size: 24px;    /* bigger font */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 45px; /* curved / rounded corners */
+  font-weight: 600;    /* more bold, looks more button-like */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* soft shadow */
+}
+
+/* Default colors */
 .cta-projects {
   background: #3D23A5;
   color: #fff;
 }
-
 .cta-catalogue {
   background: #E6E6E6;
   color: #3D23A5;
 }
+
+/* When hovering PROJECTS → exchange */
+.cta-container.hover-projects .cta-projects {
+  background: #fff;
+  color: #3D23A5;
+}
+.cta-container.hover-projects .cta-catalogue {
+  background: #3D23A5;
+  color: #fff;
+}
+
+/* When hovering CATALOGUE → exchange */
+.cta-container.hover-catalogue .cta-projects {
+  background: #3D23A5;
+  color: #fff;
+}
+.cta-container.hover-catalogue .cta-catalogue {
+  background: #fff;
+  color: #3D23A5;
+}
+
 
 .testimonials {
   padding: 80px 86px;
