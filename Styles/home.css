@@ -12,7 +12,7 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   color: #000;
-  background: #182136;
+  background: #212D49;
 }
 
 .container {
@@ -68,7 +68,7 @@ nav a:hover {
 /* HERO */
 .hero {
   width: 100%;
-  height: 100vh; /* full screen */
+  height: 150vh; /* full screen */
   position: relative;
   overflow: hidden;
   display: flex; /* clé pour centrer */
@@ -83,25 +83,40 @@ nav a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120vh; /* au lieu de 100% ou 100vh → un peu plus long */
   object-fit: cover;
-  z-index: 1; /* image en fond */
+  opacity: 0.49; /* pour simuler l'effet Figma que tu avais mis */
+  z-index: 1;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh; /* même hauteur que .hero-image */
+  background: rgba(0, 0, 0, 0.15); /* dimmer exactement comme dans Figma */
+  z-index: 2;
 }
 
 .hero-text {
-  position: relative; /* pour passer au-dessus de l'image */
+  position: absolute;
+  top: 20%;
   z-index: 10;
   color: #FFFFFF;
   text-align: center;
   max-width: 80%;
 }
 
+
 .hero-text h1 {
+  
   font-weight: 700;
-  font-size: 64px;
+  font-size: 50px;
   line-height: 77px;
   letter-spacing: -0.02em;
-  color: #FFFFFF;
+  color: #f7f6f4;
+
   margin-bottom: 40px;
 }
 
@@ -110,10 +125,13 @@ nav a:hover {
   line-height: 33px;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 40px;
+  text-align: left;
+  max-width: 60%;
 }
 
 .hero-text .cta-button {
-  background: #1C2C54;
+  background: #212D49;
+
   color: #FFFFFF;
   font-size: 32px;
   padding: 20px 32px;
@@ -123,7 +141,7 @@ nav a:hover {
 }
 
 .hero-text .cta-button:hover {
-  background: #132963;
+  background: #2a4585;
 }
 
 .solutions {
@@ -133,11 +151,14 @@ nav a:hover {
 .solutions h2 {
   font-weight: 600;
   font-size: 48px;
-  color: #6A00FF;
+  color: #f4f0f8;
   text-align: center;
   margin-bottom: 64px;
 }
-
+.solutions h2:hover{
+  color:#8C3C34;
+;
+}
 .solution-cards {
   display: flex;
   flex-wrap: wrap;
@@ -160,12 +181,14 @@ nav a:hover {
 .solution-card h3 {
   font-weight: 500;
   font-size: 36px;
-  color: #6A00FF;
+  color: #f4f0f8;
 }
-
+.solution-card h3:hover {
+  color:#8C3C34;
+}
 .solution-card p {
   font-size: 32px;
-  color: #828282;
+  color: #cccaca;
 }
 
 .light-section {
@@ -175,10 +198,12 @@ nav a:hover {
 .light-section h2 {
   font-weight: 600;
   font-size: 48px;
-  color: #6A00FF;
+  color: #ffffff;
   margin-bottom: 40px;
 }
-
+.light-section h2:hover {
+  color: #8C3C34;
+}
 .light-content {
   display: flex;
   gap: 32px;
@@ -194,13 +219,15 @@ nav a:hover {
 .light-content .text-block h3 {
   font-weight: 500;
   font-size: 36px;
-  color: #6A00FF;
+  color: #e7e7e7;
   margin-top: 24px;
 }
-
+.light-content .text-block h3:hover {
+  color: #8C3C34;
+}
 .light-content .text-block p {
   font-size: 32px;
-  color: #828282;
+  color: #cccaca;
 }
 
 .light-content .light-image {
@@ -250,32 +277,32 @@ nav a:hover {
 
 /* Default colors */
 .cta-projects {
-  background: #3D23A5;
+  background: #968cbe;
   color: #fff;
 }
 .cta-catalogue {
   background: #E6E6E6;
-  color: #3D23A5;
+  color: #968cbe;
 }
 
 /* When hovering PROJECTS → exchange */
 .cta-container.hover-projects .cta-projects {
   background: #fff;
-  color: #3D23A5;
+  color: #968cbe;
 }
 .cta-container.hover-projects .cta-catalogue {
-  background: #3D23A5;
+  background: #968cbe;
   color: #fff;
 }
 
 /* When hovering CATALOGUE → exchange */
 .cta-container.hover-catalogue .cta-projects {
-  background: #3D23A5;
+  background: #968cbe;
   color: #fff;
 }
 .cta-container.hover-catalogue .cta-catalogue {
   background: #fff;
-  color: #3D23A5;
+  color: #968cbe;
 }
 
 
@@ -286,7 +313,7 @@ nav a:hover {
 .testimonials h2 {
   font-size: 48px;
   font-weight: 600;
-  color: #6A00FF;
+  color: #fcf9ff;
   text-align: left;
   margin-bottom: 64px;
 }
@@ -302,7 +329,8 @@ nav a:hover {
 .testimonial-card {
   flex: 0 0 auto; /* empêche le wrap */
   width: 405px;
-  background: #fff;
+  background: #182136;
+ 
   border: 1px solid #E6E6E6;
   border-radius: 12px;
   padding: 32px;
@@ -315,7 +343,7 @@ nav a:hover {
 .testimonial-card p {
   font-size: 24px;
   font-weight: 500;
-  color: #6A00FF;
+  color: #d4d4d4;
 }
 
 .testimonial-avatar {
@@ -333,14 +361,14 @@ nav a:hover {
 .testimonial-avatar span {
   font-size: 16px;
   font-weight: 500;
-  color: #6A00FF;
+  color: #f7f7f8;
 }
 .testimonial-cards::-webkit-scrollbar {
   height: 8px;
 }
 
 .testimonial-cards::-webkit-scrollbar-thumb {
-  background: #6A00FF;
+  background: #8C3C34;
   border-radius: 4px;
 }
 
@@ -354,7 +382,7 @@ footer {
   
   padding: 80px;
   text-align: left;
-  color: #6A00FF;
+  color: #dcd7e2;
   font-size: 14px;
   border-top: 1px solid #E6E6E6;
 }
