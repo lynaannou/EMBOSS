@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Futura', sans-serif;
 }
 
 body {
@@ -22,7 +22,7 @@ body {
 }
 /* HEADER */
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -40,7 +40,7 @@ header .logo-title {
 }
 
 header .logo-title img {
-    height: 36px; /* taille du logo adaptée à la ligne du menu */
+    height: 200px; /* taille du logo adaptée à la ligne du menu */
     width: auto;
 }
 
@@ -101,22 +101,19 @@ nav a:hover {
 
 .hero-text {
   position: absolute;
-  top: 20%;
+  top: 30%; /* avant c'était 20%, plus bas c'est mieux */
   z-index: 10;
   color: #FFFFFF;
   text-align: center;
-  max-width: 80%;
+  max-width: 70%; /* avant 80%, plus resserré = plus élégant */
 }
 
-
 .hero-text h1 {
-  
   font-weight: 700;
-  font-size: 50px;
+  font-size: 36px;
   line-height: 77px;
   letter-spacing: -0.02em;
   color: #f7f6f4;
-
   margin-bottom: 40px;
 }
 
@@ -124,7 +121,7 @@ nav a:hover {
   font-size: 22px;
   line-height: 33px;
   color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 40px;
+  margin-bottom: 60px; /* AVANT 40px → espace plus grand avant le bouton */
   text-align: left;
   max-width: 60%;
 }
@@ -156,7 +153,7 @@ nav a:hover {
   margin-bottom: 64px;
 }
 .solutions h2:hover{
-  color:#8C3C34;
+  color:#FE9B62;
 ;
 }
 .solution-cards {
@@ -184,7 +181,7 @@ nav a:hover {
   color: #f4f0f8;
 }
 .solution-card h3:hover {
-  color:#8C3C34;
+  color:#FE9B62;
 }
 .solution-card p {
   font-size: 32px;
@@ -202,7 +199,7 @@ nav a:hover {
   margin-bottom: 40px;
 }
 .light-section h2:hover {
-  color: #8C3C34;
+  color: #FE9B62;
 }
 .light-content {
   display: flex;
@@ -223,7 +220,7 @@ nav a:hover {
   margin-top: 24px;
 }
 .light-content .text-block h3:hover {
-  color: #8C3C34;
+  color: #FE9B62;
 }
 .light-content .text-block p {
   font-size: 32px;
@@ -319,7 +316,7 @@ nav a:hover {
 }
 .testimonials h2:hover {
   
-  color: #8C3C34;
+  color: #FE9B62;
   
 }
 
@@ -353,7 +350,7 @@ nav a:hover {
 
 .testimonial-card p:hover {
   
-  color: #8C3C34;
+  color: #FE9B62;
 }
 
 .testimonial-avatar {
@@ -378,7 +375,7 @@ nav a:hover {
 }
 
 .testimonial-cards::-webkit-scrollbar-thumb {
-  background: #8C3C34;
+  background: #FE9B62;
   border-radius: 4px;
 }
 
