@@ -43,8 +43,8 @@ header .logo-title img {
 header .logo-title span {
    font-family: 'Italiana', serif;
     font-weight: 400;
-    font-size: 32px; /* 32px pour s'aligner visuellement avec le menu */
-    line-height: 1; /* important sinon ça décale verticalement */
+    font-size: 32px; 
+    line-height: 1; 
     letter-spacing: 0;
     color: #FFFFFF;
     display: flex;
@@ -64,26 +64,42 @@ nav a:hover {
     color: #996FD1;
 }
 
-/* CONTACT CONTAINER FLEX */
 .contact-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    margin: 60px auto;
-    padding: 0 40px;
-    max-width: 1400px;
     position: relative;
+    max-width: 1400px;
+    margin: 80px auto;
+    padding: 0 40px;
 }
-
-/* CONTACT CARD */
 .contact-card {
     background: #E0D9CA;
     border-radius: 45px;
-    padding: 40px;
-    flex: 1;
+    padding: 40px 80px;
+    max-width: 850px;
+    margin-left: 0;         /* stick to left side of container */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
 }
+
+.contact-info {
+    background: #EFE1CB;
+    border-radius: 45px;
+    padding: 60px;
+    width: 500px;
+    position: absolute;
+    top: 80px;
+    left: 800px;  /* control how far from the left → adjust as needed */
+    transform: translateY(-20px);
+    z-index: 2;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+
+.contact-info:hover {
+    transform: translateY(-60px); /* little hover animation */
+}
+
 
 .contact-card h1 {
     font-family: 'Italiana', cursive;
@@ -133,19 +149,6 @@ nav a:hover {
     background: #bfa47c;
 }
 
-/* CONTACT INFO PANEL */
-.contact-info {
-    background: #EFE1CB;
-    border-radius: 45px;
-    padding: 40px;
-    width: 510px;
-    position: relative;
-    top: -40px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    color: #212D49;
-    font-size: 22px;
-    line-height: 1.5;
-}
 
 .contact-info h1 {
     font-family: 'Inter';
@@ -166,7 +169,6 @@ nav a:hover {
     color: #212D49;
 }
 
-/* ICONS inside INFO (optional) */
 .contact-info img {
     width: 40px;
     height: 40px;

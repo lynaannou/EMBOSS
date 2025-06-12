@@ -317,6 +317,11 @@ nav a:hover {
   text-align: left;
   margin-bottom: 64px;
 }
+.testimonials h2:hover {
+  
+  color: #8C3C34;
+  
+}
 
 .testimonial-cards {
   display: flex;
@@ -344,6 +349,11 @@ nav a:hover {
   font-size: 24px;
   font-weight: 500;
   color: #d4d4d4;
+}
+
+.testimonial-card p:hover {
+  
+  color: #8C3C34;
 }
 
 .testimonial-avatar {

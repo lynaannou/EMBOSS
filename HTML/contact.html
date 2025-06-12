@@ -8,22 +8,19 @@
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-overlay">
-      <div class="logo-title">
-        <img src="image.png" alt="Logo" />
-        <span>EMBOSS MÉTAL SERVICES</span>
-      </div>
-      <nav>
-        <a href="home.html">HOME</a>
-        <a href="#">PRODUCT</a>
-        <a href="#">CATALOGUE</a>
-        <a href="#">PROJECTS</a>
-        <a href="contact.html">CONTACT</a>
-      </nav>
-    </div>
-  </header>
+   <header>
+        <div class ="logo-title" >
+            <img src ="image.png" alt = "Logo"/>
+            <span>EMBOSS METAL SERVICES</span>
+        </div>
+        <nav>
+      <a href="home.html">HOME</a>
+      <a href="#">PRODUCT</a>
+      <a href="#">CATALOGUE</a>
+      <a href="#">PROJECTS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    </header>
 
   <!-- MAIN FLEX CONTAINER -->
   <main class="contact-container">
@@ -94,6 +91,17 @@
       <img src="instagram-icon.png" alt="Instagram" />
     </div>
   </footer>
+<script>
+  // Exemple basique : lorsque l'utilisateur survole .contact-card, .contact-info "monte"
+document.querySelector('.contact-card').addEventListener('mouseenter', function() {
+    document.querySelector('.contact-info').style.transform = 'translateY(-60px)';
+    document.querySelector('.contact-info').style.transition = 'transform 0.3s ease';
+});
 
+document.querySelector('.contact-card').addEventListener('mouseleave', function() {
+    document.querySelector('.contact-info').style.transform = 'translateY(-20px)';
+});
+
+</script>
 </body>
 </html>
