@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Futura', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -21,13 +21,15 @@ body {
   padding: 0 20px;
 }
 /* HEADER */
+
 header {
   position: fixed;
-  top: -75;
-  margin-top: -5%;
+  top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
+  height: 100px;
   z-index: 100;
+  margin-top: 0%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +39,7 @@ header {
 header .logo-title {
     display: flex;
     align-items: center; /* centre verticalement */
-    gap: 15px; /* espace entre logo et texte */
+    gap: 12px; /* espace entre logo et texte */
 }
 
 header .logo-title img {
@@ -45,6 +47,9 @@ header .logo-title img {
     margin-left: -80px;
     margin-top: 25%;
     width: auto;
+    display: block; /* pour s'assurer que l'image est un bloc */
+    margin-bottom: -15px; /* espace entre le logo et le titre */
+    margin-left: -80px;
 }
 
 header .logo-title span {
@@ -104,41 +109,44 @@ nav a:hover {
 
 .hero-text {
   position: absolute;
-  top: 30%; /* avant c'était 20%, plus bas c'est mieux */
+  top: 20%;
   z-index: 10;
   color: #FFFFFF;
   text-align: center;
-  max-width: 70%; /* avant 80%, plus resserré = plus élégant */
+  max-width: 80%;
 }
 
+
 .hero-text h1 {
+  
   font-weight: 700;
   font-size: 36px;
-
   line-height: 77px;
+  width: 70%;
   letter-spacing: -0.02em;
   color: #f7f6f4;
-  margin-top : -10%; /* Avant -15%, donc le titre descend légèrement → meilleur équilibre */
-   margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .hero-text p {
-  font-size: 22px;
+  font-size: 18px;
   line-height: 33px;
   color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 80px; /* AVANT 40px → espace plus grand avant le bouton */
+  margin-bottom: 60px; /* AVANT 40px → espace plus grand avant le bouton */
   text-align: left;
-  max-width: 60%;
+  max-width: 44%;
 }
 
 .hero-text .cta-button {
   background: #212D49;
 
   color: #FFFFFF;
-  font-size: 32px;
-  padding: 20px 32px;
-  border-radius: 8px;
+  font-size: 20px;
+  padding: 15px 25px;
+  border-radius: 12px;
   text-decoration: none;
+  display: inline-block;
+  margin-top: 80px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
@@ -181,16 +189,17 @@ nav a:hover {
 }
 
 .solution-card h3 {
-  font-weight: 500;
-  font-size: 36px;
+  font-weight: 501;
+  font-size: 32px;
   color: #f4f0f8;
 }
 .solution-card h3:hover {
   color:#FE9B62;
 }
 .solution-card p {
-  font-size: 32px;
-  color: #cccaca;
+  font-weight: 1;
+  font-size: 29px;
+  color: #ffffffd1;
 }
 
 .light-section {
@@ -381,7 +390,7 @@ nav a:hover {
 
 .testimonial-cards::-webkit-scrollbar-thumb {
   background: #FE9B62;
-  border-radius: 4px;
+  border-radius: 4spx;
 }
 
 .testimonial-cards::-webkit-scrollbar-track {
