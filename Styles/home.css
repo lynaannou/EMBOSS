@@ -23,7 +23,8 @@ body {
 /* HEADER */
 header {
   position: fixed;
-  top: 0;
+  top: -75;
+  margin-top: -5%;
   left: 0;
   width: 100%;
   z-index: 100;
@@ -36,11 +37,13 @@ header {
 header .logo-title {
     display: flex;
     align-items: center; /* centre verticalement */
-    gap: 12px; /* espace entre logo et texte */
+    gap: 15px; /* espace entre logo et texte */
 }
 
 header .logo-title img {
-    height: 200px; /* taille du logo adaptée à la ligne du menu */
+    height: 150px; /* taille du logo adaptée à la ligne du menu */
+    margin-left: -80px;
+    margin-top: 25%;
     width: auto;
 }
 
@@ -111,17 +114,19 @@ nav a:hover {
 .hero-text h1 {
   font-weight: 700;
   font-size: 36px;
+
   line-height: 77px;
   letter-spacing: -0.02em;
   color: #f7f6f4;
-  margin-bottom: 40px;
+  margin-top : -10%; /* Avant -15%, donc le titre descend légèrement → meilleur équilibre */
+   margin-bottom: 30px;
 }
 
 .hero-text p {
   font-size: 22px;
   line-height: 33px;
   color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 60px; /* AVANT 40px → espace plus grand avant le bouton */
+  margin-bottom: 80px; /* AVANT 40px → espace plus grand avant le bouton */
   text-align: left;
   max-width: 60%;
 }
