@@ -23,7 +23,7 @@ body {
 /* HEADER */
 
 header {
-  position: fixed;
+ position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -34,18 +34,14 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 24px 80px;
-  background: transparent;
-}
-header .logo-title {
-    display: flex;
-    align-items: center; /* centre verticalement */
-    gap: 12px; /* espace entre logo et texte */
+  background: rgba(61, 71, 93, 0.23); /* fond légèrement transparent */
+  backdrop-filter: blur(5px); /* effet de flou pour le fond */
 }
 
+
+
 header .logo-title img {
-    height: 150px; /* taille du logo adaptée à la ligne du menu */
-    margin-left: -80px;
-    margin-top: 25%;
+    height: 200px; /* taille du logo adaptée à la ligne du menu */
     width: auto;
     display: block; /* pour s'assurer que l'image est un bloc */
     margin-bottom: -15px; /* espace entre le logo et le titre */
@@ -83,7 +79,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: center; /* centrer verticalement */
   align-items: center; /* centrer horizontalement */
-  padding-top: 100px; /* laisse la place pour le header */
+  padding-top: 102px; /* laisse la place pour le header */
 }
 
 .hero-image {
@@ -120,19 +116,20 @@ nav a:hover {
 .hero-text h1 {
   
   font-weight: 700;
-  font-size: 36px;
+  font-size: 40px;
   line-height: 77px;
   width: 70%;
   letter-spacing: -0.02em;
   color: #f7f6f4;
   margin-bottom: 40px;
+   margin: 0 auto 40px auto; 
 }
 
 .hero-text p {
   font-size: 18px;
   line-height: 33px;
   color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 60px; /* AVANT 40px → espace plus grand avant le bouton */
+  margin-top: 70px;
   text-align: left;
   max-width: 44%;
 }

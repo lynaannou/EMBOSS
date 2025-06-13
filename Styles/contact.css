@@ -17,49 +17,46 @@ body {
 
 /* HEADER */
 header {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  z-index: 100;
+  margin-top: 0%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
     background: url('../HTML/contact.jpg') no-repeat center center/cover;
 }
 
-header .logo-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
 header .logo-title img {
-    height: 200px;
+    height: 200px; /* taille du logo adaptée à la ligne du menu */
     width: auto;
+    display: block; /* pour s'assurer que l'image est un bloc */
+    margin-bottom: -15px; /* espace entre le logo et le titre */
+    margin-left: -80px;
 }
 
 header .logo-title span {
-   font-family: 'Italiana', serif;
+    font-family: 'Italiana', serif;
     font-weight: 400;
-    font-size: 32px; 
-    line-height: 1; 
+    font-size: 36px;
+    line-height: 150%;
     letter-spacing: 0;
     color: #FFFFFF;
     display: flex;
-    align-items: center;
+    align-items: center; /* centre le texte verticalement aussi */
 }
 
-/* NAV */
 nav a {
-    font-weight: 500;
-    font-size: 20px;
-    color: #FFFFFF;
-    margin-left: 32px;
-    text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-left: 32px;
+  text-decoration: none;
 }
-
 nav a:hover {
     color: #996FD1;
 }
@@ -67,7 +64,7 @@ nav a:hover {
 .contact-container {
     position: relative;
     max-width: 1400px;
-    margin: 80px auto;
+    margin: 180px auto;
     padding: 0 40px;
 }
 .contact-card {
