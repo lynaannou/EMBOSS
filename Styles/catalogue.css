@@ -1,0 +1,328 @@
+/* RESET & FONTS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  background: #212D49;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* HEADER */
+
+header {
+ position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  z-index: 100;
+  margin-top: 0%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
+  background: rgba(61, 71, 93, 0.23); /* fond légèrement transparent */
+  backdrop-filter: blur(5px); /* effet de flou pour le fond */
+}
+
+
+
+header .logo-title img {
+    height: 200px; /* taille du logo adaptée à la ligne du menu */
+    width: auto;
+    display: block; /* pour s'assurer que l'image est un bloc */
+    margin-bottom: -15px; /* espace entre le logo et le titre */
+    margin-left: -80px;
+}
+
+header .logo-title span {
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; /* centre le texte verticalement aussi */
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-left: 32px;
+  text-decoration: none;
+}
+nav a:hover {
+    color: #996FD1;
+}
+
+/* HERO */
+.hero {
+  width: 100%;
+ 
+  height: 90vh;/* full screen */
+  position: relative;
+  overflow: hidden;
+  display: flex; /* clé pour centrer */
+  flex-direction: column;
+  justify-content: center; /* centrer verticalement */
+  align-items: center; /* centrer horizontalement */
+  padding-top: 102px; /* laisse la place pour le header */
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90vh; /* au lieu de 100% ou 100vh → un peu plus long */
+  object-fit: cover;
+  opacity: 0.49; /* pour simuler l'effet Figma que tu avais mis */
+  z-index: 1;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh; /* même hauteur que .hero-image */
+  background: rgba(0, 0, 0, 0.15); /* dimmer exactement comme dans Figma */
+  z-index: 2;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 10;
+  color: #FFFFFF;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -7%;
+}
+
+
+.hero-text h1 {
+  font-family: 'Italiana';
+  font-weight: 400;
+  font-size: 96px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 22px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  background: linear-gradient(to bottom, #ebe3e0 0%, #cca46b 100%);
+  padding: 100px 60px;
+}
+
+.section-title {
+  width: 100%;
+  font-family: 'Italiana', serif;
+  font-size: 48px;
+  text-align: center;
+  color: #212D49;
+  margin-bottom: 60px;
+}
+
+.product-block {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  width: 300px;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: #26314a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.product-block:hover {
+  transform: translateY(-8px);
+}
+
+.product-block img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.product-name {
+  font-family: 'Numans', sans-serif;
+  font-size: 48px;
+  margin-bottom: 8px;
+  color: #26282f;
+}
+.product-desc {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.view-button {
+  background: transparent;
+  border: 1px solid #26314a;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #182136;
+}
+.view-button:hover {
+  background-color: #26314a;
+  color: white;
+}
+
+
+footer {
+  background: #182136;
+ 
+  
+  padding: 80px;
+  text-align: left;
+  color: #dcd7e2;
+  font-size: 14px;
+  border-top: 1px solid #E6E6E6;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+footer .social-icons img {
+  width: 40px;
+  height: 40px;
+}
+.carousel-section {
+  background: linear-gradient(to bottom, #ebe3e0, #cca46b);
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5vw; /* ensures room for side peeking */
+}
+
+.carousel-container {
+  display: flex;
+  gap: 80px; /* spacing between cards - adjust as needed */
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 40px 0;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5vw; /* ensures room for side peeking */
+}
+
+.carousel-container {
+  display: flex;
+  gap: 60px;
+  overflow-x: hidden;
+  padding: 60px 0;
+  justify-content: center;
+  scroll-behavior: smooth;
+}
+
+.product-card {
+  flex: 0 0 60%;
+  max-width: 480px;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform: scale(0.9);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.product-card.active {
+  transform: scale(1.05);
+  opacity: 1;
+  z-index: 2;
+}
+
+.product-card h2 {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 36px;
+  font-family: 'Numans', sans-serif;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  color: #26314a;
+  padding: 10px 14px;
+  cursor: pointer;
+  z-index: 100;
+  border: none;
+  transition: transform 0.2s ease;
+}
+
+.arrow.left {
+  left: -10px;
+}
+.arrow.right {
+  right: 10px;
+}
+.arrow:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+

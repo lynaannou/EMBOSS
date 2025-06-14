@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue - EMBOSS MÉTAL SERVICES</title>
+  <link rel="stylesheet" href="../Styles/catalogue.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Italiana&family=Numans&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+    <header>
+        <div class ="logo-title" >
+            <img src ="logo-EMBOSS-nouveau.png" alt = "Logo"/>
+            
+        </div>
+        <nav>
+      <a href="home.html">HOME</a>
+      <a href="#">PRODUCT</a>
+      <a href="catalogue.html">CATALOGUE</a>
+      <a href="#">PROJECTS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    </header>
+  
+  <section class="hero">
+    <img src="Hero Image (1).jpg" alt="Hero Image" class="hero-image" />
+    <div class="hero-text">
+         <h1>CATALOGUE</h1>
+        <p>Ce catalogue présente notre gamme de tôles embossées, classées par familles de motifs. Chaque design est disponible en plusieurs finitions, épaisseurs et dimensions.</p>
+        
+    </div>
+</section>
+
+  <section class="carousel-section">
+    <div class = "carousel-wrapper">
+        <div class="carousel-container">
+            <button class="arrow left">&#10094;</button>
+    <div class="product-card">
+      <img src="rectangle-16.png" alt="Water Riple" />
+      <h2 class="product-name">WATER RIPLE</h2>
+    </div>
+   <div class="product-card" style="background-image: url('dune.jpg');">
+  <div class="card-title">WATER RIPPLE</div>
+</div>
+
+    <div class="product-card">
+      <img src="rectangle-17.png" alt="Signature" />
+      <h2 class="product-name">SIGNATURE</h2>
+    </div>
+    <div class="product-card">
+      <img src="rectangle-17.png" alt="Quilted" />
+      <h2 class="product-name">QUILTED</h2>
+    </div>
+    <div class="product-card">
+      <img src="rectangle-17.png" alt="Line" />
+      <h2 class="product-name">LINE</h2>
+    </div>
+    </div>
+    <button class="arrow right">&#10095;</button>
+    </div>
+  </section>
+<footer>
+    <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook" />
+      <img src="linkedin-icon.png" alt="LinkedIn" />
+      <img src="youtube-icon.jpeg" alt="YouTube" />
+      <img src="instagram-icon.png" alt="Instagram" />
+    </div>
+  </footer>
+<script>
+  const container = document.querySelector('.carousel-container');
+  const cards = document.querySelectorAll('.product-card');
+  const leftArrow = document.querySelector('.arrow.left');
+  const rightArrow = document.querySelector('.arrow.right');
+
+  let currentIndex = 0;
+
+  function updateFocus() {
+    cards.forEach(card => card.classList.remove('active'));
+    cards[currentIndex].classList.add('active');
+    cards[currentIndex].scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest'
+    });
+  }
+
+  leftArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    updateFocus();
+  });
+
+  rightArrow.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updateFocus();
+  });
+
+  // Initial focus
+  updateFocus();
+</script>
+
+
+</body>
+
+</html>
