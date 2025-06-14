@@ -23,30 +23,28 @@
     </header>
 
   <!-- MAIN FLEX CONTAINER -->
-  <main class="contact-container">
-    <!-- CONTACT FORM -->
     <div class="contact-card">
-      <h1>Contact Us</h1>
-      <form action="#" method="post">
-        <label for="first-name">First Name</label>
-        <input type="text" id="first-name" name="first-name" required />
+    <h1>Contactez-nous</h1>
+    <form id="contact-form">
+      <label for="first-name">Prénom</label>
+      <input type="text" id="first-name" name="first_name" required />
 
-        <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" name="last-name" required />
+      <label for="last-name">Nom</label>
+      <input type="text" id="last-name" name="last_name" required />
 
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+      <div id="email-error" style="color:red;"></div>
 
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" />
-        <label for="email">Sujet</label>
-        <input type="sujet" id="sujet" name="sujet" required />
+      <label for="sujet">Sujet</label>
+      <input type="text" id="sujet" name="sujet" required />
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
 
-        <button type="submit">Envoyer</button>
-      </form>
+      <button type="button" id="send-btn">Envoyer</button>
+      <p id="form-status"></p>
+    </form>
     </div>
 
     <!-- CONTACT INFO -->
@@ -55,7 +53,7 @@
     <h1>Nous sommes toujours disponibles pour accompagner vos projets les plus ambitieux.</h1>
    <div class="info-block">
     <img src="address-81.png" alt="Adress" />
-    <p><strong>Siège social :</strong> Via G. Matteotti, 1/C Tezze sul Brenta (VI) 36056 Italie</p>
+    <p><strong>Addresse :</strong> N°4 Saint Charles Les Vergers Sec 33 GP 33 Bir Mourad Rais Alger</p>
     
 </div>
 
@@ -67,7 +65,7 @@
 
 <div class="info-block">
     <img src="email.png" alt="Email" />
-    <p class="email"><strong>Email :</strong> info@embosspanels.com</p>
+    <p class="email"><strong>Email :</strong> embossmetalsevices@gmail.com</p>
     
 </div>
 
@@ -79,12 +77,7 @@
         <img src="instagram-icon.png" alt="Instagram" />
     </div>
 </div>
-
- 
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
+<footer>
     <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
     <div class="social-icons">
       <img src="facebook-icon.png" alt="Facebook" />
@@ -93,17 +86,53 @@
       <img src="instagram-icon.png" alt="Instagram" />
     </div>
   </footer>
-<script>
-  // Exemple basique : lorsque l'utilisateur survole .contact-card, .contact-info "monte"
-document.querySelector('.contact-card').addEventListener('mouseenter', function() {
-    document.querySelector('.contact-info').style.transform = 'translateY(-60px)';
-    document.querySelector('.contact-info').style.transition = 'transform 0.3s ease';
-});
+ 
+  
 
-document.querySelector('.contact-card').addEventListener('mouseleave', function() {
-    document.querySelector('.contact-info').style.transform = 'translateY(-20px)';
-});
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init("0_GDw3aP_OABy1UoU");
 
-</script>
+      const sendBtn = document.getElementById("send-btn");
+      const status = document.getElementById("form-status");
+      const emailInput = document.getElementById("email");
+      const emailError = document.getElementById("email-error");
+
+      sendBtn.addEventListener("click", function () {
+        const email = emailInput.value.trim();
+        const domain = email.split("@")[1];
+        const allowedDomains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "usthb.dz"];
+
+        if (!allowedDomains.includes(domain)) {
+          emailError.textContent = "Domaine d'e-mail non autorisé.";
+          return;
+        } else {
+          emailError.textContent = "";
+        }
+
+        const templateParams = {
+          first_name: document.getElementById("first-name").value.trim(),
+          last_name: document.getElementById("last-name").value.trim(),
+          email: email,
+          sujet: document.getElementById("sujet").value.trim(),
+          message: document.getElementById("message").value.trim()
+        };
+
+        status.textContent = "Envoi en cours...";
+
+        emailjs.send("service_8pb9lxd", "template_7iu836d", templateParams)
+          .then(() => {
+            status.textContent = "Message envoyé avec succès ✅";
+            document.getElementById("contact-form").reset();
+          }, (error) => {
+            console.error("Erreur EmailJS :", error);
+            status.textContent = "Erreur lors de l'envoi ❌";
+          });
+      });
+    });
+  </script>
+
 </body>
 </html>
