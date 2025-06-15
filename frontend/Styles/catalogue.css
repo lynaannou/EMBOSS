@@ -240,17 +240,20 @@ footer .social-icons img {
   justify-content: center;
   padding: 0; /* ensures room for side peeking */
 }
-
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  flex: 0 0 10vw; /* or use 50% if you want full center at edges */
+}
 
 .carousel-container {
   display: flex;
   gap: 25vw;
-  overflow-x: hidden;
+  overflow-x: hidden; 
   padding: 60px 0;
   justify-content: flex-start;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  
 }
 
 .product-card {
@@ -279,12 +282,13 @@ footer .social-icons img {
   left: 50%;
   transform: translate(-50%, -50%); /* centre parfaitement */
   color: #26282F;
-  font-size: 120px;
-  font-family: 'Numans', sans-serif;
+  font-size: 140px;
+  font-family: 'Italiana', sans-serif;
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);
   text-align: center;
   padding: 0 10px;
   z-index: 2;
+  
 }
 
 
