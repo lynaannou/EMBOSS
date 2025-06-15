@@ -78,7 +78,7 @@ nav a:hover {
     padding: 40px 80px;
     max-width: 850px;
     margin-top: 180px; /* space from the top */
-    margin-left: 200px;         /* stick to left side of container */
+    margin-left: 25px;         /* stick to left side of container */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
@@ -91,7 +91,7 @@ nav a:hover {
     width: 500px;
     position: absolute;
     top: 250px;
-    left: 1000px;  /* control how far from the left → adjust as needed */
+    left: 825px;  /* control how far from the left → adjust as needed */
     transform: translateY(-20px);
     z-index: 2;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
@@ -158,6 +158,7 @@ nav a:hover {
     font-weight: 500;
     font-size: 22px;
     margin-bottom: 16px;
+    
 }
 
 .contact-info .address,
