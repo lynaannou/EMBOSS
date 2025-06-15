@@ -37,23 +37,24 @@
     <button class="arrow left">&#10094;</button>
     <div class="carousel-container">
 
-      <div class="product-card" style="background-image: url('Water Riple.jpg');">
+      <div class="product-card" data-link="home.html" style="background-image: url('Water Riple.jpg');">
         <h2>WATERRIPLE</h2>
       </div>
 
-      <div class="product-card" style="background-image: url('dune.jpg');">
+     
+      <div class="product-card"  data-link="home.html" style="background-image: url('dune.jpg');">
         <h2>DUNE</h2>
       </div>
 
-      <div class="product-card" style="background-image: url('sign.webp');">
+      <div class="product-card"  data-link="home.html" style="background-image: url('sign.webp');">
         <h2>SIGNATURE</h2>
       </div>
 
-      <div class="product-card" style="background-image: url('Quilted.jpg');">
+      <div class="product-card"  data-link="home.html" style="background-image: url('Quilted.jpg');">
         <h2>QUILTED</h2>
       </div>
 
-      <div class="product-card" style="background-image: url('Line.jpg');">
+      <div class="product-card" data-link="home.html"  style="background-image: url('Line.jpg');">
         <h2>LINE</h2>
       </div>
 
@@ -106,7 +107,16 @@
   updateFocus();
 </script>
 
-
+<script>
+  document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const link = card.getAttribute('data-link');
+    if (link) {
+      window.location.href = link;
+    }
+  });
+});
+</script>
 
 </body>
 

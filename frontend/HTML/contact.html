@@ -93,7 +93,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      emailjs.init("0_GDw3aP_OABy1UoU");
+      emailjs.init("qavAfKpDAmieL1NMl");
 
       const sendBtn = document.getElementById("send-btn");
       const status = document.getElementById("form-status");
@@ -122,7 +122,7 @@
 
         status.textContent = "Envoi en cours...";
 
-        emailjs.send("service_8pb9lxd", "template_7iu836d", templateParams)
+        emailjs.send("service_tk77ojk", "template_h74c23d", templateParams)
           .then(() => {
             status.textContent = "Message envoyé avec succès ✅";
             document.getElementById("contact-form").reset();

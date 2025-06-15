@@ -319,3 +319,73 @@ footer .social-icons img {
   transform: translateY(-50%) scale(1.2);/* enlarge on hover */
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  background: #212D49;
+}
+
+
+.popup {
+    position: fixed;
+    top : 0;
+    left : 0;
+    height : 100vh;
+    width: 100vw;
+    background-color :rgb(238, 204, 162);
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    z-index: 2000;
+
+}
+
+.popup-content {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.popup-content h2 {
+    font-size: 48px;
+  font-weight: 600;
+  color: #000000;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 64px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.popup-content p {
+    font-size: 24px;
+  font-weight: 500;
+  color: #000000;
+}
+.popup-content label {
+    display: block;
+    font-weight: 500;
+    font-size: 23px;
+    color: #212D49;
+    margin-bottom: 8px;
+}
+.popup-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #212D49;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
