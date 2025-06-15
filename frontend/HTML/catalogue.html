@@ -33,33 +33,35 @@
 </section>
 
   <section class="carousel-section">
-    <div class = "carousel-wrapper">
-        <div class="carousel-container">
-            <button class="arrow left">&#10094;</button>
-    <div class="product-card">
-      <img src="rectangle-16.png" alt="Water Riple" />
-      <h2 class="product-name">WATER RIPLE</h2>
-    </div>
-   <div class="product-card" style="background-image: url('dune.jpg');">
-  <div class="card-title">WATER RIPPLE</div>
-</div>
+  <div class="carousel-wrapper">
+    <button class="arrow left">&#10094;</button>
+    <div class="carousel-container">
 
-    <div class="product-card">
-      <img src="rectangle-17.png" alt="Signature" />
-      <h2 class="product-name">SIGNATURE</h2>
-    </div>
-    <div class="product-card">
-      <img src="rectangle-17.png" alt="Quilted" />
-      <h2 class="product-name">QUILTED</h2>
-    </div>
-    <div class="product-card">
-      <img src="rectangle-17.png" alt="Line" />
-      <h2 class="product-name">LINE</h2>
-    </div>
+      <div class="product-card" style="background-image: url('Water Riple.jpg');">
+        <h2>WATER RIPLE</h2>
+      </div>
+
+      <div class="product-card" style="background-image: url('dune.jpg');">
+        <h2>DUNE</h2>
+      </div>
+
+      <div class="product-card" style="background-image: url('sign.webp');">
+        <h2>SIGNATURE</h2>
+      </div>
+
+      <div class="product-card" style="background-image: url('Quilted.jpg');">
+        <h2>QUILTED</h2>
+      </div>
+
+      <div class="product-card" style="background-image: url('Line.jpg');">
+        <h2>LINE</h2>
+      </div>
+
     </div>
     <button class="arrow right">&#10095;</button>
-    </div>
-  </section>
+  </div>
+</section>
+
 <footer>
     <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
     <div class="social-icons">
@@ -79,8 +81,11 @@
 
   function updateFocus() {
     cards.forEach(card => card.classList.remove('active'));
-    cards[currentIndex].classList.add('active');
-    cards[currentIndex].scrollIntoView({
+    const activeCard = cards[currentIndex];
+    activeCard.classList.add('active');
+
+    // scroll vers la carte active
+    activeCard.scrollIntoView({
       behavior: 'smooth',
       inline: 'center',
       block: 'nearest'
@@ -97,9 +102,10 @@
     updateFocus();
   });
 
-  // Initial focus
+  // Initialisation
   updateFocus();
 </script>
+
 
 
 </body>

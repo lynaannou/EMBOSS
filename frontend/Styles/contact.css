@@ -63,7 +63,8 @@ nav a:hover {
 
 .contact-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;/* allow wrapping for smaller screens */
+    align-items: flex-start; /* align items to the top */
     justify-content: space-between;
     gap: 40px;
     max-width: 1400px;
@@ -76,20 +77,21 @@ nav a:hover {
     border-radius: 45px;
     padding: 40px 80px;
     max-width: 850px;
-    margin-left: 0;         /* stick to left side of container */
+    margin-top: 180px; /* space from the top */
+    margin-left: 200px;         /* stick to left side of container */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
 }
 
 .contact-info {
-    background: #EFE1CB;
+    background: #e4d6d0;
     border-radius: 45px;
     padding: 60px;
     width: 500px;
     position: absolute;
-    top: 80px;
-    left: 800px;  /* control how far from the left → adjust as needed */
+    top: 250px;
+    left: 1000px;  /* control how far from the left → adjust as needed */
     transform: translateY(-20px);
     z-index: 2;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
@@ -198,6 +200,7 @@ nav a:hover {
 
 /* FOOTER */
 footer {
+    margin-top: 100px;
     background: #182136;
     color: #FFFFFF;
     padding: 40px 80px;

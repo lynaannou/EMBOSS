@@ -86,7 +86,7 @@ nav a:hover {
   top: 0;
   left: 0;
   width: 100%;
-  height: 90vh; /* au lieu de 100% ou 100vh → un peu plus long */
+  height: 120vh; /* au lieu de 100% ou 100vh → un peu plus long */
   object-fit: cover;
   opacity: 0.49; /* pour simuler l'effet Figma que tu avais mis */
   z-index: 1;
@@ -177,8 +177,9 @@ nav a:hover {
   margin-bottom: 16px;
 }
 .product-name {
+  font-weight: 700;
   font-family: 'Numans', sans-serif;
-  font-size: 48px;
+  font-size: 100px;
   margin-bottom: 8px;
   color: #26282f;
 }
@@ -223,62 +224,44 @@ footer .social-icons img {
   height: 40px;
 }
 .carousel-section {
-  background: linear-gradient(to bottom, #ebe3e0, #cca46b);
+  background: linear-gradient(to bottom, #ebe3e0, #EBE3E0);
   padding: 60px 0;
   overflow: hidden;
 }
 
 .carousel-wrapper {
-  position: relative;
+ position: relative;
   width: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5vw; /* ensures room for side peeking */
+  padding: 0; /* ensures room for side peeking */
 }
+
 
 .carousel-container {
   display: flex;
-  gap: 80px; /* spacing between cards - adjust as needed */
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease-in-out;
-  scroll-behavior: smooth;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 40px 0;
-}
-
-.carousel-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 5vw; /* ensures room for side peeking */
-}
-
-.carousel-container {
-  display: flex;
-  gap: 60px;
+  gap: 150px;
   overflow-x: hidden;
   padding: 60px 0;
-  justify-content: center;
+  justify-content: flex-start;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  
 }
 
 .product-card {
-  flex: 0 0 60%;
+  flex: 0 0 80%;
   max-width: 480px;
-  height: 400px;
+  height: 500px;
   background-size: cover;
   background-position: center;
-  border-radius: 20px;
+  border-radius: 2px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   position: relative;
   transform: scale(0.9);
-  opacity: 0.5;
+  opacity: 0.7;
   transition: all 0.3s ease;
 }
 
@@ -289,14 +272,17 @@ footer .social-icons img {
 }
 
 .product-card h2 {
-  position: absolute;
-  bottom: 20px;
+   position: absolute;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-size: 36px;
+  transform: translate(-50%, -50%); /* centre parfaitement */
+  color: #26282F;
+  font-size: 120px;
   font-family: 'Numans', sans-serif;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  text-align: center;
+  padding: 0 10px;
+  z-index: 2;
 }
 
 
@@ -306,23 +292,24 @@ footer .social-icons img {
   top: 50%;
   transform: translateY(-50%);
   font-size: 40px;
-  background: #ffffff;
+  background: #d9d9d97c;
   border-radius: 50%;
-  color: #26314a;
-  padding: 10px 14px;
+  color: #ffffff;
+  padding: 1px 16px;
   cursor: pointer;
   z-index: 100;
-  border: none;
+  border: white 2px solid;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
 .arrow.left {
-  left: -10px;
+  left: 10px;
 }
 .arrow.right {
   right: 10px;
 }
 .arrow:hover {
-  transform: translateY(-50%) scale(1.2);
+  transform: translateY(-50%) scale(1.2);/* enlarge on hover */
 }
 
