@@ -1,4 +1,6 @@
-/* RESET & FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -255,20 +257,41 @@ footer .social-icons img {
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }
-
+/* Conteneur de la carte produit */
 .product-card {
   flex: 0 0 80%;
   max-width: 480px;
-  height: 500px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 2px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  position: relative;
   transform: scale(0.9);
-  opacity: 0.7;
+  opacity: 0.9;
   transition: all 0.3s ease;
 }
+
+/* Image de la carte */
+.product-image {
+  width: 100%;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Texte du nom du produit */
+.product-title {
+  font-size: 24px;
+  font-family: 'Bastliga One', serif;
+  color: #212D49;
+  padding: 12px 0;
+  text-align: center;
+}
+
 
 .product-card.active {
   transform: scale(1.05);
@@ -276,7 +299,7 @@ footer .social-icons img {
   z-index: 2;
 }
 
-.product-card h2 {
+.product-title p {
    position: absolute;
   top: 50%;
   left: 50%;
@@ -319,73 +342,35 @@ footer .social-icons img {
   transform: translateY(-50%) scale(1.2);/* enlarge on hover */
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: #000;
-  background: #212D49;
-}
-
-
-.popup {
-    position: fixed;
-    top : 0;
-    left : 0;
-    height : 100vh;
-    width: 100vw;
-    background-color :rgb(238, 204, 162);
-    display: flex;
-    justify-content: center;
-    align-items : center;
-    z-index: 2000;
-
-}
-
-.popup-content {
-  background-color: white;
-  padding: 30px 40px;
-  border-radius: 10px;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.popup-content h2 {
-    font-size: 48px;
-  font-weight: 600;
-  color: #000000;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  margin-bottom: 64px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-.popup-content p {
-    font-size: 24px;
-  font-weight: 500;
-  color: #000000;
-}
-.popup-content label {
-    display: block;
-    font-weight: 500;
-    font-size: 23px;
-    color: #212D49;
-    margin-bottom: 8px;
-}
-.popup-content button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #212D49;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
 .hidden {
   display: none;
 }
+.font-bastliga {
+  font-family: 'Bastliga One', serif !important;
+  font-size: 50px;
+}
+.font-dune {
+  font-family: 'Prata', serif !important;
+  font-size: 50;
+}
+.font-line {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.font-water {
+  font-family: 'Water Brush', cursive;
+}
+.font-quilted {
+  font-family: 'Playfair Display', serif;
+
+}
+
+@font-face {
+  font-family: 'Bastliga One';
+  src: url('../Fonts/bastliga-one.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+

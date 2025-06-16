@@ -6,7 +6,7 @@
   <title>Catalogue - EMBOSS MÉTAL SERVICES</title>
   <link rel="stylesheet" href="../Styles/catalogue.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Italiana&family=Numans&display=swap" rel="stylesheet">
-</head>
+ </head>
 <body>
   
     <header>
@@ -27,7 +27,7 @@
     <img src="Hero Image (1).jpg" alt="Hero Image" class="hero-image" />
     <div class="hero-text">
          <h1>CATALOGUE</h1>
-        <p>Ce catalogue présente notre gamme de tôles embossées, classées par familles de motifs. Chaque design est disponible en plusieurs finitions, épaisseurs et dimensions.</p>
+          <p>Ce catalogue présente notre gamme de tôles embossées, classées par familles de motifs. Chaque design est disponible en plusieurs finitions, épaisseurs et dimensions.</p>
         
     </div>
 </section>
@@ -37,27 +37,28 @@
     <button class="arrow left">&#10094;</button>
     <div class="carousel-container">
 
-      <div class="product-card" data-link="home.html" style="background-image: url('Water Riple.jpg');">
-        <h2>WATERRIPLE</h2>
+      <div class="product-card">
+  <div class="product-image"data-link="home.html" style="background-image: url('Water Riple.jpg');"></div>
+  <p class="product-title font-water">WATERRIPLE</p>
+</div>
+
+      <div class="product-card">
+  <div class="product-image"data-link="home.html" style="background-image: url('dune.jpg');"></div>
+  <p class="product-title font-dune">DUNE</p>
+</div>
+
+<div class="product-card">
+      <div class="product-image"  data-link="home.html" style="background-image: url('sign.webp');"></div>
+        <p class = "product-title">SIGNATURE</p>
       </div>
 
-     
-      <div class="product-card"  data-link="home.html" style="background-image: url('dune.jpg');">
-        <h2>DUNE</h2>
-      </div>
-
-      <div class="product-card"  data-link="home.html" style="background-image: url('sign.webp');">
-        <h2>SIGNATURE</h2>
-      </div>
-
-      <div class="product-card"  data-link="home.html" style="background-image: url('Quilted.jpg');">
-        <h2>QUILTED</h2>
-      </div>
-
-      <div class="product-card" data-link="home.html"  style="background-image: url('Line.jpg');">
-        <h2>LINE</h2>
-      </div>
-
+      <div class="product-card">
+        <div class="product-image" data-link="home.html" style="background-image: url('Quilted.jpg');"></div>
+         <p class = "product-title font-quilted">QUILTED</p>    
+ </div>
+ <div class="product-card">
+      <div class="product-image" data-link="home.html"  style="background-image: url('Line.jpg');"></div>
+        <p class="product-title font-line">LINE</p>
     </div>
     <button class="arrow right">&#10095;</button>
   </div>
@@ -116,6 +117,13 @@
     }
   });
 });
+</script>
+<script>
+  window.onload = () => {
+    const el = document.querySelector('.font-bastliga');
+    const font = window.getComputedStyle(el).getPropertyValue('font-family');
+    console.log("Font appliquée :", font);
+  };
 </script>
 
 </body>
