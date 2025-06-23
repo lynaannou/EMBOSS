@@ -1,13 +1,19 @@
 <?php 
-// Connect to the database
+// Connexion à la base de données
 $pdo = require_once '../../backend/db.php';
 
-// Get all models
-$sql = "SELECT * FROM model";
+// Requête pour récupérer tous les modèles
+$sql = "
+SELECT DISTINCT m.idmodel, m.nommodel
+FROM model m
+JOIN produit p ON p.idmodel = m.idmodel
+";
+
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
-$models = $stmt->fetchAll(PDO::FETCH_ASSOC); // Now we have all model rows
+$models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,8 +31,8 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // Now we have all model rows
     </div>
     <nav>
       <a href="home.html">HOME</a>
-      <a href="product.html">PRODUCT</a>
-      <a href="catalogue.html">CATALOGUE</a>
+      <a href="product.php">PRODUCT</a>
+      <a href="catalogue.php">CATALOGUE</a>
       <a href="#">PROJECTS</a>
       <a href="contact.html">CONTACT</a>
     </nav>
@@ -53,19 +59,24 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // Now we have all model rows
           'LINE' => 'font-line'
         ];
         ?>
-        <?php foreach ($models as $model): ?>
-          <?php
-            $nom = $model['nommodel'];
-            $font = $fonts[$nom] ?? 'font-italiana';
-          ?>
-          <div class="product-card">
-            <div class="product-image"
-                 data-link="home.html"
-                 style="background-image: url('/backend/image.php?id=<?= $model['idmodel'] ?>');">
-            </div>
-            <p class="product-title <?= $font ?>"><?= htmlspecialchars($nom) ?></p>
-          </div>
-        <?php endforeach; ?>
+<?php foreach ($models as $model): ?>
+  <?php
+    $nom = $model['nommodel'];
+    $font = $fonts[$nom] ?? 'font-italiana';
+    $idmodel = $model['idmodel'];
+  ?>
+  <div class="product-card">
+    <div class="product-image"
+     data-link="product.php?id=<?= $model['idmodel'] ?>"
+     style="background-image: url('../../backend/image.php?id=<?= $model['idmodel'] ?>');">
+</div>
+
+    <p class="product-title <?= $font ?>"><?= htmlspecialchars($nom) ?></p>
+  </div>
+<?php endforeach; ?>
+
+
+
       </div>
       <button class="arrow right">&#10095;</button>
     </div>

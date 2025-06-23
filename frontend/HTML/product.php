@@ -1,34 +1,48 @@
-<?php 
-// Connexion à la base de données
+<?php
 $pdo = require_once '../../backend/db.php';
 
-// Requête pour récupérer les matières et leurs couleurs associées
-$sql = "
-SELECT m.nommatiere, c.nomcouleur
-FROM matiere m
-LEFT JOIN association a ON m.idmatiere = a.idmatiere
-LEFT JOIN couleur c ON a.idcouleur = c.idcouleur
-";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Regrouper les couleurs par matière
-$grouped = [];
-
-foreach ($results as $row) {
-    $nomMatiere = $row['nommatiere'];
-    $nomCouleur = $row['nomcouleur'];
-
-    if (!isset($grouped[$nomMatiere])) {
-        $grouped[$nomMatiere] = [];
-    }
-
-    if ($nomCouleur) {
-        $grouped[$nomMatiere][] = $nomCouleur;
-    }
+$idmodel = $_GET['model'] ?? null;
+if (!$idmodel) {
+    die("Aucun modèle spécifié.");
 }
+
+// On récupère les infos du modèle
+$sql_model = "SELECT * FROM model WHERE idmodel = ?";
+$stmt_model = $pdo->prepare($sql_model);
+$stmt_model->execute([$idmodel]);
+$model = $stmt_model->fetch(PDO::FETCH_ASSOC);
+
+if (!$model) {
+    die("Modèle introuvable.");
+}
+
+// On récupère toutes les associations matière/couleur pour ce modèle
+$sql_variantes = "
+SELECT ma.nommatiere, c.nomcouleur
+FROM produit p
+JOIN association a ON p.idassociation = a.idassociation
+JOIN matiere ma ON a.idmatiere = ma.idmatiere
+JOIN couleur c ON a.idcouleur = c.idcouleur
+WHERE p.idmodel = ?
+";
+$stmt_variantes = $pdo->prepare($sql_variantes);
+$stmt_variantes->execute([$idmodel]);
+$raw_variantes = $stmt_variantes->fetchAll(PDO::FETCH_ASSOC);
+
+// Regroupement par matière
+$variantes = [];
+foreach ($raw_variantes as $row) {
+    $matiere = $row['nommatiere'];
+    $couleur = $row['nomcouleur'];
+
+    if (!isset($variantes[$matiere])) {
+        $variantes[$matiere] = [];
+    }
+    $variantes[$matiere][] = $couleur;
+}
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -47,8 +61,8 @@ foreach ($results as $row) {
     </div>
     <nav>
       <a href="home.html">HOME</a>
-      <a href="product.html">PRODUCT</a>
-      <a href="catalogue.html">CATALOGUE</a>
+      <a href="product.php">PRODUCT</a>
+      <a href="catalogue.php">CATALOGUE</a>
       <a href="#">PROJECTS</a>
       <a href="contact.html">CONTACT</a>
     </nav>
@@ -63,58 +77,73 @@ foreach ($results as $row) {
   </section>
 
   <div class="page-product-container">
-    <div class="page-product-left">
-      <img src="dune.jpg" alt="Image-produit" class="product-image" />
-      <h2>DUNE</h2>
-      <p>Découvrez DUNE, la tôle embossée qui allie esthétique et fonctionnalité, pour des créations architecturales d'exception.</p>
-    </div>
+   <div class="page-product-left">
+  <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image" />
+  <h2><?= htmlspecialchars($model['nommodel']) ?></h2>
+  <p><?= htmlspecialchars($model['texte']) ?></p>
+</div>
 
-    <div class="page-product-wrapper">
-      <div class="page-product-slider" id="productSlider">
-
-        <!-- PAGE DROITE - TECHNICALITÉS -->
-        <div class="page-product-right">
-          <div class="marge-top"><h1>Technicalités</h1></div>
-
-          <div class="product-materials">
-  <?php foreach ($grouped as $nomMatiere => $couleurs): ?>
-    <div class="matiere-item">
-      <span class="matiere-name"><?= htmlspecialchars($nomMatiere) ?></span>
-      <div class="matiere-couleurs">
-        <?php foreach ($couleurs as $nomCouleur): ?>
-          <div class="couleur" style="background-color: <?= htmlspecialchars($nomCouleur) ?>;"></div>
-        <?php endforeach; ?>
-      </div>
+<div class="page-product-right">
+  <div class="marge-top"><h1>Technicalités</h1></div>
+  <div class="product-materials">
+    <?php foreach ($variantes as $matiere => $couleurs): ?>
+  <div class="matiere-item">
+    <span class="matiere-name"><?= htmlspecialchars($matiere) ?></span>
+    <div class="matiere-couleurs">
+  <?php foreach ($couleurs as $couleur): ?>
+    <div 
+      class="couleur" 
+      style="background-color: <?= htmlspecialchars($couleur) ?>;" 
+      data-color="<?= htmlspecialchars($couleur) ?>">
     </div>
   <?php endforeach; ?>
 </div>
 
-           
+    
+  </div>
+  
+<?php endforeach; ?>
 
-          <div class="marge-bottom">
+  </div>
+<div class="image-wrapper">
+  <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image1" id="mainProductImage" />
+  <div class="image-overlay" id="imageOverlay"></div>
+</div>
+
+
+</div>
+<div class="marge-bottom">
             <button class="arrow-button" id="arrowButton">
               <img src="arrow1-png.png" alt="arrow" class="arrow-icon" />
             </button>
           </div>
         </div>
 
-        <!-- PAGE PROJETS -->
+       
         <div class="page-product-project">
           <div class="marge-top"><h1>Projets</h1></div>
           <div class="project-content">
-            <p>no projets: </p>
+            
           </div>
           <div class="marge-bottom">
-            <button class="arrow-button" id="backButton">
-              <img src="arrow1-png.png" alt="arrow" class="arrow-icon reverse" />
-            </button>
-          </div>
+                <button class="arrow-button" id="backButton">
+                <img src="arrow1-png.png" alt="arrow" class="arrow-icon reverse" />
+                </button>
+           </div>
         </div>
 
       </div> 
     </div>
   </div>
-
+  <footer>
+    <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook" />
+      <img src="linkedin-icon.png" alt="LinkedIn" />
+      <img src="youtube-icon.jpeg" alt="YouTube" />
+      <img src="instagram-icon.png" alt="Instagram" />
+    </div>
+  </footer>
   <script>
     const arrowButton = document.getElementById('arrowButton');
     const slider = document.getElementById('productSlider');
@@ -130,15 +159,36 @@ foreach ($results as $row) {
     });
   </script>
 
-  <footer>
-    <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
-    <div class="social-icons">
-      <img src="facebook-icon.png" alt="Facebook" />
-      <img src="linkedin-icon.png" alt="LinkedIn" />
-      <img src="youtube-icon.jpeg" alt="YouTube" />
-      <img src="instagram-icon.png" alt="Instagram" />
-    </div>
-  </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const colorDots = document.querySelectorAll('.couleur');
+    const mainImage = document.getElementById('mainProductImage');
+    const overlay = document.getElementById('imageOverlay');
+    const modelId = <?= json_encode($model['idmodel']) ?>;
+
+    if (!mainImage || !overlay) {
+      console.error("mainProductImage ou imageOverlay introuvable !");
+      return;
+    }
+
+    colorDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const hexColor = dot.style.backgroundColor;
+        overlay.style.backgroundColor = hexColor;
+
+        const imageUrl = `/backend/image.php?id=${modelId}`;
+        mainImage.style.opacity = 0.5;
+        setTimeout(() => {
+          mainImage.src = imageUrl;
+          mainImage.onload = () => {
+            mainImage.style.opacity = 1;
+          };
+        }, 200);
+      });
+    });
+  });
+</script>
 
 </body>
+
 </html>

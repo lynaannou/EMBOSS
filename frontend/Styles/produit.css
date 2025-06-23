@@ -194,16 +194,16 @@ nav a:hover {
 }
 
 .product-materials {
- .product-materials {
+
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 30%;
+  left: 30%;
   transform: translate(-50%, -50%); /* décalage vers la gauche plus prononcé */
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* alignement à gauche */
-  gap: 50px; /* espacement entre chaque matériau */
-}
+  gap: 25px; /* espacement entre chaque matériau */
+
 
 }
 
@@ -293,26 +293,28 @@ nav a:hover {
 .matiere-item {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .matiere-name {
   font-size: 20px;
   color: #333;
   margin-right: 20px;
-  min-width: 120px;
+  min-width: 20px;
 }
 
 .matiere-couleurs {
   display: flex;
-  gap: 10px;
+  gap: 2px;
+  
 }
 
 .couleur {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 2px solid #fff;
+  
 }
 
 
@@ -336,4 +338,45 @@ footer .social-icons {
 footer .social-icons img {
   width: 40px;
   height: 40px;
+}
+.product-image1 {
+   display: block;
+  border-radius: 250px;
+  height: 279px;
+  position: relative;
+  object-fit: cover;
+  width: 70%;
+  margin: 60px auto 0 auto;
+  z-index: 2;
+
+    top: -33%;
+}
+.image-wrapper {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+}
+
+#mainProductImage {
+  width: 100%;
+  display: block;
+  border-radius: 250px;
+  object-fit: cover;
+  z-index: 1;
+position: relative;
+
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 250px;
+  mix-blend-mode: multiply; /* ou overlay selon rendu voulu */
+  pointer-events: none;
+  opacity: 0.6; /* force de l'effet */
+  background-color: transparent;
+  transition: background-color 0.4s ease;
 }
