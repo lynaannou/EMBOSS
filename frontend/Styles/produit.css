@@ -290,6 +290,32 @@ nav a:hover {
   flex-shrink: 0;
 }
 
+.matiere-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.matiere-name {
+  font-size: 20px;
+  color: #333;
+  margin-right: 20px;
+  min-width: 120px;
+}
+
+.matiere-couleurs {
+  display: flex;
+  gap: 10px;
+}
+
+.couleur {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+
 footer {
   background: #182136;
  

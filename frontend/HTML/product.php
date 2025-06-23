@@ -1,3 +1,36 @@
+<?php 
+// Connexion à la base de données
+$pdo = require_once '../../backend/db.php';
+
+// Requête pour récupérer les matières et leurs couleurs associées
+$sql = "
+SELECT m.nommatiere, c.nomcouleur
+FROM matiere m
+LEFT JOIN association a ON m.idmatiere = a.idmatiere
+LEFT JOIN couleur c ON a.idcouleur = c.idcouleur
+";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Regrouper les couleurs par matière
+$grouped = [];
+
+foreach ($results as $row) {
+    $nomMatiere = $row['nommatiere'];
+    $nomCouleur = $row['nomcouleur'];
+
+    if (!isset($grouped[$nomMatiere])) {
+        $grouped[$nomMatiere] = [];
+    }
+
+    if ($nomCouleur) {
+        $grouped[$nomMatiere][] = $nomCouleur;
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,20 +69,27 @@
       <p>Découvrez DUNE, la tôle embossée qui allie esthétique et fonctionnalité, pour des créations architecturales d'exception.</p>
     </div>
 
-    
     <div class="page-product-wrapper">
-      
       <div class="page-product-slider" id="productSlider">
 
-        
+        <!-- PAGE DROITE - TECHNICALITÉS -->
         <div class="page-product-right">
           <div class="marge-top"><h1>Technicalités</h1></div>
 
-           <div class="product-materials">
-            <div class="product-material">Aluminium</div>
-            <div class="product-material">Inox</div>
-            <div class="product-material">Galvanisé</div>
-           </div>
+          <div class="product-materials">
+  <?php foreach ($grouped as $nomMatiere => $couleurs): ?>
+    <div class="matiere-item">
+      <span class="matiere-name"><?= htmlspecialchars($nomMatiere) ?></span>
+      <div class="matiere-couleurs">
+        <?php foreach ($couleurs as $nomCouleur): ?>
+          <div class="couleur" style="background-color: <?= htmlspecialchars($nomCouleur) ?>;"></div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  <?php endforeach; ?>
+</div>
+
+           
 
           <div class="marge-bottom">
             <button class="arrow-button" id="arrowButton">
@@ -58,17 +98,17 @@
           </div>
         </div>
 
-       
+        <!-- PAGE PROJETS -->
         <div class="page-product-project">
           <div class="marge-top"><h1>Projets</h1></div>
           <div class="project-content">
             <p>no projets: </p>
           </div>
           <div class="marge-bottom">
-                <button class="arrow-button" id="backButton">
-                <img src="arrow1-png.png" alt="arrow" class="arrow-icon reverse" />
-                </button>
-           </div>
+            <button class="arrow-button" id="backButton">
+              <img src="arrow1-png.png" alt="arrow" class="arrow-icon reverse" />
+            </button>
+          </div>
         </div>
 
       </div> 
@@ -80,13 +120,13 @@
     const slider = document.getElementById('productSlider');
 
     arrowButton.addEventListener('click', () => {
-      slider.style.transform = 'translateX(-50vw)'; // Slide vers la gauche
+      slider.style.transform = 'translateX(-50vw)';
     });
 
     const backButton = document.getElementById('backButton');
 
     backButton.addEventListener('click', () => {
-    slider.style.transform = 'translateX(0)'; // Revenir à la page initiale
+      slider.style.transform = 'translateX(0)';
     });
   </script>
 
