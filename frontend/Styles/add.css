@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  background: #212D49;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* HEADER */
+
+header {
+ position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  z-index: 100;
+  margin-top: 0%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
+  background: rgba(61, 71, 93, 0.23); /* fond légèrement transparent */
+  backdrop-filter: blur(5px); /* effet de flou pour le fond */
+}
+
+
+
+header .logo-title img {
+    height: 200px; /* taille du logo adaptée à la ligne du menu */
+    width: auto;
+    display: block; /* pour s'assurer que l'image est un bloc */
+    margin-bottom: -15px; /* espace entre le logo et le titre */
+    margin-left: -80px;
+}
+
+header .logo-title span {
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; /* centre le texte verticalement aussi */
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-left: 32px;
+  text-decoration: none;
+}
+nav a:hover {
+    color: #996FD1;
+}
+
+.add-card {
+    background: #EBE3E0;
+    border-radius: 45px;
+    padding: 40px 80px;
+    max-width: 850px;
+    margin-top: 180px; /* space from the top */
+    margin-left: 245px;         /* stick to left side of container */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+
+footer {
+  background: #182136;
+ 
+  
+  padding: 80px;
+  text-align: left;
+  color: #dcd7e2;
+  font-size: 14px;
+  border-top: 1px solid #E6E6E6;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+footer .social-icons img {
+  width: 40px;
+  height: 40px;
+}

@@ -224,3 +224,13 @@ footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ombre plus forte */
     cursor: pointer;
 }
+input[type="checkbox"] {
+    accent-color : #fff;
+    margin-top: 50px;
+    margin-left: 55px;
+    
+}
+
+.checkbox-label {
+    font-size: 25px;
+}
