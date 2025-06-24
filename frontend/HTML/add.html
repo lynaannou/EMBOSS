@@ -20,9 +20,56 @@
       <a href="contact.html">CONTACT</a>
     </nav>
     </header>
+    <h1>Ajouter un Model</h1>
+    <div class="add-card">
+
+      <form id="add-product-form" method="POST" action="/backend/save-product.php">
+        <label for="product-name">Nom du model</label>
+        <input type="text" id="product-name" name="product_name" required />
+
+        <label for="product-description">Description</label>
+        <textarea id="product-description" name="product_description" rows="5" required></textarea>
+
+        <button type="submit">Ajouter</button>
+      </form>
+
+        <div class="add-photo" id="photo-drop-area">
+          <span class="plus-icon">+</span>
+          <input type="file" id="photo-input" name="photo" accept="image/*" hidden />
+        </div>
+
+    </div>
+
+
+    <h1>Ajouter une Matière</h1>
+    <div class="add-card">
+    <div class="left-section">
+      <form id="add-material-form" class="material-form" method="POST" action="/backend/save-material.php">
+        <label for="material-name">Nom de la matière</label>
+        <input type="text" id="material-name" name="material_name" />
+<div id="materialList" class="palette"></div>
+        <button type="submit">Ajouter la matière</button>
+      </form>
+
+      
+    </div>
+
+    <div class="right-section">
+      <div class="picker-section">
+        <label for="colorInput">Choisir une couleur :</label><br>
+        <input type="color" id="colorInput" value="#000000" />
+        <button type="button" id="add-color-button">Ajouter la couleur</button>
+      </div>
+    </div>
+  </div>
+
+
+
     <div class="add-card">
 
     </div>
+
+    
   <footer>
     <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
     <div class="social-icons">
@@ -32,5 +79,101 @@
       <img src="instagram-icon.png" alt="Instagram" />
     </div>
   </footer>
+
+  <script>
+  const dropArea = document.getElementById("photo-drop-area");
+  const fileInput = document.getElementById("photo-input");
+
+  // Ouvrir l'explorateur au clic
+  dropArea.addEventListener("click", () => fileInput.click());
+
+  // Quand un fichier est sélectionné
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (file) previewImage(file);
+  });
+
+  // Gérer le drag & drop
+  dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropArea.classList.add("dragover");
+  });
+
+  dropArea.addEventListener("dragleave", () => {
+    dropArea.classList.remove("dragover");
+  });
+
+  dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropArea.classList.remove("dragover");
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      fileInput.files = e.dataTransfer.files; // mise à jour du champ input
+      previewImage(file);
+    }
+  });
+
+  // Afficher l'image dans le carré
+  function previewImage(file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      dropArea.innerHTML = `<img src="${e.target.result}" alt="Aperçu" />`;
+    };
+    reader.readAsDataURL(file);
+  }
+</script>
+
+<script>
+  document.getElementById('add-color-button').addEventListener('click', function () {
+    const name = document.getElementById('material-name').value.trim();
+    const color = document.getElementById('colorInput').value;
+
+    // Crée le conteneur principal
+    const box = document.createElement('div');
+    box.className = 'color-box';
+
+    // Crée la div de couleur
+    const colorDiv = document.createElement('div');
+    colorDiv.className = 'color';
+    colorDiv.style.backgroundColor = color;
+
+    // Crée le label (nom/couleur)
+    const label = document.createElement('div');
+    label.className = 'label';
+    label.textContent = name ? `${name} (${color})` : `${color}`;
+
+    // Crée le bouton de suppression
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'close-btn';
+    closeBtn.innerHTML = '×';
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Évite les bugs de propagation
+      box.remove();
+    });
+
+    // Assemble les éléments
+    box.appendChild(closeBtn);  // IMPORTANT : ajouter le bouton EN PREMIER
+    box.appendChild(colorDiv);
+    box.appendChild(label);
+
+    // Ajoute à la liste
+    document.getElementById('materialList').appendChild(box);
+  });
+</script>
+
+
+<script>
+  // Supprimer une color-box au clic droit
+  document.getElementById('materialList').addEventListener('contextmenu', function (e) {
+    if (e.target.closest('.color-box')) {
+      e.preventDefault(); // Empêche le menu clic droit par défaut
+      const box = e.target.closest('.color-box');
+      box.remove(); // Supprime le bloc
+    }
+  });
+</script>
+
+
+
 </body>
 </html>

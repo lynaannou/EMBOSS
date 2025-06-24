@@ -20,8 +20,8 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
-/* HEADER */
 
+/* HEADER */
 header {
  position: fixed;
   top: 0;
@@ -74,19 +74,222 @@ nav a:hover {
     background: #EBE3E0;
     border-radius: 45px;
     padding: 40px 80px;
-    max-width: 850px;
+    max-width: 1250px;
     margin-top: 180px; /* space from the top */
     margin-left: 245px;         /* stick to left side of container */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: space-between; 
+    align-items: flex-start;
+}
+.left-section {
+  flex: 1;
+  width: 50%;
+}
+
+/* Pour la partie droite (picker + bouton couleur) */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+/* Optionnel : centrer mieux les inputs dans .picker-section */
+.picker-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 0;
 }
 
 
-footer {
-  background: #182136;
- 
+.add-photo {
+  background: #fff;
+  /*position: absolute;
+  left: 90%;
+  transform: translateX(-50%);*/
+  width: 450px;
+  height: 450px;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: border 0.3s ease;
+  border: 2px dashed #212D49;
   
+}
+
+.add-photo.dragover {
+  border: 2px dashed #996FD1;
+  background-color: #f0f0f0;
+}
+
+.plus-icon {
+  font-size: 64px;
+  color: #212D49;
+  pointer-events: none;
+}
+
+.add-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.add-card h1 {
+    font-family: 'Italiana', cursive;
+    font-size: 36px;
+    color: #212D49;
+    margin-bottom: 24px;
+}
+
+.add-card form label {
+    display: block;
+    font-weight: 500;
+    font-size: 23px;
+    color: #212D49;
+    margin-bottom: 8px;
+}
+
+.add-card form input,
+.add-card form textarea {
+    width: 600px;
+    padding: 12px 16px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.add-card form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.add-card form button {
+    background: #ffffff83;
+    color: #c0c0c0;
+    font-size: 32px;
+    font-weight: 500;
+    padding: 12px 32px;
+    border: 3px solid #c0c0c0;    
+    border-radius: 25px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.add-card form button:hover {
+    background: #eccfa5;
+    color: #FFFFFF;
+    border-color: #FFFFFF; /* Change border color on hover */
+}
+
+.palette {
+  display: flex;
+  flex-wrap: nowrap;         
+  overflow-x: auto;           
+  gap: 15px;
+  margin-top: 30px;
+  padding-bottom: 10px;       
+  max-width: 100%;
+}
+
+.palette::-webkit-scrollbar {
+  height: 8px;
+}
+
+.palette::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.palette::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.palette::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.color-box {
+  position: relative;
+  text-align: center;
+  display: inline-block;
+}
+
+.color-box .close-btn {
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  border: none;
+ 
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  line-height: 18px;
+  padding: 0;
+  z-index: 10;
+}
+
+.color-box:hover .close-btn {
+  display: block;
+}
+
+.color {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.2s;
+}
+
+.color:hover {
+  transform: scale(1.1);
+}
+
+.label {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #212D49;
+}
+
+.picker-section {
+  margin-top: 30px;
+}
+
+#colorInput {
+  width: 160px;
+  height: 160px;
+  
+  cursor: pointer;
+}
+
+.copied {
+  color: green;
+  font-size: 12px;
+  margin-left: 10px;
+}
+ 
+footer {
+  background: #182136; 
   padding: 80px;
   text-align: left;
   color: #dcd7e2;
@@ -103,4 +306,23 @@ footer .social-icons {
 footer .social-icons img {
   width: 40px;
   height: 40px;
+}
+#add-color-button {
+  background: #ffffff83;
+    color: #c0c0c0;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 12px 32px;
+    border: 2px solid #c0c0c0;    
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+    
+}
+#add-color-button:hover {
+  background: #eccfa5;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
 }
