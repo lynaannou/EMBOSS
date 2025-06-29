@@ -25,8 +25,8 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <nav>
       <a href="home.html">HOME</a>
-      <a href="product.html">PRODUCT</a>
-      <a href="catalogue.html">CATALOGUE</a>
+      <a href="product.php">PRODUCT</a>
+      <a href="catalogue.php">CATALOGUE</a>
       <a href="#">PROJECTS</a>
       <a href="contact.html">CONTACT</a>
     </nav>
@@ -99,11 +99,11 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
       
     </div>
 
-    <div class="right-section">
+    <div class="right-section" id="right-section-existing">
     
         <label for="colorInput">Choisir une couleur :</label>
-        <input type="color" id="colorInput" value="#000000" />
-        <textarea id="hexInput" rows="1" placeholder="#996FD1" style="width: 160px; resize: none;"></textarea>
+        <input type="color" id="colorInputExisting" value="#000000" />
+        <textarea id="hexInputExisting" rows="1" placeholder="#996FD1" style="width: 160px; resize: none;"></textarea>
         <button type="button" id="add-color-button-existing">Ajouter la couleur</button>
 
       
@@ -246,8 +246,8 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
     const select = document.getElementById('select-matiere');
     const selectedText = select.options[select.selectedIndex].text;
 
-    let colorInputValue = document.getElementById('colorInput').value;
-    const hexInput = document.getElementById('hexInput');
+    let colorInputValue = document.getElementById('colorInputExisting').value;
+    const hexInput = document.getElementById('hexInputExisting');
     let hexValue = hexInput.value.trim();
 
     let color = /^#([0-9A-F]{3}){1,2}$/i.test(hexValue) ? hexValue : colorInputValue;
@@ -283,7 +283,30 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     document.getElementById('materialListExisting').appendChild(box);
 
+    // Ajuster la taille comme dans le deuxième bloc
+    document.getElementById('right-section-existing').style.height = '450px';
+    document.getElementById('colorInputExisting').style.width = '220px';
+    document.getElementById('colorInputExisting').style.height = '220px';
+
     hexInput.value = '';
+  });
+</script>
+
+<script>
+  // Supprimer un bloc dans "Ajouter une couleur" (3ᵉ add-card) au clic droit
+  document.getElementById('materialListExisting').addEventListener('contextmenu', function (e) {
+    if (e.target.closest('.color-box')) {
+      e.preventDefault(); // Empêche le menu clic droit par défaut
+      const box = e.target.closest('.color-box');
+      box.remove(); // Supprime le bloc
+
+      // Si plus de blocs => réinitialiser la taille
+      if (document.querySelectorAll('#materialListExisting .color-box').length === 0) {
+        document.getElementById('right-section-existing').style.height = '';
+        document.getElementById('colorInputExisting').style.width = '160px';
+        document.getElementById('colorInputExisting').style.height = '160px';
+      }
+    }
   });
 </script>
 

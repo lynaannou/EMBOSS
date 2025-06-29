@@ -282,6 +282,12 @@ nav a:hover {
   
   cursor: pointer;
 }
+#colorInputExisting {
+  width: 160px;
+  height: 160px;
+  
+  cursor: pointer;
+}
 
 .copied {
   color: green;
@@ -330,6 +336,15 @@ footer .social-icons img {
 }
 
 #hexInput {
+  font-size: 14px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #212D49;
+}
+
+#hexInputExisting {
   font-size: 14px;
   padding: 8px;
   border: 1px solid #ccc;
