@@ -1,3 +1,13 @@
+<?php
+$pdo = require_once '../../backend/db.php';
+
+$sql = "SELECT idmatiere, nommatiere FROM matiere ORDER BY nommatiere ASC";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+
+$matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EMBOSS MÉTAL SERVICES</title>
   <link rel="stylesheet" href="../Styles/add.css" />
+  
 </head>
 <body>
      <header>
@@ -45,9 +56,9 @@
     <div class="add-card">
     <div class="left-section">
       <form id="add-material-form" class="material-form" method="POST" action="/backend/save-material.php">
-        <label for="material-name">Nom de la matière</label>
+        <label for="material-name">Nom de la nouvelle matière</label>
         <input type="text" id="material-name" name="material_name" />
-<div id="materialList" class="palette"></div>
+        <div id="materialList" class="palette"></div>
         <button type="submit">Ajouter la matière</button>
       </form>
 
@@ -55,19 +66,46 @@
     </div>
 
     <div class="right-section">
-      <div class="picker-section">
-        <label for="colorInput">Choisir une couleur :</label><br>
+    
+        <label for="colorInput">Choisir une couleur :</label>
         <input type="color" id="colorInput" value="#000000" />
+        <textarea id="hexInput" rows="1" placeholder="#996FD1" style="width: 160px; resize: none;"></textarea>
         <button type="button" id="add-color-button">Ajouter la couleur</button>
-      </div>
+      
     </div>
+    
   </div>
 
 
+    <h1>Ajouter une couleur</h1>
+<div class="add-card">
+     <div class="left-section">
+      <form id="add-material-form" class="material-form" method="POST" action="/backend/save-material.php">
+        <label for="material-name">Choisir une matière</label>
+         <select id="select-matiere" name="idmatiere" required>
+      <?php foreach ($matieres as $matiere): ?>
+        <option value="<?= htmlspecialchars($matiere['idmatiere']) ?>">
+          <?= htmlspecialchars($matiere['nommatiere']) ?>
+        </option>
+      <?php endforeach; ?>
+    </select>
+        <div id="materialListExisting" class="palette"></div>
+        <button type="submit">Ajouter la matière</button>
+      </form>
 
-    <div class="add-card">
-
+      
     </div>
+
+    <div class="right-section">
+    
+        <label for="colorInput">Choisir une couleur :</label>
+        <input type="color" id="colorInput" value="#000000" />
+        <textarea id="hexInput" rows="1" placeholder="#996FD1" style="width: 160px; resize: none;"></textarea>
+        <button type="button" id="add-color-button-existing">Ajouter la couleur</button>
+
+      
+    </div> 
+</div>
 
     
   <footer>
@@ -126,7 +164,21 @@
 <script>
   document.getElementById('add-color-button').addEventListener('click', function () {
     const name = document.getElementById('material-name').value.trim();
-    const color = document.getElementById('colorInput').value;
+    
+    let colorInputValue = document.getElementById('colorInput').value;
+
+    const hexInput = document.getElementById('hexInput');
+    let hexValue = document.getElementById('hexInput').value.trim();
+
+    // Si hexValue est rempli et valide, on l’utilise à la place du color picker
+    let color = /^#([0-9A-F]{3}){1,2}$/i.test(hexValue) ? hexValue : colorInputValue;
+    
+    if (hexValue && !/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
+    alert("Le code hexadécimal est invalide. Exemple valide : #996FD1");
+    hexInput.value = '';
+    return;
+  }
+
 
     // Crée le conteneur principal
     const box = document.createElement('div');
@@ -158,6 +210,13 @@
 
     // Ajoute à la liste
     document.getElementById('materialList').appendChild(box);
+
+    document.querySelector('.right-section').style.height = '450px';
+
+    document.getElementById('colorInput').style.width = '220px';
+    document.getElementById('colorInput').style.height = '220px';
+    
+    hexInput.value = '';
   });
 </script>
 
@@ -169,10 +228,61 @@
       e.preventDefault(); // Empêche le menu clic droit par défaut
       const box = e.target.closest('.color-box');
       box.remove(); // Supprime le bloc
+
+      if (document.querySelectorAll('.color-box').length === 0) {
+    document.querySelector('.right-section').style.height = '';
+    document.getElementById('colorInput').style.width = '160px';
+    document.getElementById('colorInput').style.height = '160px';
+      }
     }
   });
 </script>
 
+<script>
+  document.getElementById('add-color-button-existing').addEventListener('click', function () {
+    const select = document.getElementById('select-matiere');
+    const selectedText = select.options[select.selectedIndex].text;
+
+    let colorInputValue = document.getElementById('colorInput').value;
+    const hexInput = document.getElementById('hexInput');
+    let hexValue = hexInput.value.trim();
+
+    let color = /^#([0-9A-F]{3}){1,2}$/i.test(hexValue) ? hexValue : colorInputValue;
+
+    if (hexValue && !/^#([0-9A-F]{3}){1,2}$/i.test(hexValue)) {
+      alert("Le code hexadécimal est invalide. Exemple valide : #996FD1");
+      hexInput.value = '';
+      return;
+    }
+
+    const box = document.createElement('div');
+    box.className = 'color-box';
+
+    const colorDiv = document.createElement('div');
+    colorDiv.className = 'color';
+    colorDiv.style.backgroundColor = color;
+
+    const label = document.createElement('div');
+    label.className = 'label';
+    label.textContent = selectedText ? `${selectedText} (${color})` : `${color}`;
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'close-btn';
+    closeBtn.innerHTML = '×';
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      box.remove();
+    });
+
+    box.appendChild(closeBtn);
+    box.appendChild(colorDiv);
+    box.appendChild(label);
+
+    document.getElementById('materialListExisting').appendChild(box);
+
+    hexInput.value = '';
+  });
+</script>
 
 
 </body>

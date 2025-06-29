@@ -82,7 +82,7 @@ nav a:hover {
     z-index: 1;
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 9%;
     justify-content: space-between; 
     align-items: flex-start;
 }
@@ -95,17 +95,15 @@ nav a:hover {
 .right-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 20px;
+  width: 100%;
+  justify-content: center;
+  flex: 1;
 }
 
 /* Optionnel : centrer mieux les inputs dans .picker-section */
-.picker-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-top: 0;
-}
+
 
 
 .add-photo {
@@ -188,6 +186,7 @@ nav a:hover {
     cursor: pointer;
     display: block;
     margin: 0 auto;
+    margin-top: 4%;
 }
 
 .add-card form button:hover {
@@ -228,13 +227,16 @@ nav a:hover {
   position: relative;
   text-align: center;
   display: inline-block;
+  overflow: visible; 
+  padding-top: 10px;
+  margin: 10px;
 }
 
 .color-box .close-btn {
   display: none;
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -5px;
+  right: -13px;
   background: #ffffff;
   color: rgb(0, 0, 0);
   font-size: 14px;
@@ -259,6 +261,7 @@ nav a:hover {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
   transition: transform 0.2s;
+  transform-origin: center center;
 }
 
 .color:hover {
@@ -271,9 +274,7 @@ nav a:hover {
   color: #212D49;
 }
 
-.picker-section {
-  margin-top: 30px;
-}
+
 
 #colorInput {
   width: 160px;
@@ -317,12 +318,68 @@ footer .social-icons img {
     border-radius: 20px;
     cursor: pointer;
     display: block;
-    margin: 0 auto;
     height: 50px;
+    margin : 0 auto;
     
 }
 #add-color-button:hover {
   background: #eccfa5;
     color: #FFFFFF;
     border-color: #FFFFFF;
+}
+
+#hexInput {
+  font-size: 14px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #212D49;
+}
+
+.right-section label[for="colorInput"] {
+  margin-bottom: 4px;
+  display: inline-block;
+  display: block;
+  font-weight: 500;
+  font-size: 20px;
+  color: #212D49;
+  margin-bottom: 8px;
+}
+
+#add-color-button-existing {
+  background: #ffffff83;
+    color: #c0c0c0;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 12px 32px;
+    border: 2px solid #c0c0c0;    
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    margin : 0 auto;
+    
+}
+
+select#select-matiere {
+    width: 600px;
+    padding: 12px 16px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    appearance: none; /* Enlève le style natif (important pour Chrome/Firefox) */
+    background-color: white;
+    color: #212D49;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Optionnel : flèche customisée */
+select#select-matiere {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'16'%20height%3D'16'%20viewBox%3D'0%200%2016%2016'%20fill%3D'none'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M4%206l4%204%204-4'%20stroke%3D'%23212D49'%20stroke-width%3D'2'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
 }
