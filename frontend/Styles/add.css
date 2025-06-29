@@ -75,8 +75,8 @@ nav a:hover {
     border-radius: 45px;
     padding: 40px 80px;
     max-width: 1250px;
-    margin-top: 180px; /* space from the top */
-    margin-left: 245px;         /* stick to left side of container */
+    margin-top: 40px;
+    margin: 40px auto 0 auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
@@ -296,6 +296,7 @@ footer {
   color: #dcd7e2;
   font-size: 14px;
   border-top: 1px solid #E6E6E6;
+  margin-top: 100px;
 }
 
 footer .social-icons {
@@ -375,11 +376,27 @@ select#select-matiere {
     color: #212D49;
     font-family: 'Poppins', sans-serif;
 }
-
-/* Optionnel : flèche customisée */
 select#select-matiere {
     background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'16'%20height%3D'16'%20viewBox%3D'0%200%2016%2016'%20fill%3D'none'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M4%206l4%204%204-4'%20stroke%3D'%23212D49'%20stroke-width%3D'2'%20stroke-linecap%3D'round'%20stroke-linejoin%3D'round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 16px 16px;
+}
+
+.section {
+  margin-bottom: 150px; /* espace entre chaque bloc */
+  padding: 0 40px;
+}
+
+.section h1 {
+  font-family: 'Italiana', cursive;
+  font-size: 60px;
+  font-weight: 100;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  margin-left: 80px; /* même alignement que les add-card */
+}
+
+.section:first-of-type {
+  padding-top: 170px; /* ajuste la valeur selon le rendu souhaité */
 }

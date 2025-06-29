@@ -31,6 +31,7 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <a href="contact.html">CONTACT</a>
     </nav>
     </header>
+    <div class="section">
     <h1>Ajouter un Model</h1>
     <div class="add-card">
 
@@ -50,8 +51,9 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
     </div>
+  </div>
 
-
+    <div class="section">
     <h1>Ajouter une Matière</h1>
     <div class="add-card">
     <div class="left-section">
@@ -75,8 +77,9 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     
   </div>
+</div>
 
-
+    <div class="section">
     <h1>Ajouter une couleur</h1>
 <div class="add-card">
      <div class="left-section">
@@ -106,7 +109,7 @@ $matieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
       
     </div> 
 </div>
-
+    </div>
     
   <footer>
     <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
