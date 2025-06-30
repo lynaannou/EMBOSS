@@ -27,12 +27,16 @@
     <div class="left-section">
         <h1>SIGN UP</h1>
         <form action="user.php" method="post">
+      <div class="form-row">
+          <div class="form-group">
         <label for="user-name">Nom</label>
         <input type="text" id="user-name" name="user_name" placeholder="Entrez votre nom" />
-
+          </div>
+          <div class="form-group">
         <label for="user-lastname">Prénom</label>
         <input type="text" id="user-lastname" name="user_lastname" placeholder="Entrez votre prénom" />
-
+        </div>
+</div>
         <label for="user-phone">Téléphone</label>
         <input type="tel" id="user-phone" name="user_phone" placeholder="Entrez votre numéro de téléphone" />
 
@@ -45,9 +49,10 @@
         <label for="user-password-confirm">Confirmer le mot de passe</label>
         <input type="password" id="user-password-confirm" name="user_password_confirm" placeholder="Confirmez votre mot de passe" />
 
-        <h2>Already have an account?</h2><a href="login.html">Log in</a>
+        <div class ='login-link'><h2>Already have an account?</h2><a href="login.html">Log in</a></div>
         <button type="submit" class="submit-button">Sign up</button>
         
+      
     </div>
     </form>
 
