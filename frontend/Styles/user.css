@@ -208,6 +208,71 @@ nav a:hover {
     border-color: #FFFFFF; /* Change border color on hover */
 }
 
+.bottom-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/*.bottom-section h1 {
+  font-family: 'Italiana';
+  font-size: 28px;
+  color: #ffffff;
+  margin-bottom: 20px;
+   font-size: 24px;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  text-align: center;
+}*/
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15%;
+  margin-top: center;
+}
+
+.social-buttons a {
+  border-radius: 50%;
+  width: 80px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.social-buttons a:hover {
+  transform: scale(1.1);
+}
+
+.social-buttons img {
+  width: 50px;
+  height: 50px;
+}
+
+.section-title-with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-title-with-lines h1 {
+  font-family: 'Italiana', serif;
+  font-size: 28px;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.section-title-with-lines .line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+
 .form-row {
   display: flex;
   gap: 24px;
@@ -219,6 +284,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
 }
+
 
  
 footer {
