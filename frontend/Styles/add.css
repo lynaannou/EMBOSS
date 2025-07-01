@@ -92,17 +92,15 @@ nav a:hover {
 .right-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 20px;
+  width: 100%;
+  justify-content: center;
+  flex: 1;
 }
 
 /* Optionnel : centrer mieux les inputs dans .picker-section */
-.picker-section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-top: 0;
-}
+
 
 
 .add-photo {
@@ -186,6 +184,7 @@ nav a:hover {
     cursor: pointer;
     display: block;
     margin: 0 auto;
+    margin-top: 4%;
 }
 
 .add-card form button:hover {
@@ -233,13 +232,16 @@ nav a:hover {
   position: relative;
   text-align: center;
   display: inline-block;
+  overflow: visible; 
+  padding-top: 10px;
+  margin: 10px;
 }
 
 .color-box .close-btn {
   display: none;
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -5px;
+  right: -13px;
   background: #ffffff;
   color: rgb(0, 0, 0);
   font-size: 14px;
@@ -264,6 +266,7 @@ nav a:hover {
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
   transition: transform 0.2s;
+  transform-origin: center center;
 }
 
 .color:hover {
@@ -276,9 +279,7 @@ nav a:hover {
   color: #212D49;
 }
 
-.picker-section {
-  margin-top: 30px;
-}
+
 
 #colorInput {
   width: 160px;
@@ -330,6 +331,7 @@ footer {
   color: #dcd7e2;
   font-size: 14px;
   border-top: 1px solid #E6E6E6;
+  margin-top: 100px;
 }
 
 footer .social-icons {
@@ -343,6 +345,20 @@ footer .social-icons img {
   height: 40px;
 }
 #add-color-button {
+  background: #ffffff83;
+    color: #c0c0c0;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 12px 32px;
+    border: 2px solid #c0c0c0;    
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    height: 50px;
+    margin : 0 auto;
+    
+}
+#add-association-color-button {
   background: #ffffff83;
     color: #c0c0c0;
     font-size: 20px;
