@@ -140,7 +140,7 @@ foreach ($raw_variantes as $row) {
     <div class="social-icons">
       <img src="facebook-icon.png" alt="Facebook" />
       <img src="linkedin-icon.png" alt="LinkedIn" />
-      <img src="youtube-icon.jpeg" alt="YouTube" />
+      <img src="youtube-icon.png" alt="YouTube" />
       <img src="instagram-icon.png" alt="Instagram" />
     </div>
   </footer>

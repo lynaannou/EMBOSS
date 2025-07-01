@@ -71,21 +71,18 @@ nav a:hover {
 }
 
 .add-card {
-    background: #EBE3E0;
-    border-radius: 45px;
-    padding: 40px 80px;
-    max-width: 1250px;
-    margin-top: 180px; /* space from the top */
-    margin-left: 245px;         /* stick to left side of container */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    justify-content: space-between; 
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px 80px;
+  background: #EBE3E0;
+  border-radius: 45px;
+  max-width: 1250px;
+  margin: 180px auto 40px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .left-section {
   flex: 1;
   width: 50%;
@@ -145,12 +142,13 @@ nav a:hover {
   display: block;
 }
 
-
-.add-card h1 {
-    font-family: 'Italiana', cursive;
-    font-size: 36px;
-    color: #212D49;
-    margin-bottom: 24px;
+.card-title {
+  font-family: 'Italiana', cursive;
+  font-size: 36px;
+  color: #212D49;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left; /* or center if you prefer */
 }
 
 .add-card form label {
@@ -223,6 +221,13 @@ nav a:hover {
   background: #555;
 }
 
+.add-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
 
 .color-box {
   position: relative;
@@ -281,13 +286,43 @@ nav a:hover {
   
   cursor: pointer;
 }
+#colorInputAssociation {
+  width: 160px;
+  height: 160px;
+  
+  cursor: pointer;
+}
 
 .copied {
   color: green;
   font-size: 12px;
   margin-left: 10px;
 }
- 
+
+.matiere-options {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 1em;
+  align-items: flex-start;
+}
+
+.matiere-options label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  gap: 2px; /* spacing between checkbox and text */
+  padding: 2px 0;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.matiere-options input[type="checkbox"] {
+  margin: 0;
+  transform: scale(0.9); /* optionnel pour réduire un peu la taille */
+}
+
 footer {
   background: #182136; 
   padding: 80px;
@@ -321,8 +356,28 @@ footer .social-icons img {
     height: 50px;
     
 }
+#add-association-color-button {
+  background: #ffffff83;
+    color: #c0c0c0;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 12px 32px;
+    border: 2px solid #c0c0c0;    
+    border-radius: 20px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+    
+}
 #add-color-button:hover {
   background: #eccfa5;
     color: #FFFFFF;
     border-color: #FFFFFF;
+}
+
+.add-content p {
+   margin-top: 5px;
+  font-size: 20px;
+  color: #212D49;
 }

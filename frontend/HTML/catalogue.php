@@ -87,7 +87,7 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
     <div class="social-icons">
       <img src="facebook-icon.png" alt="Facebook" />
       <img src="linkedin-icon.png" alt="LinkedIn" />
-      <img src="youtube-icon.jpeg" alt="YouTube" />
+      <img src="youtube-icon.png" alt="YouTube" />
       <img src="instagram-icon.png" alt="Instagram" />
     </div>
   </footer>
