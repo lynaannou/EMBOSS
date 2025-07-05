@@ -5,9 +5,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Futura', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
-
 /* BODY GENERAL */
 body {
     margin: 0;
@@ -50,6 +49,12 @@ header .logo-title span {
     align-items: center; /* centre le texte verticalement aussi */
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 nav a {
   font-weight: 500;
   font-size: 20px;
@@ -59,6 +64,45 @@ nav a {
 }
 nav a:hover {
     color: #996FD1;
+}
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 4px; /* aligne les liens avec les boutons */
+  margin-left: -32px; /* décalage à gauche */
+}
+/* Boutons d'authentification dans le header */
+.auth-button {
+  font-size: 16px;
+  padding: 10px 18px;
+  margin-left: 16px;
+  text-decoration: none;
+  border: none;
+  background-color: #5f6f96;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  top: 4px;
+}
+
+#signup-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#signup-button:hover + #login-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+#login-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#login-button:hover ~ #signup-button {
+  background-color: #5f6f96;
+  color: white;
 }
 
 .contact-container {
@@ -233,4 +277,14 @@ input[type="checkbox"] {
 
 .checkbox-label {
     font-size: 25px;
+}
+.login-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }

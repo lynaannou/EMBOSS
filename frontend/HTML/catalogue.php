@@ -1,4 +1,5 @@
 <?php 
+
 // Connexion à la base de données
 $pdo = require_once '../../backend/db.php';
 
@@ -25,18 +26,26 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
 </head>
 <body>
   
-  <header>
-    <div class="logo-title">
-      <img src="logo-EMBOSS-nouveau.png" alt="Logo"/>
-    </div>
-    <nav>
-      <a href="home.html">HOME</a>
-      <a href="product.php">PRODUCT</a>
-      <a href="catalogue.php">CATALOGUE</a>
-      <a href="#">PROJECTS</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-  </header>
+    <header>
+        <div class ="logo-title" >
+            <img src ="logo-EMBOSS-nouveau.png" alt = "Logo"/>
+            
+        </div>
+      <nav>
+  <div class="menu-group">
+    <a href="home.html">HOME</a>
+    <a href="catalogue.php">CATALOGUE</a>
+    <a href="#">PROJECTS</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+<div id="auth-container">
+  <a href="user.html" class="auth-button" id="signup-button">Sign Up</a>
+  <a href="login.html" class="auth-button" id="login-button">Log In</a>
+  <img id="profile-pic" class="login-icon" style="display: none;" />
+</div>
+
+</nav>
+</header>
 
   <section class="hero">
     <img src="Hero Image (1).jpg" alt="Hero Image" class="hero-image" />
@@ -65,11 +74,11 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
     $font = $fonts[$nom] ?? 'font-italiana';
     $idmodel = $model['idmodel'];
   ?>
-  <div class="product-card">
-    <div class="product-image"
-     data-link="product.php?id=<?= $model['idmodel'] ?>"
-     style="background-image: url('../../backend/image.php?id=<?= $model['idmodel'] ?>');">
-</div>
+<div class="product-card" data-link="product.php?model=<?= $model['idmodel'] ?>">
+  <div class="product-image"
+    style="background-image: url('../../backend/image.php?id=<?= $model['idmodel'] ?>');">
+  </div>
+
 
     <p class="product-title <?= $font ?>"><?= htmlspecialchars($nom) ?></p>
   </div>
@@ -138,11 +147,76 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
 
   <script>
     window.onload = () => {
-      const el = document.querySelector('.font-bastliga');
+      const el = document.querySelector('.font-signature');
       const font = window.getComputedStyle(el).getPropertyValue('font-family');
       console.log("Font appliquée :", font);
     };
   </script>
+<div id="login-popup">
+  <div class="popup-overlay"></div>
+  <div class="popup-box">
+    <h2>Accès restreint</h2>
+    <p>Veuillez vous connecter ou vous inscrire pour accéder au catalogue.</p>
+    <div class="popup-buttons">
+      <a href="login.html">Connexion</a>
+      <a href="user.html">Inscription</a>
+      <a href="home.html" class="return-home">Retour à l’accueil</a>
+    </div>
+  </div>
+</div>
 
+<script>
+  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+  const profileImageUrl = localStorage.getItem('profileImage');
+  const authContainer = document.getElementById('auth-container');
+
+  // Affichage de l'icône si connecté
+  if (isLoggedIn && profileImageUrl) {
+    authContainer.innerHTML = '';
+
+    const icon = document.createElement('img');
+    icon.classList.add('login-icon');
+    icon.src = profileImageUrl;
+    icon.alt = 'Profil utilisateur';
+
+    authContainer.appendChild(icon);
+  }
+
+  // Contrôle de la popup
+  window.addEventListener("scroll", () => {
+    if (!isLoggedIn && !window.popupShown && window.scrollY + window.innerHeight >= document.body.scrollHeight - 100) {
+      const popup = document.getElementById("login-popup");
+      if (popup) popup.style.display = "block";
+      window.popupShown = true;
+    }
+  });
+
+  // Si déjà connecté, on supprime carrément la popup du DOM
+  if (isLoggedIn) {
+    document.addEventListener("DOMContentLoaded", () => {
+      const popup = document.getElementById("login-popup");
+      if (popup) popup.remove();
+    });
+  }
+</script>
+
+<script>
+  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+  const profileImageUrl = localStorage.getItem('profileImage');
+
+  
+  const authContainer = document.getElementById('auth-container');
+
+  if (isLoggedIn && profileImageUrl) {
+    authContainer.innerHTML = '';
+
+    const icon = document.createElement('img');
+    icon.classList.add('login-icon');
+    icon.src = profileImageUrl;
+    icon.alt = 'Profil utilisateur';
+
+    authContainer.appendChild(icon);
+  }
+</script>
 </body>
 </html>

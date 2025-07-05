@@ -380,3 +380,13 @@ position: relative;
   background-color: transparent;
   transition: background-color 0.4s ease;
 }
+.login-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}

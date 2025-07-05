@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><title>Vérification</title></head>
+<body><p id="message">Vérification en cours...</p>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+fetch("../../backend/verify.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  body: new URLSearchParams({
+    token: params.get("token"),
+    email: params.get("email"),
+    name: params.get("name"),
+    lastname: params.get("lastname"),
+    phone: params.get("phone"),
+    password: params.get("password")
+  })
+})
+.then(res => res.json())
+.then(data => {
+  const msg = document.getElementById("message");
+  if (data.success) {
+    msg.textContent = "✅ Vérification réussie ! Redirection...";
+    setTimeout(() => window.location.href = "login.html", 3000);
+  } else {
+    msg.textContent = "⛔ Lien invalide ou expiré.";
+  }
+});
+</script>
+</body>
+</html>

@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EMBOSS MÉTAL SERVICES</title>
   <link rel="stylesheet" href="../Styles/user.css" />
-  
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 </head>
 <body>
      <header>
@@ -27,7 +29,7 @@
       <!--Ajouter le nom du user-->
     <div class="left-section">
         <h1>SIGN UP</h1>
-        <form action="user.php" method="post">
+        <form action="../../backend/user.php" method="post">
       <div class="form-row">
           <div class="form-group">
         <label for="user-name">Nom</label>
@@ -49,7 +51,10 @@
 
         <label for="user-password-confirm">Confirmer le mot de passe</label>
         <input type="password" id="user-password-confirm" name="user_password_confirm" placeholder="Confirmez votre mot de passe" />
-
+         <div class="checkbox-label">
+  <input type="checkbox" id="contactable" name="contactable" />
+  <label for="contactable">Voulez-vous être contacté(e) en cas de nouveautées ?</label>
+</div>
         <div class ='login-link'><h2>Already have an account?</h2><a href="login.html">Log in</a></div>
         <button type="submit" class="submit-button">Sign up</button>
         
@@ -63,16 +68,25 @@
           <a href="https://www.facebook.com" target="_blank">
             <img src="facebook-icon.png" alt="Facebook" />
           </a>
-          <a href="https://accounts.google.com" target="_blank">
-            <img src="google-icon.png" alt="Google" />
-          </a>
-         </div>
+          <div id="g_id_onload"
+     data-client_id="570889304064-hrnd34ln9t5hav5ktj43vde6ldbc692n.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="filled_blue"
+     data-text="continue_with"
+     data-size="large">
+</div>
     </div>
 
 
-    </div>
+  
     </form>
-   
+  </div> 
 
     <div class="right-section">
         <img src="bkuser.jpg" alt="User Icon" class="bk-image" />
@@ -80,8 +94,8 @@
  </div>
 
 
-   
-    
+</div>
+  
   <footer>
     <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
     <div class="social-icons">
@@ -93,6 +107,64 @@
   </footer>
 
 
+
+
+<!-- ✅ Include jwt-decode -->
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+<!-- ✅ Handle Google Sign-In response -->
+<script>
+  function handleCredentialResponse(response) {
+    const data = jwt_decode(response.credential);
+
+    console.log("Google User Info:", data);
+
+    localStorage.setItem('loggedIn', 'true');
+    localStorage.setItem('profileImage', data.picture);
+    localStorage.setItem('username', data.name);
+    localStorage.setItem('email', data.email);
+    localStorage.setItem('loginProvider', 'google');
+
+    window.location.href = "home.html";
+  }
+</script>
+<script>
+document.querySelector("form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  const response = await fetch("../../backend/user.php", {
+    method: "POST",
+    body: formData
+  });
+
+  const result = await response.json();
+
+  if (result.success) {
+    emailjs.init("0_GDw3aP_OABy1UoU"); // ← remplace par ta vraie clé
+console.log("Envoi à EmailJS avec :", {
+  to_name: result.name,
+  verify_link: result.verifyLink,
+  email: result.email
+});
+
+   emailjs.send("service_8pb9lxd", "template_qyfz245", {
+  to_name: result.name,
+  verify_link: result.verifyLink,
+  email: result.email  // ✅ indispensable pour que To Email fonctionne
+}).then(() => {
+      alert("✅ Email de vérification envoyé !");
+      setTimeout(() => window.location.href = "allez.html", 3000);
+    }).catch(err => {
+      console.error("Erreur EmailJS:", err);
+      alert("❌ Échec de l’envoi de l’email.");
+    });
+  } else {
+    alert("Une erreur est survenue.");
+  }
+});
+</script>
 
 </body>
 </html>

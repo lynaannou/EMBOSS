@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EMBOSS MÉTAL SERVICES</title>
   <link rel="stylesheet" href="../Styles/login.css" />
-  
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
 </head>
 <body>
      <header>
@@ -27,27 +28,55 @@
 
     <div class="left-section">
         <h1>LOG IN</h1>
-        <form action="user.php" method="post">
+<form id="loginForm">
+  <label for="user-email">Email</label>
+  <input type="email" id="user-email" name="user_email" required placeholder="Entrez votre email" />
 
-        <label for="user-email">Email</label>
-        <input type="email" id="user-email" name="user_email" placeholder="Entrez votre email" />
+  <label for="user-password">Mot de passe</label>
+  <input type="password" id="user-password" name="user_password" required placeholder="Entrez votre mot de passe" />
 
-        <label for="user-password">Mot de passe</label>
-        <input type="password" id="user-password" name="user_password" placeholder="Entrez votre mot de passe" />
+  <div class='login-link'>
+    <h2>Don't have an account?</h2><a href="user.html">Sign up</a>
+  </div>
 
-        <div class ='login-link'><h2>Don't have an account?</h2><a href="user.html">Sign up</a></div>
-        <button type="submit" class="submit-button">Log in</button>
-
-
+  <button type="submit" class="submit-button">Log in</button>
+<div class="bottom-section">
+    <div class="section-title-with-lines">
+    <div class="line"></div>
+    <h1>CONTINUER AVEC</h1>
+    <div class="line"></div>
     </div>
+        <div class="social-buttons">
+          <a href="https://www.facebook.com" target="_blank">
+            <img src="facebook-icon.png" alt="Facebook" />
+          </a>
+          <div id="g_id_onload"
+     data-client_id="570889304064-hrnd34ln9t5hav5ktj43vde6ldbc692n.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="filled_blue"
+     data-text="continue_with"
+     data-size="large">
+</div>
+    </div>
+
+
+  
     </form>
-   
+
+   </div>
 
     <div class="right-section">
         <img src="maison.jpg" alt="User Icon" class="bk-image" />
     </div>
  </div>
 
+</div>
 
    
     
@@ -56,12 +85,73 @@
     <div class="social-icons">
       <img src="facebook-icon.png" alt="Facebook" />
       <img src="linkedin-icon.png" alt="LinkedIn" />
-      <img src="youtube-icon.jpeg" alt="YouTube" />
+      <img src="youtube-icon.png" alt="YouTube" />
       <img src="instagram-icon.png" alt="Instagram" />
     </div>
   </footer>
 
+<script>
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // empêche rechargement
 
+  const formData = new FormData(this);
+
+  fetch('../../backend/login.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('profileImage', data.profileImage);
+      localStorage.setItem('loginProvider', data.provider);
+      window.location.href = 'home.html';
+    } else {
+      alert(data.message);
+    }
+  })
+  .catch(error => {
+    console.error('Erreur:', error);
+    alert("Erreur de connexion.");
+  });
+});
+</script>
+
+<!-- ✅ Google Sign-In button config -->
+<div id="g_id_onload"
+     data-client_id="570889304064-hrnd34ln9t5hav5ktj43vde6ldbc692n.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="filled_blue"
+     data-text="continue_with"
+     data-size="large">
+</div>
+
+<!-- ✅ Include jwt-decode -->
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+
+<!-- ✅ Handle Google Sign-In response -->
+<script>
+  function handleCredentialResponse(response) {
+    const data = jwt_decode(response.credential);
+
+    console.log("Google User Info:", data);
+
+    localStorage.setItem('loggedIn', 'true');
+    localStorage.setItem('profileImage', data.picture);
+    localStorage.setItem('username', data.name);
+    localStorage.setItem('email', data.email);
+    localStorage.setItem('loginProvider', 'google');
+
+    window.location.href = "home.html";
+  }
+</script>
 
 </body>
 </html>

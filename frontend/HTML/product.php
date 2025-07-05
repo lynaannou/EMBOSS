@@ -55,18 +55,27 @@ foreach ($raw_variantes as $row) {
 </head>
 <body>
 
-  <header>
-    <div class="logo-title">
-      <img src="logo-EMBOSS-nouveau.png" alt="Logo"/>
-    </div>
-    <nav>
-      <a href="home.html">HOME</a>
-      <a href="product.php">PRODUCT</a>
-      <a href="catalogue.php">CATALOGUE</a>
-      <a href="#">PROJECTS</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-  </header>
+    <header>
+        <div class ="logo-title" >
+            <img src ="logo-EMBOSS-nouveau.png" alt = "Logo"/>
+            
+        </div>
+      <nav>
+  <div class="menu-group">
+    <a href="home.html">HOME</a>
+    <a href="catalogue.php">CATALOGUE</a>
+    <a href="#">PROJECTS</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+<div id="auth-container">
+  <a href="user.html" class="auth-button" id="signup-button">Sign Up</a>
+  <a href="login.html" class="auth-button" id="login-button">Log In</a>
+  <img id="profile-pic" class="login-icon" style="display: none;" />
+</div>
+
+</nav>
+
+    </header>
 
   <section class="hero">
     <img src="Hero Image (1).jpg" alt="Hero Image" class="hero-image" />
@@ -188,7 +197,23 @@ foreach ($raw_variantes as $row) {
     });
   });
 </script>
+<script>
+  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+  const profileImageUrl = localStorage.getItem('profileImage');
 
+  const authContainer = document.getElementById('auth-container');
+
+  if (isLoggedIn && profileImageUrl) {
+    authContainer.innerHTML = '';
+
+    const icon = document.createElement('img');
+    icon.classList.add('login-icon');
+    icon.src = profileImageUrl;
+    icon.alt = 'Profil utilisateur';
+
+    authContainer.appendChild(icon);
+  }
+</script>
 </body>
 
 </html>

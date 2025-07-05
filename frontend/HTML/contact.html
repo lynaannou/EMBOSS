@@ -9,20 +9,25 @@
 </head>
 <body>
 
-    <header>
+         <header>
         <div class ="logo-title" >
             <img src ="logo-EMBOSS-nouveau.png" alt = "Logo"/>
             
         </div>
-        <nav>
-      <a href="home.html">HOME</a>
-      <a href="product.html">PRODUCT</a>
-      <a href="catalogue.php">CATALOGUE</a>
-      <a href="#">PROJECTS</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-    </header>
+      <nav>
+  <div class="menu-group">
+    <a href="home.html">HOME</a>
+    <a href="catalogue.php">CATALOGUE</a>
+    <a href="#">PROJECTS</a>
+    <a href="contact.html">CONTACT</a>
+<div id="auth-container">
+  <a href="user.html" class="auth-button" id="signup-button">Sign Up</a>
+  <a href="login.html" class="auth-button" id="login-button">Log In</a>
+  <img id="profile-pic" class="login-icon" style="display: none;" />
+</div>
 
+</nav>
+</header>
   <!-- MAIN FLEX CONTAINER -->
     <div class="contact-card">
     <h1>Contactez-nous</h1>
@@ -102,7 +107,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
  <script>
   document.addEventListener("DOMContentLoaded", function () {
-    emailjs.init("qavAfKpDAmieL1NMl");
+    emailjs.init("0_GDw3aP_OABy1UoU");
 
     // ✅ Déclare tes variables ici, une fois que le DOM est chargé
     const sendBtn = document.getElementById("send-btn");
@@ -113,7 +118,7 @@
     sendBtn.addEventListener("click", function () {
       const email = emailInput.value.trim();
       const domain = email.split("@")[1];
-      const allowedDomains = ["gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "usthb.dz"];
+      const allowedDomains = ["gmail.com", "yahoo.fr", "hotmail.com", "outlook.com", "usthb.dz"];
 
       if (!allowedDomains.includes(domain)) {
         emailError.textContent = "Domaine d'e-mail non autorisé.";
@@ -135,7 +140,7 @@
       status.textContent = "Envoi en cours...";
 
       // Envoi via EmailJS
-      emailjs.send("service_tk77ojk", "template_h74c23d", templateParams)
+      emailjs.send("service_8pb9lxd", "template_7iu836d", templateParams)
         .then(() => {
           status.textContent = "Message envoyé avec succès ✅";
           document.getElementById("contact-form").reset();
@@ -145,25 +150,47 @@
         });
 
       // Envoi vers la base via PHP
-     fetch("../../backend/save-contact.php", {
+    fetch("../../backend/save-contact.php", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: new URLSearchParams(templateParams)
+})
+.then(response => response.text()) // ← On lit en texte brut
+.then(text => {
+  console.log("🔍 Réponse brute de PHP :", text); // Affiche le texte reçu
+  try {
+    const data = JSON.parse(text); // Essaie de parser
+    console.log("✅ JSON valide :", data);
+  } catch (e) {
+    console.error("❌ JSON invalide. Texte reçu :", text);
+  }
+})
+.catch(err => {
+  console.error("Erreur enregistrement PHP :", err);
+});
 
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: new URLSearchParams(templateParams)
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Contact enregistré côté PHP :", data);
-      })
-      .catch(err => {
-        console.error("Erreur enregistrement PHP :", err);
-      });
     });
   });
 </script>
+<script>
+  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+  const profileImageUrl = localStorage.getItem('profileImage');
 
+  const authContainer = document.getElementById('auth-container');
+
+  if (isLoggedIn && profileImageUrl) {
+    authContainer.innerHTML = '';
+
+    const icon = document.createElement('img');
+    icon.classList.add('login-icon');
+    icon.src = profileImageUrl;
+    icon.alt = 'Profil utilisateur';
+
+    authContainer.appendChild(icon);
+  }
+</script>
 
 </body>
 </html>

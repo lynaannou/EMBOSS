@@ -58,6 +58,12 @@ header .logo-title span {
     align-items: center; /* centre le texte verticalement aussi */
 }
 
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 nav a {
   font-weight: 500;
   font-size: 20px;
@@ -68,6 +74,46 @@ nav a {
 nav a:hover {
     color: #996FD1;
 }
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 4px; /* aligne les liens avec les boutons */
+  margin-left: -32px; /* décalage à gauche */
+}
+/* Boutons d'authentification dans le header */
+.auth-button {
+  font-size: 16px;
+  padding: 10px 18px;
+  margin-left: 16px;
+  text-decoration: none;
+  border: none;
+  background-color: #5f6f96;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  top: 4px;
+}
+
+#signup-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#signup-button:hover + #login-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+#login-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#login-button:hover ~ #signup-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
 
 /* HERO */
 .hero {
@@ -375,6 +421,65 @@ footer .social-icons img {
   font-weight: normal;
   font-style: normal;
 }
+#login-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
 
+.popup-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
 
+.popup-box {
+  position: relative;
+  z-index: 10001;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  font-family: 'Inter', sans-serif;
+}
 
+.popup-box h2 {
+  margin-bottom: 15px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.popup-buttons a {
+  padding: 10px 15px;
+  background: #111;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.popup-buttons .return-home {
+  background: #888;
+}
+.login-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
