@@ -22,58 +22,49 @@ body {
 /* HEADER */
 
 header {
- position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100px;
+  height: 13vh;
   z-index: 100;
-  margin-top: 0%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 80px;
-  background: rgba(61, 71, 93, 0.23); /* fond légèrement transparent */
-  backdrop-filter: blur(5px); /* effet de flou pour le fond */
+  padding: 3vh 6vw;
+  background: rgba(61, 71, 93, 0.23);
+  backdrop-filter: blur(5px);
 }
 
-
-
 header .logo-title img {
-    height: 200px; /* taille du logo adaptée à la ligne du menu */
-    width: auto;
-    display: block; /* pour s'assurer que l'image est un bloc */
-    margin-bottom: -15px; /* espace entre le logo et le titre */
-    margin-left: -80px;
+  height: 11vh;
+  width: auto;
+  display: block;
+  margin-bottom: 0vh;
+  margin-left: -3vw;
 }
 
 header .logo-title span {
-    font-family: 'Italiana', serif;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 150%;
-    letter-spacing: 0;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center; /* centre le texte verticalement aussi */
-}
-
-nav {
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+  font-size: 2.8vw;
+  line-height: 150%;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
-  gap: 16px;
 }
 
 nav a {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.5vw;
   color: #FFFFFF;
-  margin-left: 32px;
+  margin-left: 2.5vw;
   text-decoration: none;
 }
 nav a:hover {
-    color: #996FD1;
+  color: #996FD1;
 }
+
 .menu-group {
   display: flex;
   align-items: center;
@@ -277,6 +268,7 @@ footer .social-icons img {
   background: linear-gradient(to bottom, #ebe3e0, #EBE3E0);
   padding: 60px 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .carousel-wrapper {
@@ -388,6 +380,33 @@ footer .social-icons img {
   transform: translateY(-50%) scale(1.2);/* enlarge on hover */
 }
 
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 5.6vh;
+  background: #d9d9d97c;
+  border-radius: 50%;
+  color: #ffffff;
+  padding: 1.5% 2.9%;
+  cursor: pointer;
+  z-index: 100;
+  border: white 0.6vh solid;
+  box-shadow: 0 1.2% 3.5% rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.arrow.left {
+  left: 2.9%;
+}
+
+.arrow.right {
+  right: 2.9%;
+}
+
+.arrow:hover {
+  transform: translateY(-50%) scale(1.2);
+}
 
 .hidden {
   display: none;

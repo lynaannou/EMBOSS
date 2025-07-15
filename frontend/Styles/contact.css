@@ -31,11 +31,11 @@ header {
 }
 
 header .logo-title img {
-    height: 200px; /* taille du logo adaptée à la ligne du menu */
-    width: auto;
-    display: block; /* pour s'assurer que l'image est un bloc */
-    margin-bottom: -15px; /* espace entre le logo et le titre */
-    margin-left: -80px;
+  height: 1vh;
+  width: auto;
+  display: block;
+  margin-bottom: 0vh;
+  margin-left: -3vw;
 }
 
 header .logo-title span {
