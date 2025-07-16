@@ -68,9 +68,9 @@ nav a:hover {
 .menu-group {
   display: flex;
   align-items: center;
-  gap: 32px;
-  margin-top: 4px; /* aligne les liens avec les boutons */
-  margin-left: -32px; /* décalage à gauche */
+  gap: 4vw;
+  margin-top: 0.5vh; /* aligne les liens avec les boutons */
+  margin-left: -4vw; /* décalage à gauche */
 }
 /* Boutons d'authentification dans le header */
 .auth-button {
@@ -159,7 +159,7 @@ nav a:hover {
 .hero-text h1 {
   font-family: 'Italiana';
   font-weight: 400;
-  font-size: 96px;
+  font-size: 6.5vw;
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: #FFFFFF;
@@ -173,7 +173,7 @@ nav a:hover {
   color: rgba(189, 189, 189, 0.75);
   font-family: 'Inter', sans-serif;
   margin-top: 20px;
-  
+  padding: 20px  20px;
 }
 
 
@@ -291,7 +291,6 @@ footer .social-icons img {
   gap: 25vw;
   overflow-x: hidden; 
   padding: 60px 0;
-  justify-content: flex-start;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
 }
@@ -354,59 +353,43 @@ footer .social-icons img {
 
 
 
+
 .arrow {
+  display: flex;                 /* ajoute cette ligne */
+  align-items: center;           /* centre verticalement */
+  justify-content: center; 
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 40px;
+  width: 7vw;               
+  height: 7vw;
+  font-size: 4vw;
   background: #d9d9d97c;
   border-radius: 50%;
   color: #ffffff;
-  padding: 1px 16px;
-  cursor: pointer;
-  z-index: 100;
-  border: white 2px solid;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.arrow.left {
-  left: 10px;
-}
-.arrow.right {
-  right: 10px;
-}
-.arrow:hover {
-  transform: translateY(-50%) scale(1.2);/* enlarge on hover */
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 5.6vh;
-  background: #d9d9d97c;
-  border-radius: 50%;
-  color: #ffffff;
-  padding: 1.5% 2.9%;
   cursor: pointer;
   z-index: 100;
   border: white 0.6vh solid;
   box-shadow: 0 1.2% 3.5% rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  line-height: 0;
+  padding-bottom: 0.01vw;
 }
 
 .arrow.left {
-  left: 2.9%;
+  left: 2%;
+  padding-right: 0.4vw;
 }
 
 .arrow.right {
-  right: 2.9%;
+  right: 2%;
+  padding-left: 0.4vw;
 }
 
 .arrow:hover {
-  transform: translateY(-50%) scale(1.2);
+  transform: translateY(-50%) scale(1.2);/* enlarge on hover */
 }
+
 
 .hidden {
   display: none;
@@ -501,4 +484,113 @@ footer .social-icons img {
   vertical-align: middle;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+
+@media screen and (max-width: 1070px) {
+  .carousel-container {
+    gap: 20vw; /* réduit l'espace entre les cartes */
+  }
+  .arrow {
+    height: 9vw;
+    width: 9vw;
+    border : 0.4vw solid white;
+  }
+}
+@media screen and (max-width: 885px) {
+  .hero-text h1 {
+    font-size: 12vw;
+  }
+  .carousel-container {
+    gap: 15vw; /* réduit l'espace entre les cartes */
+  }
+ 
+}
+@media screen and (max-width: 768px) {
+  
+  header .logo-title img {
+    height: 8vh;
+    margin-left: 0;
+  }
+  header {
+    height: 10vh;
+    padding: 2vh 4vw;
+  }
+  .hero-text h1 {
+    font-size: 11vw;
+  }
+  .hero {
+    height: 100vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-image {
+    height: 100vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-text {
+    top: 40%;
+    padding: 0 10px;
+  }
+  .product-image {
+    height: 300px; /* ajuste la hauteur pour les petits écrans */
+    width: 300px; /* ajuste la largeur pour les petits écrans */
+  }
+  .product-card {
+    max-width: 300px;
+  }
+
+  .carousel-container {
+    gap: 20vw; /* réduit l'espace entre les cartes */
+  }
+
+  .arrow {
+    height: 9vw;
+    width: 9vw;
+    font-size: 3.5vw;
+    border: 0.3vw solid white;
+  }
+
+}
+
+@media screen and (max-width: 550px) {
+  .hero-text h1 {
+    font-size: 15vw;
+  }  
+ 
+}
+
+@media screen and (max-width: 399px) {
+  .hero::before {
+    height: 90vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero {
+    height: 90vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-image {
+    height: 90vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-text {
+    top: 30%;
+    padding: 0 10px;
+  }
+  .hero-text p {
+    font-size: 17px;
+    padding: 0 10px;
+  }
+  .product-image {
+    height: 220px;
+    width: 220px;
+  }
+  .product-card {
+    max-width: 220px;
+  }
+  .arrow {
+    height: 10vw;
+    width: 10vw;
+    font-size: 3.5vw;
+    border: 0.5vw solid white;
+  }
+.carousel-section{
+  padding: 30px 0;
+}
+.carousel-container {
+  gap: 15vw; /* réduit l'espace entre les cartes */
+}
 }
