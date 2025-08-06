@@ -66,83 +66,80 @@ foreach ($raw_variantes as $row) {
     <a href="catalogue.php">CATALOGUE</a>
     <a href="#">PROJECTS</a>
     <a href="contact.html">CONTACT</a>
-  </div>
-<div id="auth-container">
+  <div id="auth-container">
   <a href="user.html" class="auth-button" id="signup-button">Sign Up</a>
   <a href="login.html" class="auth-button" id="login-button">Log In</a>
   <img id="profile-pic" class="login-icon" style="display: none;" />
 </div>
+  
+  </div>
+
 
 </nav>
 
     </header>
 
-  <section class="hero">
-    <img src="Hero Image (1).jpg" alt="Hero Image" class="hero-image" />
-    <div class="hero-text">
-      <h1></h1>
-      <p></p>
-    </div>
-  </section>
-
-  <div class="page-product-container">
-   <div class="page-product-left">
-  <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image" />
-  <h2><?= htmlspecialchars($model['nommodel']) ?></h2>
-  <p><?= htmlspecialchars($model['texte']) ?></p>
-</div>
-
-<div class="page-product-right">
-  <div class="marge-top"><h1>Technicalités</h1></div>
-  <div class="product-materials">
-    <?php foreach ($variantes as $matiere => $couleurs): ?>
-  <div class="matiere-item">
-    <span class="matiere-name"><?= htmlspecialchars($matiere) ?></span>
-    <div class="matiere-couleurs">
-  <?php foreach ($couleurs as $couleur): ?>
-    <div 
-      class="couleur" 
-      style="background-color: <?= htmlspecialchars($couleur) ?>;" 
-      data-color="<?= htmlspecialchars($couleur) ?>">
-    </div>
-  <?php endforeach; ?>
-</div>
-
-    
+<div class="page-product-container">
+  <div class="page-product-left">
+   <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image" />
+   <h2><?= htmlspecialchars($model['nommodel']) ?></h2>
+   <p><?= htmlspecialchars($model['texte']) ?></p>
+   <h1><span class="split-word">EMB<br>OSS</span></h1>
   </div>
+<div class="page-product-wrapper">
+<div class="page-product-slider" id="productSlider">
+  <div class="page-product-right">
+    <div class="marge-top"><h1>Technicalités</h1></div>
+    <div class="product-details">
+      <div class="product-info">
+        <p>   Formes et textures au service d’un design épuré et élégant.
+          Des matériaux et finitions pensés pour sublimer chaque détail !</p>
+      </div>
+      <div class="product-materials">
+        <?php foreach ($variantes as $matiere => $couleurs): ?>
+        <div class="matiere-item">
+         <span class="matiere-name"><?= htmlspecialchars($matiere) ?></span>
+          <div class="matiere-couleurs">
+           <?php foreach ($couleurs as $couleur): ?>
+            <div 
+              class="couleur" 
+              style="background-color: <?= htmlspecialchars($couleur) ?>;" 
+              data-color="<?= htmlspecialchars($couleur) ?>">
+            </div>
+            <?php endforeach; ?>
+          </div>   
+        </div>
+        <?php endforeach; ?>
+      </div>
+      <div class="image-wrapper">
+        <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image1" id="mainProductImage" />
+        <div class="image-overlay" id="imageOverlay"></div>
+      </div>
+   </div>
   
-<?php endforeach; ?>
-
-  </div>
-<div class="image-wrapper">
-  <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image1" id="mainProductImage" />
-  <div class="image-overlay" id="imageOverlay"></div>
-</div>
-
-
-</div>
-<div class="marge-bottom">
+         <div class="marge-bottom">
             <button class="arrow-button" id="arrowButton">
               <img src="arrow1-png.png" alt="arrow" class="arrow-icon" />
             </button>
           </div>
-        </div>
+  </div>
+
 
        
         <div class="page-product-project">
           <div class="marge-top"><h1>Projets</h1></div>
-          <div class="project-content">
+            <div class="project-content">
             
-          </div>
-          <div class="marge-bottom">
+            </div>
+           <div class="marge-bottom">
                 <button class="arrow-button" id="backButton">
                 <img src="arrow1-png.png" alt="arrow" class="arrow-icon reverse" />
                 </button>
            </div>
         </div>
-
-      </div> 
-    </div>
+</div>
+</div>     
+  </div>
   </div>
   <footer>
     <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
@@ -180,21 +177,28 @@ foreach ($raw_variantes as $row) {
       return;
     }
 
-    colorDots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const hexColor = dot.style.backgroundColor;
-        overlay.style.backgroundColor = hexColor;
+  colorDots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const hexColor = dot.style.backgroundColor;
 
-        const imageUrl = `/backend/image.php?id=${modelId}`;
-        mainImage.style.opacity = 0.5;
-        setTimeout(() => {
-          mainImage.src = imageUrl;
-          mainImage.onload = () => {
-            mainImage.style.opacity = 1;
-          };
-        }, 200);
-      });
-    });
+    // 👇 Ajoute cette condition
+    const isWhite = ['white', '#ffffff', 'rgb(255, 255, 255)'].includes(hexColor.toLowerCase());
+
+    if (isWhite) {
+      overlay.style.backgroundColor = 'rgba(255, 255, 255, 0.84)';
+      overlay.style.mixBlendMode = 'normal'; // ou 'overlay', 'screen' etc.
+    } else {
+      overlay.style.backgroundColor = hexColor;
+      overlay.style.mixBlendMode = 'multiply';
+    }
+     // ✅ Supprimer la classe active de tous les points
+      colorDots.forEach(d => d.classList.remove('active'));
+
+      // ✅ Ajouter la classe active au point cliqué
+      dot.classList.add('active');
+  });
+});
+
   });
 </script>
 <script>
@@ -214,6 +218,7 @@ foreach ($raw_variantes as $row) {
     authContainer.appendChild(icon);
   }
 </script>
+
 </body>
 
 </html>

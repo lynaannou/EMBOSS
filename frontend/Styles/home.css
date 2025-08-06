@@ -451,8 +451,8 @@ footer .social-icons img {
   height: 3vw;
 }
 .login-icon {
-  width: 32px;
-  height: 32px;
+  width: 3vw;
+  height: 3vw;
   border-radius: 50%;
   object-fit: cover;
   margin-left: 12px;
@@ -460,6 +460,7 @@ footer .social-icons img {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
+
 
 @media screen and (max-width: 900px) {
   
@@ -510,6 +511,33 @@ footer .social-icons img {
   .light-content .text-block p {
     font-size: 2.9vw;
   }
+}
+
+@media screen and (max-width: 620px) {
+
+  header .logo-title img {
+    height: 6vh;
+    margin-left: 0;
+  }
+
+  header {
+    height: 9vh;
+    padding: 1.5vh 3vw;
+  }
+
+  header .logo-title span {
+    font-size: 4vw;
+  }
+
+  nav a {
+    font-size: 1.8vw;
+    margin-left: 2vw;
+  } 
+
+  .auth-button {
+    font-size: 1.8vw;
+    padding: 1vw 1.2vw;
+  }   
 }
 
 @media screen and (max-width: 518px) {

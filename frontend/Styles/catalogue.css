@@ -476,8 +476,8 @@ footer .social-icons img {
   background: #888;
 }
 .login-icon {
-  width: 32px;
-  height: 32px;
+  width: 3vw;
+  height: 3vw;
   border-radius: 50%;
   object-fit: cover;
   margin-left: 12px;
@@ -485,6 +485,7 @@ footer .social-icons img {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
+
 
 @media screen and (max-width: 1070px) {
   .carousel-container {
@@ -553,7 +554,9 @@ footer .social-icons img {
   .hero-text h1 {
     font-size: 15vw;
   }  
- 
+  .contact-card {
+    margin-top: 17vw;
+  }
 }
 
 @media screen and (max-width: 399px) {

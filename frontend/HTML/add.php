@@ -31,62 +31,66 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
         </div>
         <nav>
       <a href="home.html">HOME</a>
-      <a href="product.html">PRODUCT</a>
-      <a href="catalogue.html">CATALOGUE</a>
+      <a href="product.php">PRODUCT</a>
+      <a href="catalogue.php">CATALOGUE</a>
       <a href="#">PROJECTS</a>
       <a href="contact.html">CONTACT</a>
     </nav>
     </header>
-<div class="add-card">
-  <h1 class="card-title">Ajouter un Model</h1>
+    <div class="section">
+      
+      <h1>Ajouter un Model</h1>
+      <div class="add-card">
+        
+        <form id="add-product-form" method="POST" enctype="multipart/form-data">
 
-  <div class="add-content">
-<form id="add-product-form" method="POST" enctype="multipart/form-data">
 
+        <label for="product-name">Nom du model</label>
+        <input type="text" id="product-name" name="product_name" required />
 
-      <label for="product-name">Nom du model</label>
-      <input type="text" id="product-name" name="product_name" required />
+        <label for="product-description">Description</label>
+        <textarea id="product-description" name="product_description" rows="5" required></textarea>
+        <input type="file" id="photo-input" name="photo" accept="image/*" hidden />
+          <button type="submit">Ajouter</button>
+        </form>
 
-      <label for="product-description">Description</label>
-      <textarea id="product-description" name="product_description" rows="5" required></textarea>
-      <input type="file" id="photo-input" name="photo" accept="image/*" hidden />
-
-      <button type="submit">Ajouter</button>
-    </form>
-
-    <div class="add-photo" id="photo-drop-area">
-      <span class="plus-icon">+</span>
-      <input type="file" id="photo-input" name="photo" accept="image/*" hidden />
+          <div class="add-photo" id="photo-drop-area">
+            <span class="plus-icon">+</span>
+            <input type="file" id="photo-input" name="photo" accept="image/*" hidden />
+          </div>
+      </div>
+      
     </div>
-  </div>
-</div>
-<div class="add-card">
-  <h1 class="card-title">Ajouter une Matière</h1>
+    <div class="section">
+      
+      <h1 class="card-title">Ajouter une Matière</h1>
+      <div class="add-card">
+        <div class="add-content">
+          <!-- Left section: material form -->
+          <form id="add-material-form" class="material-form" method="POST" action="/backend/save-material.php">
+            <label for="material-name">Nom de la matière</label>
+            <input type="text" id="material-name" name="material_name" />
+          <input type="hidden" id="colors-input-matiere" name="colors" value="[]">
+            <div id="materialList" class="palette"></div>
 
-  <div class="add-content">
-    <!-- Left section: material form -->
-    <form id="add-material-form" class="material-form" method="POST" action="/backend/save-material.php">
-      <label for="material-name">Nom de la matière</label>
-      <input type="text" id="material-name" name="material_name" />
-    <input type="hidden" id="colors-input-matiere" name="colors" value="[]">
-      <div id="materialList" class="palette"></div>
+            <button type="submit">Ajouter la matière</button>
+          </form>
 
-      <button type="submit">Ajouter la matière</button>
-    </form>
-
-    <!-- Right section: color picker -->
-    <div class="picker-section">
-      <label for="colorInput">Choisir une couleur :</label><br>
-      <input type="color" id="colorInput" value="#000000" />
-      <button type="button" id="add-color-button">Ajouter la couleur</button>
+          <!-- Right section: color picker -->
+          <div class="right-section">
+            <label for="colorInput">Choisir une couleur :</label>
+            <input type="color" id="colorInput" value="#000000" />
+            <textarea id="hexInput" rows="1" placeholder="#996FD1" style="width: 160px; resize: none;"></textarea>
+            <button type="button" id="add-color-button">Ajouter la couleur</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-    <div class="add-card">
-        <h1 class="card-title">Ajouter une Couleur</h1>
-
+<div class="section">
+    <h1 class="card-title">Ajouter une Couleur</h1>
+    <div class="add-card add-color-card"> 
   <div class="add-content">
+  <div class="left-section">
     <form method="POST" action="/backend/save-association.php">
 <p class="matiere-label">Sélectionner une ou plusieurs matières :</p>
 <div id="matiere-checkboxes" class="matiere-options">
@@ -118,12 +122,15 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
 
 
   </form>
-      <div class="picker-section">
-      <label for="colorInputAssociation">Choisir une couleur :</label><br>
+  </div>
+      <div class="right-section" id="right-section-existing">
+      <label for="colorInputAssociation">Choisir une couleur :</label>
       <input type="color" id="colorInputAssociation" value="#000000" />
+      <textarea id="hexInputExisting" rows="1" placeholder="#996FD1" style="width: 160px; resize: none;"></textarea>
       <button type="button" id="add-association-color-button">Ajouter la couleur</button>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -240,6 +247,17 @@ document.getElementById('add-color-button').addEventListener('click', function (
   colorDiv.className = 'color';
   colorDiv.style.backgroundColor = color;
 
+  // ➜ Faire disparaître le carré au clic droit :
+colorDiv.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  box.remove();
+
+  // Enlève aussi la couleur du tableau caché :
+  currentColors = currentColors.filter(c => c !== color);
+  hiddenInput.value = JSON.stringify(currentColors);
+});
+
+
   const label = document.createElement('div');
   label.className = 'label';
   label.textContent = color;
@@ -251,6 +269,8 @@ document.getElementById('add-color-button').addEventListener('click', function (
     e.stopPropagation();
     box.remove();
 
+    
+
     // Mise à jour du tableau caché aussi !
     const newColors = currentColors.filter(c => c !== color);
     hiddenInput.value = JSON.stringify(newColors);
@@ -260,6 +280,7 @@ document.getElementById('add-color-button').addEventListener('click', function (
   box.appendChild(colorDiv);
   box.appendChild(label);
   document.getElementById('materialList').appendChild(box);
+  document.getElementById('hexInput').value = '';
 });
 </script>
 
@@ -293,6 +314,16 @@ document.getElementById('add-association-color-button').addEventListener('click'
   colorDiv.className = 'color';
   colorDiv.style.backgroundColor = color;
 
+  // ➜ Faire disparaître le carré au clic droit :
+colorDiv.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  box.remove();
+
+  currentColors = currentColors.filter(c => c !== color);
+  hiddenInput.value = JSON.stringify(currentColors);
+});
+
+
   const label = document.createElement('div');
   label.className = 'label';
   label.textContent = color;
@@ -310,6 +341,7 @@ document.getElementById('add-association-color-button').addEventListener('click'
   box.appendChild(label);
 
   document.getElementById('colorList').appendChild(box);
+  document.getElementById('hexInputExisting').value = '';
 });
 </script>
 <script>
@@ -342,6 +374,50 @@ document.getElementById('add-material-form').addEventListener('submit', function
 });
 </script>
 
+<script>
+// Quand on tape dans #hexInput, on met à jour #colorInput
+document.getElementById('hexInput').addEventListener('input', function () {
+  const value = this.value.trim();
+  if (/^#([0-9A-Fa-f]{6})$/.test(value)) {
+    document.getElementById('colorInput').value = value;
+  }
+});
+
+// Quand on tape dans #hexInputExisting, on met à jour #colorInputAssociation
+document.getElementById('hexInputExisting').addEventListener('input', function () {
+  const value = this.value.trim();
+  if (/^#([0-9A-Fa-f]{6})$/.test(value)) {
+    document.getElementById('colorInputAssociation').value = value;
+  }
+});
+</script>
+
+<script>
+// Empêcher le saut de ligne sur Entrée dans #hexInput
+document.getElementById('hexInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+  }
+});
+
+// Empêcher le saut de ligne sur Entrée dans #hexInputExisting
+document.getElementById('hexInputExisting').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+  }
+});
+</script>
+<script>
+// Pour le color picker de la première section (ajouter matière)
+document.getElementById('colorInput').addEventListener('input', function () {
+  document.getElementById('hexInput').value = this.value;
+});
+
+// Pour le color picker de l’association
+document.getElementById('colorInputAssociation').addEventListener('input', function () {
+  document.getElementById('hexInputExisting').value = this.value;
+});
+</script>
 
 </body>
 </html>

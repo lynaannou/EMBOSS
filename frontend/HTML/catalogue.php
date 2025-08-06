@@ -37,11 +37,13 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
     <a href="catalogue.php">CATALOGUE</a>
     <a href="#">PROJECTS</a>
     <a href="contact.html">CONTACT</a>
-    <a href="user.html" class="auth-button" id="signup-button">Sign Up</a>
-    <a href="login.html" class="auth-button" id="login-button">Log In</a>
-    <img id="profile-pic" class="login-icon" style="display: none;" />
+  <div id="auth-container">
+  <a href="user.html" class="auth-button" id="signup-button">Sign Up</a>
+  <a href="login.html" class="auth-button" id="login-button">Log In</a>
+  <img id="profile-pic" class="login-icon" style="display: none;" />
+</div>
   </div>
-
+  
 
 </nav>
 </header>
