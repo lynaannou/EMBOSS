@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #000;
+  background: #212D49;
+}
+
+.container {
+  max-width: 90vw;
+  margin: 0 auto;
+  padding: 0 2vw;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 13vh;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3vh 6vw;
+  background: rgba(61, 71, 93, 0.23);
+  backdrop-filter: blur(5px);
+}
+
+header .logo-title img {
+  height: 11vh;
+  width: auto;
+  display: block;
+  margin-bottom: 0vh;
+  margin-left: -3vw;
+}
+
+header .logo-title span {
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+  font-size: 2.8vw;
+  line-height: 150%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 1.5vw;
+  color: #FFFFFF;
+  margin-left: 2.5vw;
+  text-decoration: none;
+}
+nav a:hover {
+  color: #996FD1;
+}
+
+h1 {
+  font-family: 'Italiana';
+  font-size: 6.9vw;
+  color: #FFFFFF;
+  text-align: center;
+  margin-top: 20vh;
+  margin-bottom: 6vh;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 4vw;
+  max-width: 90vw;
+  margin: 0 auto 10vh auto;
+  padding: 4vh;
+  background: #EBE3E0;
+  border-radius: 4vw;
+  box-shadow: 0 0.3vw 0.9vw rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.contacts-table,
+.message-form {
+  flex: 1;
+  width: 100%;
+  max-width: 45vw;
+}
+
+.contacts-table h2,
+.message-form h2 {
+  font-family: 'Italiana', serif;
+  font-size: 2.8vw;
+  color: #212D49;
+  margin-bottom: 2vh;
+}
+
+.contacts-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 1vw;
+  overflow: hidden;
+  box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.1);
+  font-size: 1.2vw;
+}
+
+.contacts-table th,
+.contacts-table td {
+  padding: 1.2vh;
+  border-bottom: 0.1vw solid #e0e0e0;
+  text-align: left;
+}
+
+.contacts-table th {
+  background-color: #f5f5f5;
+  color: #212D49;
+  font-weight: 600;
+}
+
+.contacts-table td {
+  color: #333;
+}
+
+.message-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-form label {
+  font-size: 1.4vw;
+  font-weight: 500;
+  margin-bottom: 0.5vh;
+  color: #212D49;
+}
+
+.message-form input,
+.message-form textarea {
+  padding: 1vh 1vw;
+  border: 0.1vw solid #ccc;
+  border-radius: 1vw;
+  margin-bottom: 2vh;
+  font-size: 1.2vw;
+  background: white;
+}
+
+.message-form textarea {
+  resize: vertical;
+  height: 20vh;
+}
+
+.message-form button {
+  background: #212D49;
+  color: white;
+  font-size: 1.5vw;
+  padding: 1.4vh;
+  border: none;
+  border-radius: 3vw;
+  cursor: pointer;
+  font-family: 'Italiana';
+  transition: background 0.3s ease;
+}
+
+.message-form button:hover {
+  background: #996FD1;
+}
+
+footer {
+  background: #182136;
+  padding: 8vh 6vw;
+  text-align: center;
+  color: #dcd7e2;
+  font-size: 1vw;
+  margin-top: 10vh;
+  border-top: 1px solid #E6E6E6;
+}
+
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+  margin-top: 3vh;
+}
+
+footer .social-icons img {
+  width: 3vw;
+  height: 3vw;
+  transition: transform 0.3s ease;
+}
+
+footer .social-icons img:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vh 4vw;
+  }
+
+  header .logo-title img {
+    height: 8vh;
+    margin-left: 0;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 4vh 2vw;
+  }
+
+  .contacts-table,
+  .message-form {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 399px) {
+  header {
+    height: 8vh;
+    padding: 1vh 2vw;
+  }
+
+  header .logo-title img {
+    height: 2vh;
+    margin-left: 0;
+  }
+
+  header .logo-title span {
+    font-size: 3.5vw;
+  }
+
+  nav a {
+    font-size: 3vw;
+    margin-left: 1.5vw;
+  }
+
+  h1 {
+    font-size: 9vw;
+    margin-top: 18vh;
+    margin-bottom: 4vh;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 4vh 2vw;
+  }
+
+  .contacts-table,
+  .message-form {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .contacts-table h2,
+  .message-form h2 {
+    font-size: 4vw;
+  }
+
+  .message-form label {
+    font-size: 3vw;
+  }
+
+  .message-form input,
+  .message-form textarea {
+    font-size: 3vw;
+  }
+
+  .message-form button {
+    font-size: 4vw;
+    padding: 1.5vh;
+  }
+
+  footer {
+    font-size: 2.5vw;
+  }
+
+  footer .social-icons img {
+    width: 6vw;
+    height: 6vw;
+  }
+}
+

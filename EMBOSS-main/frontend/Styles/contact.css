@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* BODY GENERAL */
+body {
+    margin: 0;
+    background: #212D49;
+    font-family: 'Inter', sans-serif;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 13vh;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3vh 6vw;
+  background: rgba(61, 71, 93, 0.23);
+
+  background: url('../HTML/contact.jpg') no-repeat center center/cover;
+}
+
+header .logo-title img {
+  height: 11vh;
+  width: auto;
+  display: block;
+  margin-bottom: 0vh;
+  margin-left: -3vw;
+}
+
+header .logo-title span {
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+  font-size: 2.8vw;
+  line-height: 150%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 1.5vw;
+  color: #FFFFFF;
+  margin-left: 2.5vw;
+  text-decoration: none;
+}
+nav a:hover {
+  color: #996FD1;
+}
+
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 4px; /* aligne les liens avec les boutons */
+  margin-left: -32px; /* décalage à gauche */
+}
+/* Boutons d'authentification dans le header */
+.auth-button {
+  font-size: 2vh;
+  padding: 1.25vh 2.25vh;
+  margin-left: 2vh;
+  text-decoration: none;
+  border: none;
+  background-color: #5f6f96;
+  color: white;
+  border-radius: 0.5vh;
+  transition: all 0.3s ease;
+  position: relative;
+  top: 0.4vh; 
+}
+
+#signup-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#signup-button:hover + #login-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+#login-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#login-button:hover ~ #signup-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;/* allow wrapping for smaller screens */
+    align-items: flex-start; /* align items to the top */
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 180px auto;
+    padding: 0 40px;
+}
+
+.contact-card {
+    background: #EBE3E0;
+    border-radius: 45px;
+    padding: 3.2vw 5.3vw;
+    max-width: 57.1vw; /* control the width of the card */
+    margin-top: 12vw; /* space from the top */
+    margin-left: 8%;         /* stick to left side of container */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info {
+    background: #e4d6d0;
+    border-radius: 45px;
+    padding: 4vw;
+    width: 34vw;
+    position: absolute;
+    top: 18vw;
+    left: 58%;  /* control how far from the left → adjust as needed */
+    transform: translateY(-20px);
+    z-index: 2;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+
+.contact-info:hover {
+    transform: translateY(-60px); /* little hover animation */
+}
+
+
+.contact-card h1 {
+    font-family: 'Italiana', cursive;
+    font-size: 2.4vw;
+    color: #212D49;
+    margin-bottom: 1.6vw;
+}
+
+.contact-card form label {
+    display: block;
+    font-weight: 500;
+    font-size: 1.54vw;
+    color: #212D49;
+    margin-bottom: 0.5vw;
+}
+
+.contact-card form input,
+.contact-card form textarea {
+    width: 100%;
+    padding: 0.8vw 1.07vw;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    margin-bottom: 1.61vw;
+    font-size: 1.07vw;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card form textarea {
+    height: 10.07vw; /* control the height of the textarea */
+    resize: vertical;
+}
+
+.contact-card form button {
+    background: rgba(200, 175, 141, 0.85);
+    color: #FFFFFF;
+    font-size: 2.14vw;
+    font-weight: 500;
+    padding: 0.8vw 2.14vw;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.contact-card form button:hover {
+    background: #bfa47c;
+}
+
+
+.contact-info h1 {
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 1.47vw;
+    margin-bottom: 1.07vw;
+    
+}
+
+.contact-info .address,
+.contact-info .phone,
+.contact-info .email {
+    display: block;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 1.34vw;
+    line-height: 150%;
+    margin-bottom: 1.07vw;
+    color: #212D49;
+}
+
+.contact-info img {
+    width: 2.68vw;
+    height: 2.68vw;
+    margin-right: 0.8vw;
+    vertical-align: middle;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.07vw;
+    margin-top: 1.34vw;
+}
+
+.social-icons img {
+    width: 2.68vw;
+    height: 2.68vw;
+    border-radius: 0.26vw;
+    transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* FOOTER */
+footer {
+  background: #182136;
+  padding: 8vh 6vw;
+  text-align: left;
+  color: #dcd7e2;
+  font-size: 1vw;
+  border-top: 1px solid #E6E6E6;
+  margin-top: 10vh;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 1vw;
+  margin-top: 3vh;
+}
+
+footer .social-icons img {
+  width: 3vw;
+  height: 3vw;
+}
+.foot {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    font-size: 1vw;
+    color: #dcd7e2;
+}
+.info-block {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 3vw;
+    padding: 16px 24px;
+    margin-bottom: 1.3vw;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease; /* pour une animation fluide */
+    width: 105%;
+}
+p {
+    font-size: 1.3vw;
+    color: #212D49;
+    margin: 0;
+}
+h1 {
+    font-size: 24px;
+    color: #212D49;
+    margin: 0;
+}
+
+.info-block:hover {
+    background: rgba(255, 255, 255, 0.6); /* plus opaque au hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ombre plus forte */
+    cursor: pointer;
+}
+input[type="checkbox"] {
+    accent-color : #fff;
+    margin-top: 50px;
+    margin-left: 55px;
+}
+
+.checkbox-label {
+    font-size: 1.67vw;
+    color: #f5f5f5;
+    margin-left: 5vw;
+}
+.login-icon {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+  
+  header .logo-title img {
+    height: 8vh;
+    margin-left: 0;
+  }
+  header {
+    height: 10vh;
+    padding: 2vh 4vw;
+  }
+
+   .contact-card {
+    margin-top: 17vw; /* adjust top margin for smaller screens */
+  }
+  .contact-info {
+    top : 25vw; /* adjust top position for smaller screens */
+  }
+  
+}
+
+@media screen and (max-width: 655px) {
+
+  header .logo-title img {
+    height: 6vh;
+    margin-left: 0;
+  }
+
+  header {
+    height: 9vh;
+    padding: 1.5vh 3vw;
+  }
+
+  header .logo-title span {
+    font-size: 4vw;
+  }
+
+  nav a {
+    font-size: 1.8vw;
+    margin-left: 2vw;
+  } 
+
+  .auth-button {
+    font-size: 1.8vw;
+    padding: 1vw 1.2vw;
+  }  
+  .info-block {
+    padding: 1.5vw 1.5vw; 
+    border-radius: 15px; /* smaller border radius for smaller screens */
+    margin-bottom: 2vw; /* more space between info blocks */
+  } 
+  .contact-info{
+    border-radius: 25px; /* smaller border radius for smaller screens */
+  }
+}
+@media screen and (max-width: 441px) {
+  
+  header .logo-title img {
+    height: 4vh;
+    margin-left: 0;
+  }
+
+  header {
+    height: 8vh;
+    padding: 1vh 2vw;
+  }
+
+  header .logo-title span {
+    font-size: 3.5vw;
+  }
+
+  nav a {
+    font-size: 1.5vw;
+    margin-left: 1.5vw;
+  } 
+  
+  .auth-button {
+  font-size: 1.5vw;
+  padding: 0.75vw 0.8vw;}
+
+  .contact-card form label {
+    margin-bottom: 0;
+  }
+  .contact-card form input, .contact-card form textarea {
+    margin-bottom: 1vw;
+  }
+
+    .contact-card {
+        margin-top: 20vw; /* adjust top margin for smaller screens */
+        border-radius: 25px; /* smaller border radius for smaller screens */
+        
+    }
+    .contact-info {
+        top: 30vw; /* adjust top position for smaller screens */
+        border-radius: 25px; /* smaller border radius for smaller screens */
+    }
+    .info-block {
+        padding: 0.8vw 1.07vw; 
+        font-size: 1.2vw; 
+    }
+   .contact-card form input, .contact-card form textarea {
+    border-radius: 4px; /* smaller border radius for inputs */
+   }
+}

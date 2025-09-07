@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EMBOSS MÉTAL SERVICES</title>
+  <link rel="stylesheet" href="../Styles/login.css" />
+  <!-- Include ONCE -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="logo-EMBOSS-nouveau.png" alt="Logo"/>
+    </div>
+    <nav>
+      <a href="home.html">HOME</a>
+      <a href="product.php">PRODUCT</a>
+      <a href="catalogue.php">CATALOGUE</a>
+      <a href="#">PROJECTS</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <div class="login">
+    <div class="left-section">
+      <h1>LOG IN</h1>
+
+      <form id="loginForm">
+        <label for="user-email">Email</label>
+        <input type="email" id="user-email" name="user_email" required placeholder="Entrez votre email" />
+
+        <label for="user-password">Mot de passe</label>
+        <input type="password" id="user-password" name="user_password" required placeholder="Entrez votre mot de passe" />
+
+        <div class="login-link">
+          <h2>Don't have an account?</h2><a href="user.html">Sign up</a>
+        </div>
+
+        <button type="submit" class="submit-button">Log in</button>
+
+        <div class="bottom-section">
+          <div class="section-title-with-lines">
+            <div class="line"></div>
+            <h1>CONTINUER AVEC</h1>
+            <div class="line"></div>
+          </div>
+
+          <div class="social-buttons">
+            <a href="https://www.facebook.com" target="_blank">
+              <img src="facebook-icon.png" alt="Facebook" />
+            </a>
+
+            <!-- Google Identity Services: markup API (keep only ONE of these) -->
+            <div id="g_id_onload"
+                 data-client_id="570889304064-hrnd34ln9t5hav5ktj43vde6ldbc692n.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="pill"
+                 data-theme="outline"
+                 data-text="continue_with"
+                 data-size="large">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="right-section">
+      <img src="maison.jpg" alt="User Icon" class="bk-image" />
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook" />
+      <img src="linkedin-icon.png" alt="LinkedIn" />
+      <img src="youtube-icon.png" alt="YouTube" />
+      <img src="instagram-icon.png" alt="Instagram" />
+    </div>
+  </footer>
+
+  <script>
+    // Local email+password login
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch('../../backend/login.php', { method: 'POST', body: formData })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('profileImage', data.profileImage || 'avatar1.jpeg');
+            localStorage.setItem('loginProvider', data.provider || 'local');
+            localStorage.setItem('email', document.getElementById('user-email').value.trim());
+            window.location.href = 'home.html';
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Erreur:', error);
+          alert('Erreur de connexion.');
+        });
+    });
+
+    // Google Sign-In callback
+    async function handleCredentialResponse(response) {
+      try {
+        const r = await fetch('../../backend/oauth_google.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ credential: response.credential })
+        });
+        const data = await r.json();
+        if (!data.ok) throw new Error(data.error || 'unknown backend error');
+
+        const u = data.user || {};
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('email', u.email || '');
+        localStorage.setItem('username', u.name || '');
+        localStorage.setItem('profileImage', u.picture || 'avatar1.jpeg');
+        localStorage.setItem('loginProvider', 'google');
+
+        window.location.href = 'home.html';
+      } catch (err) {
+        console.error('Google sign-in error:', err);
+        alert('Google sign-in failed.');
+      }
+    }
+  </script>
+  <script type="module">
+  import { setRoleByEmail } from "../JS_Files/roles.js";
+
+  document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const res = await fetch("../../backend/login.php", { method:"POST", body:formData });
+    const data = await res.json();
+
+    if (data.success) {
+      const email = document.getElementById('user-email').value.trim();
+      localStorage.setItem('loggedIn', 'true');
+      localStorage.setItem('email', email);
+      localStorage.setItem('profileImage', data.profileImage || 'avatar1.jpeg');
+      localStorage.setItem('loginProvider', data.provider || 'local');
+      setRoleByEmail(email);                             // 👈 set role
+      window.location.href = 'home.html';
+    } else {
+      alert(data.message);
+    }
+  });
+</script>
+
+</body>
+</html>

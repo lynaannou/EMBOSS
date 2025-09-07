@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EMBOSS MÉTAL SERVICES</title>
+  <link rel="stylesheet" href="../Styles/home.css" />
+</head>
+<body>
+
+    <header>
+        <div class ="logo-title" >
+            <img src ="logo-EMBOSS-nouveau.png" alt = "Logo"/>
+            
+        </div>
+      <nav>
+  <div class="menu-group">
+    <a href="home.html">HOME</a>
+    <a href="catalogue.php">CATALOGUE</a>
+    <a href="#">PROJECTS</a>
+    <a href="contact.html">CONTACT</a>
+    <div id="auth-container">
+  <a href="user.php" class="auth-button" id="signup-button">Sign Up</a>
+  <a href="login.html" class="auth-button" id="login-button">Log In</a>
+  <img id="profile-pic" class="login-icon" style="display: none;" />
+</div>
+
+  </div>
+
+
+</nav>
+
+    </header>
+    <section class="hero">
+    <img src="Hero Image (1).jpg" alt="Hero Image" class="hero-image" />
+    <div class="hero-text">
+        <h1>Le Métal en Mouvement, au Service de l’Architecture d’Exception</h1>
+        <p>Découvrez nos tôles embossées haut de gamme, conçues pour sublimer vos façades, habillages intérieurs et projets sur-mesure. Design, innovation, élégance : donnez du relief à vos espaces.</p>
+        <a href="catalogue.php" class="cta-button">Découvrir nos collections</a>
+    </div>
+</section>
+
+
+
+
+   <section class="solutions">
+    <h2>Nos Solutions Pour Sublimer Vos Projets</h2>
+    <div class="solution-cards">
+      <div class="solution-card">
+        <img src="PARIS.jpeg" alt="Façades ventilées" />
+        <h3>Façades ventilées et bardages métalliques</h3>
+        <p>Des habillages extérieurs premium, résistants, durables et esthétiques.</p>
+      </div>
+      <div class="solution-card">
+        <img src="2020-waterwave.jpeg" alt="Design intérieur" />
+        <h3>Aménagements et design intérieur</h3>
+        <p>Plafonds, murs, mobilier : un rendu unique au service de vos espaces.</p>
+      </div>
+      <div class="solution-card">
+        <img src="e-architect.jpeg" alt="Edition spéciale" />
+        <h3>Projets sur-mesure & édition spéciale</h3>
+        <p>Accompagnement sur-mesure pour les architectes et designers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section">
+    <h2>Quand La Lumière Révèle La Matière</h2>
+    <div class="light-content">
+      <div class="text-block">
+        <h3>Une expertise unique</h3>
+        <p>Chaque tôle embossée est soigneusement travaillée, nivelée et finie pour offrir une interaction parfaite avec la lumière. Un rendu haut de gamme qui évolue selon l'angle de vue et les conditions lumineuses.</p>
+        <h3>Applications multiples</h3>
+        <p>Nos solutions s’intègrent parfaitement aux projets d’architecture contemporaine, au design intérieur haut de gamme, aux espaces commerciaux et hôteliers.</p>
+        <h3>Savoir-faire & innovation</h3>
+        <p>Une technologie de pointe associée à un savoir-faire artisanal pour garantir un produit d'exception.</p>
+      </div>
+      <img src="Image (1).png" alt="Embossé lumière" class="light-image"/>
+    </div>
+    <div class="cta-container">
+  <button class="cta-projects">PROJECTS</button>
+  <button class="cta-catalogue">CATALOGUE</button>
+</div>
+
+  </section>
+
+  <section class="testimonials">
+    <h2>Architectes, Designers, Bureaux D’études : Ils Nous Font Confiance.</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <p>“Un rendu exceptionnel en façade, des reflets sublimes qui évoluent au fil de la journée.”</p>
+        <div class="testimonial-avatar">
+          <img src="avatar1.jpeg" alt="Architecte DPLG" />
+          <span>Architecte DPLG</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>“Une qualité de fabrication premium. Le niveau de détail sur les tôles embossées est remarquable.”</p>
+        <div class="testimonial-avatar">
+          <img src="avatar1.jpeg" alt="Designer intérieur" />
+          <span>Designer intérieur</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>“Un partenaire fiable pour nos projets sur-mesure. Accompagnement et résultat au top.”</p>
+        <div class="testimonial-avatar">
+          <img src="avatar1.jpeg" alt="Bureau d'études" />
+          <span>Bureau d'études</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook" />
+      <img src="linkedin-icon.png" alt="LinkedIn" />
+      <img src="youtube-icon.png" alt="YouTube" />
+      <img src="instagram-icon.png" alt="Instagram" />
+    </div>
+  </footer>
+  <script src="../JS_Files/auth.js"></script>
+<script>
+  const container = document.querySelector('.cta-container');
+  const btnProjects = document.querySelector('.cta-projects');
+  const btnCatalogue = document.querySelector('.cta-catalogue');
+
+  btnProjects.addEventListener('mouseenter', () => {
+    container.classList.add('hover-projects');
+    container.classList.remove('hover-catalogue');
+  });
+
+  btnProjects.addEventListener('mouseleave', () => {
+    container.classList.remove('hover-projects');
+  });
+
+  btnCatalogue.addEventListener('mouseenter', () => {
+    container.classList.add('hover-catalogue');
+    container.classList.remove('hover-projects');
+  });
+
+  btnCatalogue.addEventListener('mouseleave', () => {
+    container.classList.remove('hover-catalogue');
+  });
+</script>
+<script>
+  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+  const profileImageUrl = localStorage.getItem('profileImage');
+
+  const authContainer = document.getElementById('auth-container');
+
+  if (isLoggedIn && profileImageUrl) {
+    authContainer.innerHTML = '';
+
+    const icon = document.createElement('img');
+    icon.classList.add('login-icon');
+    icon.src = profileImageUrl;
+    icon.alt = 'Profil utilisateur';
+
+    authContainer.appendChild(icon);
+  }
+</script>
+
+<!-- at the bottom of every page that has the header -->
+<script type="module">
+  import { enhanceHeader } from "../JS_Files/roles.js";
+  // runs on DOMContentLoaded inside roles.js automatically;
+  // importing once per page is enough.
+</script>
+
+</body>
+
+</html>

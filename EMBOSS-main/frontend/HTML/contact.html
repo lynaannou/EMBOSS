@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EMBOSS MÉTAL SERVICES</title>
+  <link rel="stylesheet" href="../Styles/contact.css" />
+</head>
+<body>
+
+         <header>
+        <div class ="logo-title" >
+            <img src ="logo-EMBOSS-nouveau.png" alt = "Logo"/>
+            
+        </div>
+      <nav>
+  <div class="menu-group">
+    <a href="home.html">HOME</a>
+    <a href="catalogue.php">CATALOGUE</a>
+    <a href="#">PROJECTS</a>
+    <a href="contact.html">CONTACT</a>
+<div id="auth-container">
+  <a href="user.php" class="auth-button" id="signup-button">Sign Up</a>
+  <a href="login.html" class="auth-button" id="login-button">Log In</a>
+  <img id="profile-pic" class="login-icon" style="display: none;" />
+</div>
+
+</nav>
+</header>
+  <!-- MAIN FLEX CONTAINER -->
+    <div class="contact-card">
+    <h1>Contactez-nous</h1>
+    <form id="contact-form" method="POST" action="/backend/save-contact.php">
+      <label for="first-name">Prénom</label>
+      <input type="text" id="first-name" name="first_name" required />
+
+      <label for="last-name">Nom</label>
+      <input type="text" id="last-name" name="last_name" required />
+      <label for="phone">Phone</label>
+      <input type="phone" id="phone" name="phone" required />
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+      <div id="email-error" style="color:red;"></div>
+
+      <label for="sujet">Sujet</label>
+      <input type="text" id="sujet" name="sujet" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="button" id="send-btn">Envoyer</button>
+      <p id="form-status"></p>
+    </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <!-- CONTACT INFO -->
+<div class="contact-info">
+    <h1>Nous sommes toujours disponibles pour accompagner vos projets les plus ambitieux.</h1>
+   <div class="info-block">
+    <img src="address-81.png" alt="Adress" />
+    <p class = "phone"><strong>Addresse :</strong><br> N°4 Saint Charles Les Vergers Sec 33 GP 33 Bir Mourad Rais Alger</p>
+    
+</div>
+
+<div class="info-block">
+      <img src="phone.png" alt="Phone" />
+    <p class="phone"><strong>Téléphone :</strong><br> +213 552 26 69 90</p>
+  
+</div>
+
+<div class="info-block">
+    <img src="email.png" alt="Email" />
+    <p class="email"><strong>Email :</strong><br> embossmetalsevices@gmail.com</p>
+    
+</div>
+
+    <p>Contactez-nous avec :</p>
+    <div class="social-icons">
+        <img src="facebook-icon.png" alt="Facebook" />
+        <img src="linkedin-icon.png" alt="LinkedIn" />
+        <img src="youtube-icon.jpeg" alt="YouTube" />
+        <img src="instagram-icon.png" alt="Instagram" />
+    </div>
+    
+</div>
+<label class="checkbox-label">
+  <input type = "checkbox" name = "contactable"/>
+  Voulez-vous être contacté(e) en cas de nouveautées ?
+</label>
+
+
+<footer>
+    <div class="foot">© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</div>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook" />
+      <img src="linkedin-icon.png" alt="LinkedIn" />
+      <img src="youtube-icon.png" alt="YouTube" />
+      <img src="instagram-icon.png" alt="Instagram" />
+    </div>
+  </footer>
+ 
+  <script src="../JS_Files/auth.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("0_GDw3aP_OABy1UoU");
+
+    // ✅ Déclare tes variables ici, une fois que le DOM est chargé
+    const sendBtn = document.getElementById("send-btn");
+    const status = document.getElementById("form-status");
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("email-error");
+
+    sendBtn.addEventListener("click", function () {
+      const email = emailInput.value.trim();
+      const domain = email.split("@")[1];
+      const allowedDomains = ["gmail.com", "yahoo.fr", "hotmail.com", "outlook.com", "usthb.dz"];
+
+      if (!allowedDomains.includes(domain)) {
+        emailError.textContent = "Domaine d'e-mail non autorisé.";
+        return;
+      } else {
+        emailError.textContent = "";
+      }
+
+      const templateParams = {
+        first_name: document.getElementById("first-name").value.trim(),
+        last_name: document.getElementById("last-name").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        email: email,
+        sujet: document.getElementById("sujet").value.trim(),
+        message: document.getElementById("message").value.trim(),
+        contactable: document.querySelector('input[name="contactable"]').checked ? "on" : ""
+      };
+
+      status.textContent = "Envoi en cours...";
+
+      // Envoi via EmailJS
+      emailjs.send("service_8pb9lxd", "template_7iu836d", templateParams)
+        .then(() => {
+          status.textContent = "Message envoyé avec succès ✅";
+          document.getElementById("contact-form").reset();
+        }, (error) => {
+          console.error("Erreur EmailJS :", error);
+          status.textContent = "Erreur lors de l'envoi ❌";
+        });
+
+      // Envoi vers la base via PHP
+    fetch("../../backend/save-contact.php", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: new URLSearchParams(templateParams)
+})
+.then(response => response.text()) // ← On lit en texte brut
+.then(text => {
+  console.log("🔍 Réponse brute de PHP :", text); // Affiche le texte reçu
+  try {
+    const data = JSON.parse(text); // Essaie de parser
+    console.log("✅ JSON valide :", data);
+  } catch (e) {
+    console.error("❌ JSON invalide. Texte reçu :", text);
+  }
+})
+.catch(err => {
+  console.error("Erreur enregistrement PHP :", err);
+});
+
+    });
+  });
+</script>
+<script>
+  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+  const profileImageUrl = localStorage.getItem('profileImage');
+
+  const authContainer = document.getElementById('auth-container');
+
+  if (isLoggedIn && profileImageUrl) {
+    authContainer.innerHTML = '';
+
+    const icon = document.createElement('img');
+    icon.classList.add('login-icon');
+    icon.src = profileImageUrl;
+    icon.alt = 'Profil utilisateur';
+
+    authContainer.appendChild(icon);
+  }
+</script>
+<!-- at the bottom of every page that has the header -->
+<script type="module">
+  import { enhanceHeader } from "../JS_Files/roles.js";
+  // runs on DOMContentLoaded inside roles.js automatically;
+  // importing once per page is enough.
+</script>
+
+</body>
+</html>

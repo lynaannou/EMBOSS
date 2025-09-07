@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* BODY GENERAL */
+body {
+    margin: 0;
+    background: #212D49;
+    font-family: 'Inter', sans-serif;
+}
+
+/* HEADER */
+header {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100px;
+  z-index: 100;
+  margin-top: 0%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
+    background: url('../HTML/contact.jpg') no-repeat center center/cover;
+}
+
+header .logo-title img {
+    height: 200px; /* taille du logo adaptée à la ligne du menu */
+    width: auto;
+    display: block; /* pour s'assurer que l'image est un bloc */
+    margin-bottom: -15px; /* espace entre le logo et le titre */
+    margin-left: -80px;
+}
+
+header .logo-title span {
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center; /* centre le texte verticalement aussi */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 20px;
+  color: #FFFFFF;
+  margin-left: 32px;
+  text-decoration: none;
+}
+nav a:hover {
+    color: #996FD1;
+}
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 4px; /* aligne les liens avec les boutons */
+  margin-left: -32px; /* décalage à gauche */
+}
+/* Boutons d'authentification dans le header */
+.auth-button {
+  font-size: 16px;
+  padding: 10px 18px;
+  margin-left: 16px;
+  text-decoration: none;
+  border: none;
+  background-color: #5f6f96;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  top: 4px;
+}
+
+#signup-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#signup-button:hover + #login-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+#login-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#login-button:hover ~ #signup-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;/* allow wrapping for smaller screens */
+    align-items: flex-start; /* align items to the top */
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 180px auto;
+    padding: 0 40px;
+}
+
+.profile-card {
+    background: #EBE3E0;
+    border-radius: 45px;
+    padding: 40px 80px;
+    max-width: 850px;
+    margin-top: 180px; /* space from the top */
+    margin-left: 25px;         /* stick to left side of container */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+.profile-card h1 {
+    font-family: 'Italiana', cursive;
+    font-size: 36px;
+    color: #212D49;
+    margin-bottom: 24px;
+}
+/* Add this to your CSS file */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+  height: 100%;
+  width: 100%;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+button {
+    background: rgba(200, 175, 141, 0.85);
+    color: #FFFFFF;
+    font-size: 32px;
+    font-weight: 50;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 45px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+footer {
+  background: #182136; 
+  padding: 80px;
+  text-align: left;
+  color: #dcd7e2;
+  font-size: 14px;
+  border-top: 1px solid #E6E6E6;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+footer .social-icons img {
+  width: 40px;
+  height: 40px;
+}
+.login-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}

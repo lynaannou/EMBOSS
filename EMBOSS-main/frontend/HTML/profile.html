@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EMBOSS MÉTAL SERVICES</title>
+  <link rel="stylesheet" href="../Styles/profile.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo-title">
+    <img src="logo-EMBOSS-nouveau.png" alt="Logo"/>
+  </div>
+  <nav>
+    <div class="menu-group">
+      <a href="home.html">HOME</a>
+      <a href="catalogue.php">CATALOGUE</a>
+      <a href="#">PROJECTS</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+    <div id="auth-container">
+      <!-- Filled by JS -->
+    </div>
+  </nav>
+</header>
+
+<div class="profile-card">
+  <h1>INFORMATION PROFILE</h1>
+
+  <div class="info-block">
+    <p><strong>Nom :</strong> <span id="nom">...</span></p>
+    <button type="button" data-edit="nom">Modifier</button>
+  </div>
+
+  <div class="info-block">
+    <p><strong>Prénom :</strong> <span id="prenom">...</span></p>
+    <button type="button" data-edit="prenom">Modifier</button>
+  </div>
+
+  <div class="info-block">
+    <p><strong>Email :</strong> <span id="email">...</span></p>
+    <button type="button" id="edit-email" disabled title="Modification d’email non supportée">Modifier</button>
+  </div>
+
+  <div class="info-block">
+    <p><strong>Numéro de téléphone :</strong> <span id="phone">...</span></p>
+    <button type="button" data-edit="phone">Modifier</button>
+  </div>
+
+  <div class="info-block" id="contactable-block">
+    <p><strong>Contactable par email :</strong>
+      <label class="switch">
+        <input type="checkbox" id="contactable-toggle" />
+        <span class="slider round"></span>
+      </label>
+    </p>
+  </div>
+
+  <div style="margin-top:16px; display:flex; gap:12px;">
+    <button type="button" id="logout-btn">Se déconnecter</button>
+    <button type="button" id="delete-account" class="danger">Supprimer le compte</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 EMBOSS MÉTAL SERVICES. Tous droits réservés.</p>
+  <div class="social-icons">
+    <img src="facebook-icon.png" alt="Facebook" />
+    <img src="linkedin-icon.png" alt="LinkedIn" />
+    <img src="youtube-icon.png" alt="YouTube" />
+    <img src="instagram-icon.png" alt="Instagram" />
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // ----- Auth / Header avatar -----
+  const authContainer = document.getElementById("auth-container");
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+  const profileImage = localStorage.getItem("profileImage") || "default-avatar.png";
+  const email = localStorage.getItem("email") || "";
+
+  if (!isLoggedIn || !email) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  // Show clickable avatar in header (even on profile page it's fine)
+  authContainer.innerHTML = "";
+  const img = document.createElement("img");
+  img.src = profileImage;
+  img.alt = "Avatar";
+  img.className = "login-icon";
+  img.style.cursor = "pointer";
+  img.addEventListener("click", () => window.location.href = "profile.html");
+  authContainer.appendChild(img);
+
+  // ----- Load profile from backend (POST, expects {success, user:{...}}) -----
+  fetch("../../backend/get_profile.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ email })
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (!data || !data.success || !data.user) throw new Error(data?.error || "Réponse invalide");
+    const u = data.user;
+
+    // Fill fields
+    document.getElementById("nom").textContent    = u.nom    || "";
+    document.getElementById("prenom").textContent = u.prenom || "";
+    document.getElementById("email").textContent  = u.email  || "";
+    document.getElementById("phone").textContent  = u.phone  || "";
+
+    // Handle contactable if backend provides it; otherwise hide the block
+    const toggle = document.getElementById("contactable-toggle");
+    const block  = document.getElementById("contactable-block");
+    if (typeof u.contactable !== "undefined" && toggle) {
+      toggle.checked = (u.contactable === 1 || u.contactable === true || u.contactable === "1");
+    } else if (block) {
+      block.style.display = "none";
+    }
+  })
+  .catch(err => {
+    console.error("Erreur lors du chargement du profil:", err);
+    alert("Impossible de charger le profil.");
+  });
+
+  // ----- Edit a single field (nom, prenom, phone) -----
+  function updateUserFields(patch) {
+    // patch: { nom?, prenom?, phone? }
+    const payload = new URLSearchParams({ email });
+    if (typeof patch.nom    !== "undefined") payload.set("nom", patch.nom);
+    if (typeof patch.prenom !== "undefined") payload.set("prenom", patch.prenom);
+    if (typeof patch.phone  !== "undefined") payload.set("phone", patch.phone);
+
+    return fetch("../../backend/update_user.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: payload
+    }).then(r => r.json());
+  }
+
+  function editField(fieldId) {
+    if (fieldId === "email") {
+      alert("La modification de l’email n’est pas supportée depuis cette page.");
+      return;
+    }
+    const span = document.getElementById(fieldId);
+    if (!span) return;
+
+    const currentValue = span.textContent.trim();
+    const label = fieldId === "nom" ? "Nom"
+                : fieldId === "prenom" ? "Prénom"
+                : fieldId === "phone" ? "Téléphone"
+                : fieldId;
+
+    const newValue = prompt(`Modifier ${label} :`, currentValue);
+    if (newValue === null || newValue === currentValue) return;
+
+    const patch = {};
+    patch[fieldId] = newValue.trim();
+
+    updateUserFields(patch)
+      .then(res => {
+        if (res && res.success) {
+          span.textContent = newValue.trim();
+          if (fieldId === "nom" || fieldId === "prenom") {
+            const nom = document.getElementById("nom").textContent.trim();
+            const prenom = document.getElementById("prenom").textContent.trim();
+            localStorage.setItem("username", [nom, prenom].filter(Boolean).join(" "));
+          }
+          alert("✅ Profil mis à jour");
+        } else {
+          alert("❌ Mise à jour échouée");
+        }
+      })
+      .catch(() => alert("❌ Erreur réseau"));
+  }
+
+  // Attach handlers to all "Modifier" buttons
+  document.querySelectorAll("button[data-edit]").forEach(btn => {
+    btn.addEventListener("click", () => editField(btn.getAttribute("data-edit")));
+  });
+
+  // ----- Contactable toggle (optional backend) -----
+  const contactToggle = document.getElementById("contactable-toggle");
+  if (contactToggle) {
+    contactToggle.addEventListener("change", () => {
+      const value = contactToggle.checked ? "1" : "0";
+      // If you have update_contactable.php, use it; otherwise extend update_user.php to accept 'contactable'
+      fetch("../../backend/update_contactable.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ email, contactable: value })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (!data || !data.success) alert("Erreur de mise à jour du statut contactable.");
+      })
+      .catch(() => alert("Erreur réseau lors de la mise à jour du statut contactable."));
+    });
+  }
+
+  // ----- Logout & Delete account -----
+  document.getElementById("logout-btn")?.addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "login.html";
+  });
+
+  document.getElementById("delete-account")?.addEventListener("click", () => {
+    if (!confirm("Supprimer définitivement votre compte ?")) return;
+
+    fetch("../../backend/delete_user.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ email })
+    })
+    .then(r => r.json())
+    .then(res => {
+      if (res && res.success) {
+        alert("🗑️ Compte supprimé");
+        localStorage.clear();
+        window.location.href = "home.html";
+      } else {
+        alert("❌ Suppression échouée");
+      }
+    })
+    .catch(() => alert("❌ Erreur réseau"));
+  });
+});
+</script>
+<!-- at the bottom of every page that has the header -->
+<script type="module">
+  import { enhanceHeader } from "../JS_Files/roles.js";
+  // runs on DOMContentLoaded inside roles.js automatically;
+  // importing once per page is enough.
+</script>
+
+</body>
+</html>

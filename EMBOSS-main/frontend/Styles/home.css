@@ -1,0 +1,675 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  background: #212D49;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* HEADER */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 13vh;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3vh 6vw;
+  background: rgba(61, 71, 93, 0.23);
+  backdrop-filter: blur(5px);
+}
+
+header .logo-title img {
+  height: 11vh;
+  width: auto;
+  display: block;
+  margin-bottom: 0vh;
+  margin-left: -3vw;
+}
+
+header .logo-title span {
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+  font-size: 2.8vw;
+  line-height: 150%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 1.5vw;
+  color: #FFFFFF;
+  margin-left: 2.5vw;
+  text-decoration: none;
+}
+nav a:hover {
+  color: #996FD1;
+}
+
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+  margin-top: 0.5vh; /* aligne les liens avec les boutons */
+  margin-left: -4vw; /* décalage à gauche */
+}
+/* Boutons d'authentification dans le header */
+.auth-button {
+  font-size: 2vh;
+  padding: 1.25vh 2.25vh;
+  margin-left: 2vh;
+  text-decoration: none;
+  border: none;
+  background-color: #5f6f96;
+  color: white;
+  border-radius: 0.5vh;
+  transition: all 0.3s ease;
+  position: relative;
+  top: 0.4vh; 
+}
+
+#signup-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#signup-button:hover + #login-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+#login-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#login-button:hover ~ #signup-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+/* HERO */
+.hero {
+  width: 100%;
+  height: 120vh; /* full screen */
+  position: relative;
+  overflow: hidden;
+  display: flex; /* clé pour centrer */
+  flex-direction: column;
+  justify-content: center; /* centrer verticalement */
+  align-items: center; /* centrer horizontalement */
+  padding-top: 12.75vh; /* laisse la place pour le header */
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh; /* au lieu de 100% ou 100vh → un peu plus long */
+  object-fit: cover;
+  opacity: 0.49; /* pour simuler l'effet Figma que tu avais mis */
+  z-index: 1;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh; /* même hauteur que .hero-image */
+  background: rgba(0, 0, 0, 0.15); /* dimmer exactement comme dans Figma */
+  z-index: 2;
+}
+
+.hero-text {
+  position: absolute;
+  top: 20%;
+  z-index: 10;
+  color: #FFFFFF;
+  text-align: center;
+  max-width: 80%;
+}
+
+
+.hero-text h1 {
+  
+  font-weight: 700;
+  font-size: 5vh;
+  line-height: 9.62vh;
+  width: 70%;
+  letter-spacing: -0.02em;
+  color: #f7f6f4;
+  margin-bottom: 5vh;
+   margin: 0 auto 5vh auto; 
+}
+
+.hero-text p {
+  font-size: 2.5vh;
+  line-height: 4.5vh;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 9vh;
+  text-align: left;
+  max-width: 44%;
+}
+
+.hero-text .cta-button {
+  background: #212D49;
+
+  color: #FFFFFF;
+  font-size: 2.8vh;
+  padding: 2vh 3.5vw;
+  border-radius: 2vh;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 11vh;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.hero-text .cta-button:hover {
+  background: #2a4585;
+}
+
+.solutions {
+  padding: 13.5vh 0;
+}
+
+.solutions h2 {
+  font-weight: 600;
+  font-size: 6.5vh;
+  color: #f4f0f8;
+  text-align: center;
+  margin-bottom: 8.5vh;
+  padding-left: 8vw;
+  padding-right: 8vw;
+}
+.solutions h2:hover{
+  color:#FE9B62;
+;
+}
+.solution-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  justify-content: center;
+}
+
+.solution-card {
+  width: 27.5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.solution-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.solution-card h3 {
+  font-weight: 501;
+  font-size: 4.5vh;
+  color: #f4f0f8;
+}
+.solution-card h3:hover {
+  color:#FE9B62;
+}
+.solution-card p {
+  font-weight: 1;
+  font-size: 4vh;
+  color: #ffffffd1;
+}
+
+.solution-card h3, .solution-card p {
+  word-wrap: break-word;       /* force le retour à la ligne au besoin */
+  hyphens: auto;               /* ajoute un trait d’union si dispo */
+}
+
+.light-section {
+  padding: 13vh 8vw;
+}
+
+.light-section h2 {
+  font-weight: 600;
+  font-size: 6vh;
+  color: #ffffff;
+  margin-bottom: 5.5vh;
+}
+.light-section h2:hover {
+  color: #FE9B62;
+}
+.light-content {
+  display: flex;
+  align-items: stretch;
+  gap: 4.5vh;
+  flex-wrap: wrap;
+}
+
+.light-content .text-block {
+  flex: 1;
+  order: 1;
+  min-width: 22.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.light-content .text-block h3 {
+  font-weight: 500;
+  font-size: 36px;
+  color: #ffffff;
+  margin-top: 24px;
+}
+.light-content .text-block h3:hover {
+  color: #FE9B62;
+}
+.light-content .text-block p {
+  font-size: 2.5vw;
+  color: #cccaca;
+}
+
+.light-content .light-image {
+  flex: 1;
+  order: 2; 
+  max-width: 42.75vw; /* limite la largeur de l'image */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+.cta-container {
+  display: flex;              
+  gap: 3vw; 
+  font-weight: 500;
+  font-size: 4.5vw;
+  line-height: 150%;
+  padding: 10vh 4vw;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.cta-projects, .cta-catalogue {
+  padding: 2.5vh 2.5vw; /* bigger padding */
+  font-size: 1.9vw;    /* bigger font */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 45px; /* curved / rounded corners */
+  font-weight: 600;    /* more bold, looks more button-like */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* soft shadow */
+}
+
+/* Default colors */
+.cta-projects {
+  background: #968cbe;
+  color: #fff;
+}
+.cta-catalogue {
+  background: #E6E6E6;
+  color: #968cbe;
+}
+
+/* When hovering PROJECTS → exchange */
+.cta-container.hover-projects .cta-projects {
+  background: #fff;
+  color: #968cbe;
+}
+.cta-container.hover-projects .cta-catalogue {
+  background: #968cbe;
+  color: #fff;
+}
+
+/* When hovering CATALOGUE → exchange */
+.cta-container.hover-catalogue .cta-projects {
+  background: #968cbe;
+  color: #fff;
+}
+.cta-container.hover-catalogue .cta-catalogue {
+  background: #fff;
+  color: #968cbe;
+}
+
+
+.testimonials {
+  padding: 10.5vh 10vw;
+  padding-top: 0;
+}
+
+.testimonials h2 {
+  font-size: 6vh;
+  font-weight: 600;
+  color: #fcf9ff;
+  text-align: left;
+  margin-bottom: 8.5vh;
+}
+.testimonials h2:hover {
+  
+  color: #FE9B62;
+  
+}
+
+.testimonial-cards {
+  display: flex;
+  overflow-x: auto;
+  gap: 32px;
+  padding-bottom: 16px;
+  scroll-snap-type: x mandatory; /* pour un scroll propre */
+}
+
+.testimonial-card {
+  flex: 0 0 auto; /* empêche le wrap */
+  width: 405px;
+  background: #182136;
+ 
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  padding: 4.5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 6.5vh;
+  scroll-snap-align: start; /* pour aligner joliment au scroll */
+}
+
+.testimonial-card p {
+  font-size: 24px;
+  font-weight: 500;
+  color: #d4d4d4;
+}
+
+.testimonial-card p:hover {
+  
+  color: #FE9B62;
+}
+
+.testimonial-avatar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.testimonial-avatar img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.testimonial-avatar span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f7f7f8;
+}
+.testimonial-cards::-webkit-scrollbar {
+  height: 8px;
+}
+
+.testimonial-cards::-webkit-scrollbar-thumb {
+  background: #FE9B62;
+  border-radius: 4spx;
+}
+
+.testimonial-cards::-webkit-scrollbar-track {
+  background: #E6E6E6;
+}
+
+footer {
+  background: #182136;
+  padding: 8vh 6vw;
+  text-align: left;
+  color: #dcd7e2;
+  font-size: 1vw;
+  border-top: 1px solid #E6E6E6;
+  margin-top: 10vh;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 1vw;
+  margin-top: 3vh;
+}
+
+footer .social-icons img {
+  width: 3vw;
+  height: 3vw;
+}
+.login-icon {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 900px) {
+  
+  .light-content .text-block p {
+    font-size: 20px; /* réduit la taille du texte */
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  
+  header .logo-title img {
+    height: 8vh;
+    margin-left: 0;
+  }
+  header {
+    height: 10vh;
+    padding: 2vh 4vw;
+  }
+  .solution-card h3 {
+    font-size: 3.2vh;
+  }
+  .solution-card p {
+    font-size: 2.5vh;
+  }
+
+}
+
+@media screen and (max-width: 714px) {
+  
+.hero-text h1 {
+    font-size: 4.5vh;
+    line-height: 8vh;
+    width: 80%;
+  }
+  .hero-text p {
+    font-size: 2.2vh;
+    max-width: 60%;
+  }
+  .hero-text .cta-button {
+    font-size: 2.5vh;
+    padding: 1.5vh 3vw;
+  }
+  
+.light-content .text-block h3 {
+    font-size: 4.1vw;
+  }
+  .light-content .text-block p {
+    font-size: 2.9vw;
+  }
+}
+
+@media screen and (max-width: 620px) {
+
+  header .logo-title img {
+    height: 6vh;
+    margin-left: 0;
+  }
+
+  header {
+    height: 9vh;
+    padding: 1.5vh 3vw;
+  }
+
+  header .logo-title span {
+    font-size: 4vw;
+  }
+
+  nav a {
+    font-size: 1.8vw;
+    margin-left: 2vw;
+  } 
+
+  .auth-button {
+    font-size: 1.8vw;
+    padding: 1vw 1.2vw;
+  }   
+}
+
+@media screen and (max-width: 518px) {
+
+  header .logo-title img {
+    height: 6vh;
+    margin-left: 0;
+  }
+
+  header {
+    height: 9vh;
+    padding: 1.5vh 3vw;
+  }
+
+  header .logo-title span {
+    font-size: 4vw;
+  }
+
+  nav a {
+    font-size: 1.8vw;
+    margin-left: 2vw;
+  } 
+
+  .auth-button {
+    font-size: 1.8vw;
+    padding: 1vw 1.2vw;
+  }   
+  
+  .hero-text h1 {
+    font-size: 4vh;
+    line-height: 7vh;
+    width: 100%;
+  }
+
+  .hero-text .cta-button {
+    margin-top: 7vw; 
+  }
+  
+  .hero-text p{
+    margin-top: 1vw;
+    font-size: 2.2vh;
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  
+  header .logo-title img {
+    height: 4vh;
+    margin-left: 0;
+  }
+
+  header {
+    height: 8vh;
+    padding: 1vh 2vw;
+  }
+
+  header .logo-title span {
+    font-size: 3.5vw;
+  }
+
+  nav a {
+    font-size: 1.5vw;
+    margin-left: 1.5vw;
+  } 
+  
+  .auth-button {
+  font-size: 1.5vw;
+  padding: 0.75vw 0.8vw;
+}
+  .light-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .light-content .text-block {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .light-content .light-image {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .light-content {
+  flex-direction: row;  /* garde la disposition horizontale */
+  flex-wrap: wrap;
+  }
+  .light-content .text-block {
+    width: 100%; /* sur petit écran, le texte prend toute la largeur à gauche */
+  }
+  .light-content .light-image {
+    width: 100%; /* et l'image prend toute la largeur à droite */
+  }
+  
+  .solution-cards {
+    flex-direction: column;
+    align-items: center; /* centre les cartes */
+  }
+
+  .solution-card {
+    width: 90%; /* les cartes prennent presque toute la largeur */
+    max-width: 320px; /* optionnel : limite pour éviter qu'elles ne soient trop larges */
+  }
+  .solutions h2 {
+    font-size: 7.5vw ;
+  }
+  .light-section h2 {
+    font-size: 7.5vw;
+    margin-bottom: 1vw;
+  }
+  .cta-container {
+    padding: 7vh 4vw;
+  }
+  .cta-projects, .cta-catalogue {
+    font-size: 3.5vw; /* taille de police plus grande */
+    padding: 2vh 3vw; /* padding plus grand */
+    border-radius: 35px; /* coins arrondis plus grands */
+  }
+  .testimonials h2 {
+    font-size: 7.5vw;
+  }
+  .testimonial-card {
+    width: 90%; /* les cartes prennent presque toute la largeur */
+    max-width: 320px; /* optionnel : limite pour éviter qu'elles ne soient trop larges */
+  }
+  .testimonial-card p {
+    font-size: 4vw; /* taille de police plus grande */
+  }
+}
+/* optional */
+.admin-only { font-weight: 600; }
+.auth-box { display:inline-flex; gap:.5rem; align-items:center; margin-left:1rem; }
+.btn-logout { padding:.35rem .6rem; border-radius:.5rem; border:1px solid #ccc; background:#f8f8f8; cursor:pointer; }

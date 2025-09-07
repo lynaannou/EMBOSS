@@ -1,0 +1,599 @@
+@import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  background: #212D49;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+/* HEADER */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 13vh;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3vh 6vw;
+  background: rgba(61, 71, 93, 0.23);
+  backdrop-filter: blur(5px);
+}
+
+header .logo-title img {
+  height: 11vh;
+  width: auto;
+  display: block;
+  margin-bottom: 0vh;
+  margin-left: -3vw;
+}
+
+header .logo-title span {
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+  font-size: 2.8vw;
+  line-height: 150%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
+  font-size: 1.5vw;
+  color: #FFFFFF;
+  margin-left: 2.5vw;
+  text-decoration: none;
+}
+nav a:hover {
+  color: #996FD1;
+}
+
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+  margin-top: 0.5vh; /* aligne les liens avec les boutons */
+  margin-left: -4vw; /* décalage à gauche */
+}
+/* Boutons d'authentification dans le header */
+.auth-button {
+  font-size: 16px;
+  padding: 10px 18px;
+  margin-left: 16px;
+  text-decoration: none;
+  border: none;
+  background-color: #5f6f96;
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+  top: 4px;
+}
+
+#signup-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#signup-button:hover + #login-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+#login-button:hover {
+  background-color: white;
+  color: #5f6f96;
+}
+#login-button:hover ~ #signup-button {
+  background-color: #5f6f96;
+  color: white;
+}
+
+
+/* HERO */
+.hero {
+  width: 100%;
+  height: 120vh;/* full screen */
+  position: relative;
+  overflow: hidden;
+  display: flex; /* clé pour centrer */
+  flex-direction: column;
+  justify-content: center; /* centrer verticalement */
+  align-items: center; /* centrer horizontalement */
+  padding-top: 102px; /* laisse la place pour le header */
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh; /* au lieu de 100% ou 100vh → un peu plus long */
+  object-fit: cover;
+  opacity: 0.49; /* pour simuler l'effet Figma que tu avais mis */
+  z-index: 1;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120vh; /* même hauteur que .hero-image */
+  background: rgba(0, 0, 0, 0.15); /* dimmer exactement comme dans Figma */
+  z-index: 2;
+}
+
+.hero-text {
+  position: absolute;
+  top: 45%;
+  z-index: 10;
+  color: #FFFFFF;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -7%;
+}
+
+
+.hero-text h1 {
+  font-family: 'Italiana';
+  font-weight: 400;
+  font-size: 6.5vw;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  
+}
+
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(189, 189, 189, 0.75);
+  font-family: 'Inter', sans-serif;
+  margin-top: 20px;
+  padding: 20px  20px;
+}
+
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  background: linear-gradient(to bottom, #ebe3e0 0%, #cca46b 100%);
+  padding: 100px 60px;
+}
+
+.section-title {
+  width: 100%;
+  font-family: 'Italiana', serif;
+  font-size: 48px;
+  text-align: center;
+  color: #212D49;
+  margin-bottom: 60px;
+}
+
+.product-block {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  width: 300px;
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  color: #26314a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.product-block:hover {
+  transform: translateY(-8px);
+}
+
+.product-block img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.product-name {
+  font-weight: 700;
+  font-family: 'Numans', sans-serif;
+  font-size: 100px;
+  margin-bottom: 8px;
+  color: #26282f;
+}
+.product-desc {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.view-button {
+  background: transparent;
+  border: 1px solid #26314a;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #182136;
+}
+.view-button:hover {
+  background-color: #26314a;
+  color: white;
+}
+
+
+footer {
+  background: #182136; 
+  padding: 80px;
+  text-align: left;
+  color: #dcd7e2;
+  font-size: 14px;
+  border-top: 1px solid #E6E6E6;
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+footer .social-icons img {
+  width: 40px;
+  height: 40px;
+}
+.carousel-section {
+  background: linear-gradient(to bottom, #ebe3e0, #EBE3E0);
+  padding: 60px 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-wrapper {
+ position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* ensures room for side peeking */
+}
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  flex: 0 0 10vw; /* or use 50% if you want full center at edges */
+}
+
+.carousel-container {
+  display: flex;
+  gap: 25vw;
+  overflow-x: hidden; 
+  padding: 60px 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+/* Conteneur de la carte produit */
+.product-card {
+  flex: 0 0 80%;
+  max-width: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transform: scale(0.9);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+/* Image de la carte */
+.product-image {
+  width: 100%;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Texte du nom du produit */
+.product-title {
+  font-size: 24px;
+  font-family: 'Bastliga One', serif;
+  color: #212D49;
+  padding: 12px 0;
+  text-align: center;
+}
+
+
+.product-card.active {
+  transform: scale(1.05);
+  opacity: 1;
+  z-index: 2;
+}
+
+.product-title p {
+   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centre parfaitement */
+  color: #26282F;
+  font-size: 140px;
+  font-family: 'Italiana', sans-serif;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  text-align: center;
+  padding: 0 10px;
+  z-index: 2;
+  
+}
+
+
+
+
+.arrow {
+  display: flex;                 /* ajoute cette ligne */
+  align-items: center;           /* centre verticalement */
+  justify-content: center; 
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7vw;               
+  height: 7vw;
+  font-size: 4vw;
+  background: #d9d9d97c;
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 100;
+  border: white 0.6vh solid;
+  box-shadow: 0 1.2% 3.5% rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  line-height: 0;
+  padding-bottom: 0.01vw;
+}
+
+.arrow.left {
+  left: 2%;
+  padding-right: 0.4vw;
+}
+
+.arrow.right {
+  right: 2%;
+  padding-left: 0.4vw;
+}
+
+.arrow:hover {
+  transform: translateY(-50%) scale(1.2);/* enlarge on hover */
+}
+
+
+.hidden {
+  display: none;
+}
+.font-bastliga {
+  font-family: 'Bastliga One', serif !important;
+  font-size: 50px;
+}
+.font-dune {
+  font-family: 'Prata', serif !important;
+  font-size: 50;
+}
+.font-line {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.font-water {
+  font-family: 'Water Brush', cursive;
+}
+.font-quilted {
+  font-family: 'Playfair Display', serif;
+
+}
+.font-italiana {
+  font-family: 'Italiana', serif;
+}
+
+
+@font-face {
+  font-family: 'Bastliga One';
+  src: url('../Fonts/bastliga-one.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+#login-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.popup-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup-box {
+  position: relative;
+  z-index: 10001;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  font-family: 'Inter', sans-serif;
+}
+
+.popup-box h2 {
+  margin-bottom: 15px;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.popup-buttons a {
+  padding: 10px 15px;
+  background: #111;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.popup-buttons .return-home {
+  background: #888;
+}
+.login-icon {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 12px;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 1070px) {
+  .carousel-container {
+    gap: 20vw; /* réduit l'espace entre les cartes */
+  }
+  .arrow {
+    height: 9vw;
+    width: 9vw;
+    border : 0.4vw solid white;
+  }
+}
+@media screen and (max-width: 885px) {
+  .hero-text h1 {
+    font-size: 12vw;
+  }
+  .carousel-container {
+    gap: 15vw; /* réduit l'espace entre les cartes */
+  }
+ 
+}
+@media screen and (max-width: 768px) {
+  
+  header .logo-title img {
+    height: 8vh;
+    margin-left: 0;
+  }
+  header {
+    height: 10vh;
+    padding: 2vh 4vw;
+  }
+  .hero-text h1 {
+    font-size: 11vw;
+  }
+  .hero {
+    height: 100vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-image {
+    height: 100vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-text {
+    top: 40%;
+    padding: 0 10px;
+  }
+  .product-image {
+    height: 300px; /* ajuste la hauteur pour les petits écrans */
+    width: 300px; /* ajuste la largeur pour les petits écrans */
+  }
+  .product-card {
+    max-width: 300px;
+  }
+
+  .carousel-container {
+    gap: 20vw; /* réduit l'espace entre les cartes */
+  }
+
+  .arrow {
+    height: 9vw;
+    width: 9vw;
+    font-size: 3.5vw;
+    border: 0.3vw solid white;
+  }
+
+}
+
+@media screen and (max-width: 550px) {
+  .hero-text h1 {
+    font-size: 15vw;
+  }  
+  .contact-card {
+    margin-top: 17vw;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .hero::before {
+    height: 90vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero {
+    height: 90vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-image {
+    height: 90vh; /* ajuste la hauteur pour les petits écrans */
+  }
+  .hero-text {
+    top: 30%;
+    padding: 0 10px;
+  }
+  .hero-text p {
+    font-size: 17px;
+    padding: 0 10px;
+  }
+  .product-image {
+    height: 220px;
+    width: 220px;
+  }
+  .product-card {
+    max-width: 220px;
+  }
+  .arrow {
+    height: 10vw;
+    width: 10vw;
+    font-size: 3.5vw;
+    border: 0.5vw solid white;
+  }
+.carousel-section{
+  padding: 30px 0;
+}
+.carousel-container {
+  gap: 15vw; /* réduit l'espace entre les cartes */
+}
+}
