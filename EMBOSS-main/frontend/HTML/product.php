@@ -81,7 +81,7 @@ foreach ($raw_variantes as $row) {
 
 <div class="page-product-container">
   <div class="page-product-left">
-   <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image" />
+   <img src="../../backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image" />
    <h2><?= htmlspecialchars($model['nommodel']) ?></h2>
    <p><?= htmlspecialchars($model['texte']) ?></p>
    <h1><span class="split-word">EMB<br>OSS</span></h1>
@@ -112,7 +112,7 @@ foreach ($raw_variantes as $row) {
         <?php endforeach; ?>
       </div>
       <div class="image-wrapper">
-        <img src="/backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image1" id="mainProductImage" />
+        <img src="../../backend/image.php?id=<?= $model['idmodel'] ?>" alt="Image-produit" class="product-image1" id="mainProductImage" />
         <div class="image-overlay" id="imageOverlay"></div>
       </div>
    </div>
