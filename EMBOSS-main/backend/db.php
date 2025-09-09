@@ -4,7 +4,7 @@ $host = 'localhost';
 $port = '5432';
 $db   = 'emboss';        // your database name
 $user = 'postgres';      // your db user
-$pass = 'amira'; // your db password
+$pass = '24Avril2006/'; // your db password
 
 $dsn = "pgsql:host=$host;port=$port;dbname=$db;options='--client_encoding=UTF8'";
 $pdo = new PDO($dsn, $user, $pass, [

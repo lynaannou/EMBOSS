@@ -31,22 +31,21 @@ header {
 }
 
 header .logo-title img {
-    height: 200px; /* taille du logo adaptée à la ligne du menu */
-    width: auto;
-    display: block; /* pour s'assurer que l'image est un bloc */
-    margin-bottom: -15px; /* espace entre le logo et le titre */
-    margin-left: -80px;
+  height: 11vh;
+  width: auto;
+  display: block;
+  margin-bottom: 0vh;
+  margin-left: -3vw;
 }
 
 header .logo-title span {
-    font-family: 'Italiana', serif;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 150%;
-    letter-spacing: 0;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center; /* centre le texte verticalement aussi */
+  font-family: 'Italiana', serif;
+  font-weight: 400;
+  font-size: 2.8vw;
+  line-height: 150%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
 }
 
 nav {
@@ -105,34 +104,43 @@ nav a:hover {
   color: white;
 }
 
-.profile-container {
-    display: flex;
-    flex-wrap: wrap;/* allow wrapping for smaller screens */
-    align-items: flex-start; /* align items to the top */
-    justify-content: space-between;
-    gap: 40px;
-    max-width: 1400px;
-    margin: 180px auto;
-    padding: 0 40px;
-}
+
 
 .profile-card {
     background: #EBE3E0;
-    border-radius: 45px;
+    border-radius: 4vw;
     padding: 40px 80px;
     max-width: 850px;
-    margin-top: 180px; /* space from the top */
-    margin-left: 25px;         /* stick to left side of container */
+    margin: 25vh auto 0 auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
-    z-index: 1;
+    height: auto;
+
 }
 .profile-card h1 {
-    font-family: 'Italiana', cursive;
-    font-size: 36px;
+    font-family: 'Italiana';
     color: #212D49;
-    margin-bottom: 24px;
+    margin-bottom: 3vh;
+    font-size: 4vw;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    margin-bottom: 5vw;
 }
+.info-block {
+  display: flex;
+  justify-content: space-between; /* espace entre texte et bouton */
+  align-items: center; /* aligne verticalement */
+  margin-bottom: 3vw; /* espace entre les blocs */
+}
+
+.info-block p {
+  margin: 0; /* enlève la marge par défaut du <p> */
+  flex: 1;   /* le texte prend toute la largeur restante */
+  font-size: 1.5vw;
+  color: #212D49;
+  font-weight: 500;
+}
+
 /* Add this to your CSS file */
 .switch {
   position: relative;
@@ -174,9 +182,9 @@ input:checked + .slider:before {
 button {
     background: rgba(200, 175, 141, 0.85);
     color: #FFFFFF;
-    font-size: 32px;
+    font-size: 1.5vw;
     font-weight: 50;
-    padding: 12px 32px;
+    padding: 0.7vw 2.1vw;
     border: none;
     border-radius: 45px;
     cursor: pointer;
@@ -185,12 +193,13 @@ button {
 }
 
 footer {
-  background: #182136; 
-  padding: 80px;
+  background: #182136;
+  padding: 8vh 6vw;
   text-align: left;
   color: #dcd7e2;
-  font-size: 14px;
+  font-size: 1vw;
   border-top: 1px solid #E6E6E6;
+  margin-top: 10vh;
 }
 
 footer .social-icons {

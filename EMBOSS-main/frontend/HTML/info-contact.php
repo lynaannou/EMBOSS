@@ -26,7 +26,6 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <a href="home.html">HOME</a>
       <a href="product.php">PRODUCT</a>
       <a href="catalogue.php">CATALOGUE</a>
-      <a href="#">PROJECTS</a>
       <a href="contact.html">CONTACT</a>
     </nav>
     </header>

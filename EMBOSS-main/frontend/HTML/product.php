@@ -64,7 +64,6 @@ foreach ($raw_variantes as $row) {
   <div class="menu-group">
     <a href="home.html">HOME</a>
     <a href="catalogue.php">CATALOGUE</a>
-    <a href="#">PROJECTS</a>
     <a href="contact.html">CONTACT</a>
   <div id="auth-container">
   <a href="user.html" class="auth-button" id="signup-button">Sign Up</a>

@@ -212,7 +212,6 @@ nav a:hover {
 .social-buttons {
   display: flex;
   justify-content: center;
-  gap: 4vw;
   margin-top: 2vh;
 }
 
