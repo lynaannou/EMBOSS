@@ -341,7 +341,6 @@ nav a:hover {
   height: 3vw;
   border-radius: 50%;
   object-fit: cover;
-  margin-left: 12px;
   vertical-align: middle;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -423,7 +422,24 @@ footer .social-icons img:hover {
   display: flex;
   align-items: center;       /* centre verticalement les deux colonnes */
 }
-@media screen and (max-width: 768px) {
+
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+  margin-top: 0.5vh; /* aligne les liens avec les boutons */
+  margin-left: -4vw; /* décalage à gauche */
+}
+
+body.role-admin nav a {
+  font-size: 1vw !important;
+}
+
+body.role-admin .menu-group {
+  gap: 1.5vw !important;
+}
+
+@media screen and (max-width: 790px) {
 .add-card {
   margin-top: 1.5vw;
   border-radius: 35px;
@@ -464,8 +480,25 @@ header .logo-title img {
   .right-section {
     gap : 2.5vw; /* Augmente l'espace entre les éléments */
   }
+  body.role-admin nav a {
+  font-size: 1.7vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 1.7vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
+  }
 }
 @media screen and (max-width: 580px) {
+
+header .logo-title img {
+    height: 8vw;
+    margin-left: 0;
+}
 .section:first-of-type {
   padding-top: 20vw; 
 }
@@ -509,6 +542,10 @@ header .logo-title img {
   font-size: 2.5vw;
   padding: 1vw 1.5vw;
 }
+  body.role-admin nav a {
+  font-size: 2vw !important;
+  }
+
 }
 @media screen and (max-width: 399px) {
    header .logo-title img {
@@ -528,5 +565,18 @@ header .logo-title img {
   nav a {
     font-size: 1.7vw;
     margin-left: 1.2vw;
+  }
+
+  body.role-admin nav a {
+  font-size: 2vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 2vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
   }
 }

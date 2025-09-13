@@ -198,11 +198,34 @@ footer .social-icons img {
 footer .social-icons img:hover {
   transform: scale(1.1);
 }
+.login-icon {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.menu-group {
+  display: flex;
+  align-items: center;
+  gap: 4vw;
+  margin-top: 0.5vh; /* aligne les liens avec les boutons */
+  margin-left: -4vw; /* décalage à gauche */
+}
+
+body.role-admin nav a {
+  font-size: 1vw !important;
+}
+
+body.role-admin .menu-group {
+  gap: 1.5vw !important;
+}
 
 @media screen and (max-width: 768px) {
   header {
     height: auto;
-    flex-direction: column;
     align-items: center;
     padding: 2vh 4vw;
   }
@@ -223,6 +246,18 @@ footer .social-icons img:hover {
     max-width: 100%;
     width: 100%;
   }
+    body.role-admin nav a {
+  font-size: 1.7vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 1.7vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
+  }
 }
 
 
@@ -233,7 +268,7 @@ footer .social-icons img:hover {
   }
 
   header .logo-title img {
-    height: 2vh;
+    height: 10vw;
     margin-left: 0;
   }
 
@@ -270,7 +305,7 @@ footer .social-icons img:hover {
   }
 
   .message-form label {
-    font-size: 3vw;
+    font-size: 3.5vw;
   }
 
   .message-form input,
@@ -279,7 +314,7 @@ footer .social-icons img:hover {
   }
 
   .message-form button {
-    font-size: 4vw;
+    font-size: 4.5vw;
     padding: 1.5vh;
   }
 
@@ -291,5 +326,33 @@ footer .social-icons img:hover {
     width: 6vw;
     height: 6vw;
   }
-}
+  .contacts-table th {
+    font-size: 3vw;
+  }
+    body.role-admin nav a {
+  font-size: 2.25vw !important;
+  }
 
+  body.role-admin .menu-group {
+    gap: 2vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
+  }
+}
+@media screen and (max-width: 580px) {
+  .contacts-table th {
+    font-size: 3vw;
+  }
+  .message-form button {
+    font-size: 4.5vw;
+  }
+  .message-form label {
+    font-size: 3vw; 
+  }
+  .footer p {
+    font-size: 10vw;
+  }
+}

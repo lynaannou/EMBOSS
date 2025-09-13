@@ -30,10 +30,15 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
             
         </div>
         <nav>
-      <a href="home.html">HOME</a>
-      <a href="product.php">PRODUCT</a>
-      <a href="catalogue.php">CATALOGUE</a>
-      <a href="contact.html">CONTACT</a>
+    <div class="menu-group">
+    <a href="home.html">HOME</a>
+    <a href="catalogue.php">CATALOGUE</a>
+    <a href="contact.html">CONTACT</a>
+      <div id="auth-container">
+        <img id="profile-pic" class="login-icon" style="display: none;" />
+      </div>
+
+  </div>
     </nav>
     </header>
     <div class="section">

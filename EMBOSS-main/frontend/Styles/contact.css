@@ -316,6 +316,13 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+body.role-admin nav a {
+  font-size: 1vw !important;
+}
+
+body.role-admin .menu-group {
+  gap: 1.5vw !important;
+}
 
 @media screen and (max-width: 768px) {
   
@@ -419,4 +426,111 @@ input[type="checkbox"] {
    .contact-card form input, .contact-card form textarea {
     border-radius: 4px; /* smaller border radius for inputs */
    }
+}
+@media screen and (max-width: 500px) {
+   header .logo-title img {
+    height: 10vw;
+    margin-left: 10px;
+  }
+
+  header {
+    height: 8vh;
+    padding: 1vh 2vw;
+  }
+
+  header .logo-title span {
+    font-size: 3.5vw;
+  }
+
+  nav a {
+    font-size: 1.7vw;
+    margin-left: 1.2vw;
+  }
+
+  body.role-admin nav a {
+  font-size: 2vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 2vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
+  }
+
+  .foot {
+    font-size: 3vw;
+  }
+  footer .social-icons img {
+    width: 6vw;
+    height: 6vw;
+  }
+   .contact-container {
+    display: flex;
+    flex-direction: column; /* empile les éléments */
+    align-items: center;    /* centre horizontalement */
+    gap: 20px;              /* espace entre les blocs */
+
+  }
+
+  .contact-card {
+    max-width: 90%;  /* prend presque toute la largeur */
+    margin: 12vh auto 5vh auto;  /* centre horizontalement */
+    padding: 3.7vw 6vw; /* ajuste le padding */
+  }
+  .contact-card h1 {
+    font-size: 4vw; /* augmente la taille du texte */
+  }
+  .contact-card form label {
+    font-size: 3vw; /* augmente la taille du texte */
+  }
+  .contact-card form input,
+  .contact-card form textarea {
+    font-size: 3vw; /* augmente la taille du texte */
+    padding: 1vw;  /* augmente le padding */
+    border-radius: 9px; /* arrondit les bords */
+  }
+
+  .contact-info {
+    position: static;  /* supprime l’absolu */
+    width: 90%;        /* même largeur que contact-card */
+    transform: none;   /* enlève le décalage */
+    margin: 0 auto;    /* centre horizontalement */
+  }
+  .info-block {
+    width: 100%;
+    padding: 3vw; /* augmente le padding */
+  }
+  .contact-info h1 {
+    font-size: 3vw; /* augmente la taille du texte */
+    width: 90%;
+    margin-bottom: 17px;
+  }
+  .contact-info .address,
+  .contact-info .phone,
+  .contact-info .email {
+    font-size: 2.5vw;  
+  }
+  p {
+    margin-top: 17px;
+    margin-bottom: 17px;
+    font-size: 2.5vw;
+  }
+  .social-icons img {
+    width: 5vw;
+    height: 5vw;
+ }
+ .checkbox-label {
+    font-size: 2.5vw;
+   }
+  input[type="checkbox"] {
+    margin-left: auto;
+    margin-top: 20px;
+  }
+  .contact-info img {
+    width: 3.5vw;
+    height: 3.5vw;
+  }
 }

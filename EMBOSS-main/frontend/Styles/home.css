@@ -12,9 +12,25 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   color: #000;
-  background: #212D49;
+   /* #212D49 est répété pour être plus présent */
+ background: linear-gradient(-47deg, 
+    #fe9b62b0, 
+    #775f96e8, 
+    #212D49, 
+    #212D49, 
+    #212D49, 
+    #212D49
+  );
+  background-size: 400% 400%; /* Pour permettre l’animation */
+  animation: gradientMove 10s ease infinite;
 }
 
+/* Animation simple */
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -53,6 +69,11 @@ header .logo-title span {
   color: #FFFFFF;
   display: flex;
   align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
 }
 
 nav a {
@@ -455,10 +476,17 @@ footer .social-icons img {
   height: 3vw;
   border-radius: 50%;
   object-fit: cover;
-  margin-left: 12px;
   vertical-align: middle;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+
+body.role-admin nav a {
+  font-size: 1vw !important;
+}
+
+body.role-admin .menu-group {
+  gap: 1.5vw !important;
 }
 
 
@@ -485,6 +513,18 @@ footer .social-icons img {
   }
   .solution-card p {
     font-size: 2.5vh;
+  }
+    body.role-admin nav a {
+  font-size: 1.7vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 1.7vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
   }
 
 }
@@ -668,8 +708,43 @@ footer .social-icons img {
   .testimonial-card p {
     font-size: 4vw; /* taille de police plus grande */
   }
+     body.role-admin nav a {
+  font-size: 2.25vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 2vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
+  }
+  nav {
+  display: flex;
+  justify-content: center;
+  align-items: right;
+}
 }
 /* optional */
-.admin-only { font-weight: 600; }
+.admin-only {   
+  font-weight: 500;
+  font-size: 1.5vw;
+  color: #FFFFFF;
+  margin-left: 2.5vw;
+  text-decoration: none;
+}
 .auth-box { display:inline-flex; gap:.5rem; align-items:center; margin-left:1rem; }
-.btn-logout { padding:.35rem .6rem; border-radius:.5rem; border:1px solid #ccc; background:#f8f8f8; cursor:pointer; }
+.btn-logout { 
+  font-size: 2vh;
+  padding: 1.25vh 2.25vh;
+  margin-left: 2vh;
+  text-decoration: none;
+  border: none;
+  background-color: #5f6f96;
+  color: white;
+  border-radius: 0.5vh;
+  transition: all 0.3s ease;
+  position: relative;
+  top: 0.4vh; 
+}

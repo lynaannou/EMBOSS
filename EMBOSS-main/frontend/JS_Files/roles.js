@@ -29,15 +29,21 @@ export function enhanceHeader() {
     const adminLinks = [
       
       { href: "admin/users.html", text: "USERS" },
-      { href: "info-contact.php", text: "Mass Emails" },
-      { href: "add.php", text: "Ajouter" },
+      { href: "info-contact.php", text: "MASS EMAILS" },
+      { href: "add.php", text: "AJOUTER" },
     ];
     adminLinks.forEach(l => {
       const a = document.createElement("a");
       a.href = l.href;
       a.textContent = l.text;
-      a.className = "admin-only";
-      nav.appendChild(a);
+      a.className = "nav";
+      const menuGroup = nav.querySelector(".menu-group");
+        const authContainer = menuGroup.querySelector("#auth-container");
+
+        if (menuGroup && authContainer) {
+          menuGroup.insertBefore(a, authContainer); // 👈 avant le bloc login/signup
+        }
+
     });
     document.body.classList.add("role-admin");
   } else {
@@ -47,16 +53,25 @@ export function enhanceHeader() {
   // Right-side auth box (email + logout)
   const box = document.createElement("div");
   box.className = "auth-box";
+  if (isLoggedIn() && getEmail()) {
   box.innerHTML = `
-    <span class="auth-email">${getEmail() || "Guest"}</span>
-    <button id="logoutBtn" class="btn-logout">Logout</button>
+ 
   `;
   nav.appendChild(box);
 
-  box.querySelector("#logoutBtn").addEventListener("click", () => {
-    localStorage.clear();
-    window.location.href = "login.html";
-  });
+ }
+   // Right-side auth box (utilise l'icône déjà dans home.html)
+  const loginIcon = document.querySelector(".login-icon");
+  const menuGroup = nav.querySelector(".menu-group");
+
+  if (isLoggedIn() && getEmail() && loginIcon) {
+    loginIcon.style.display = "inline-block";
+    loginIcon.src = localStorage.getItem("profileImage") || "default-avatar.png";
+    loginIcon.alt = "Profil utilisateur";
+    loginIcon.title = getEmail(); // <-- email affiché au survol
+    menuGroup.appendChild(loginIcon);
+  }
+
 }
 
 /** Guard for admin-only pages */

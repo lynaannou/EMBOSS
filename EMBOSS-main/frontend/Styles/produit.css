@@ -230,7 +230,19 @@ nav a:hover {
   position: relative;
   margin-top: 10vw;
 }
-
+.project-content {
+  padding: 4vw;
+  overflow-y: auto;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+.project-content p {
+  margin-bottom: 2vw;
+  font-size: 2.5vw;
+  color: #a5a5a5;
+  text-align: center;
+}
 .arrow-icon.reverse {
   transform: rotate(180deg);
 }
@@ -261,14 +273,6 @@ nav a:hover {
 }
 
 
-footer {
-  background: #182136; 
-  padding: 80px;
-  text-align: left;
-  color: #dcd7e2;
-  font-size: 14px;
-  border-top: 1px solid #E6E6E6;
-}
 footer {
   background: #182136;
   padding: 8vh 6vw;
@@ -419,14 +423,7 @@ display: block;
     margin-top: 2vw;
     text-indent: 2vw
 }
-/*.matiere-item {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 2vw;
-  padding-left: 5vw;
-  gap: 30px;  espace entre nom et couleurs 
-}*/
+
 
 .page-product-left h1 {
   position: absolute;
@@ -493,3 +490,114 @@ display: block;
   position: relative;
 }
 
+body.role-admin nav a {
+  font-size: 1.2vw !important;
+}
+
+body.role-admin .menu-group {
+  gap: 2vw !important;
+}
+@media screen and (max-width: 500px) {
+   header .logo-title img {
+    height: 10vw;
+    margin-left: 10px;
+  }
+
+  header {
+    height: 8vh;
+    padding: 1vh 2vw;
+  }
+
+  header .logo-title span {
+    font-size: 3.5vw;
+  }
+
+  nav a {
+    font-size: 1.7vw;
+    margin-left: 1.2vw;
+  }
+
+  body.role-admin nav a {
+  font-size: 2vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 2vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
+  }
+  .page-product-container {
+    flex-direction: column; /* ✅ passe en colonne */
+  }
+
+  .page-product-right,
+  .page-product-project {
+    width: 100% !important;   /* ✅ prend toute la largeur */
+    height: 145vw !important;
+    margin-top: 0 !important; /* ajuste le margin si nécessaire */
+  }
+  .page-product-left {
+    width: 100% !important;  /* ✅ prend toute la largeur */
+    height: 140vw !important;
+    margin-top: 8vh !important; /* ajuste le margin si nécessaire */
+    box-shadow: none;
+  }
+
+  .page-product-slider {
+    width: 100% !important; 
+    margin-top: 0 !important;
+  }
+
+  .page-product-wrapper {
+    width: 100% !important;
+  }
+  .product-info p {
+    text-align: center;
+    font-size: 3.2vw;
+    color: rgba(141, 141, 141, 0.927);
+    padding: 0 4vw;
+  }
+  .matiere-name {
+    font-size: 4vw;
+    min-width: 20vw;  /* ajuste cette largeur pour qu’ils soient tous alignés */
+    width: 20vw;       /* fixe la largeur au lieu de min-width */
+    margin-right: 7vw; 
+  }
+  .product-materials {
+    margin-top: 2vw;
+  }
+  .matiere-couleurs {
+    gap: 4.5vw; /* espace entre les couleurs */
+  }
+  .couleur {
+    width: 6vw;
+    aspect-ratio: 1 / 1; 
+    height: 6vw;
+  }
+  #mainProductImage {
+    height: 40vw;
+  }
+  .product-image {
+    height: 35vw;
+  }
+  .page-product-left p {
+    font-size: 3.2vw;
+    color: rgba(141, 141, 141, 0.927);
+    max-width: 75%;
+    margin-left: 15vw;
+  }
+  .product-materials {
+    max-height: 40%; /* réduit la hauteur maximale */
+    padding: 0 5vw; /* ajoute du padding horizontal */
+  }
+  footer {
+    font-size: 3vw;
+  }
+  footer .social-icons img {
+    width: 6vw;
+    height: 6vw;
+  }
+}

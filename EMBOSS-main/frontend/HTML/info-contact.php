@@ -12,6 +12,7 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contacts - EMBOSS</title>
   <link rel="stylesheet" href="../Styles/info-contact.css" />
 </head>
@@ -23,10 +24,15 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
         </div>
         <nav>
+    <div class="menu-group">
       <a href="home.html">HOME</a>
-      <a href="product.php">PRODUCT</a>
       <a href="catalogue.php">CATALOGUE</a>
       <a href="contact.html">CONTACT</a>
+      <div id="auth-container">
+        <img id="profile-pic" class="login-icon" style="display: none;" />
+      </div>
+
+    </div>
     </nav>
     </header>
  <h1>Centre de contact</h1>

@@ -128,7 +128,11 @@ foreach ($raw_variantes as $row) {
         <div class="page-product-project">
           <div class="marge-top"><h1>Projets</h1></div>
             <div class="project-content">
-            
+             <p>
+                ""Nous vous prions de bien vouloir nous excuser, aucun projet n’est actuellement disponible.  
+                De nouvelles réalisations seront prochainement publiées dans cet espace.  
+                Nous vous remercions de votre compréhension et de l’intérêt porté à notre travail.""
+            </p>
             </div>
            <div class="marge-bottom">
                 <button class="arrow-button" id="backButton">

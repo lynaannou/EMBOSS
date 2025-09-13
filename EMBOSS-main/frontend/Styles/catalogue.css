@@ -484,8 +484,16 @@ footer .social-icons img {
   vertical-align: middle;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  aspect-ratio: 1 / 1; 
 }
 
+body.role-admin nav a {
+  font-size: 1.5vw !important;
+}
+
+body.role-admin .menu-group {
+  gap: 1.5vw !important;
+}
 
 @media screen and (max-width: 1070px) {
   .carousel-container {
@@ -557,6 +565,18 @@ footer .social-icons img {
   .contact-card {
     margin-top: 17vw;
   }
+  body.role-admin nav a {
+  font-size: 1.7vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 1.7vw !important;
+  }
+
+  .login-icon {
+    width: 5vw;
+    height: 5vw;
+  }
 }
 
 @media screen and (max-width: 399px) {
@@ -596,4 +616,20 @@ footer .social-icons img {
 .carousel-container {
   gap: 15vw; /* réduit l'espace entre les cartes */
 }
+  body.role-admin nav a {
+  font-size: 2vw !important;
+  }
+
+  body.role-admin .menu-group {
+    gap: 2vw !important;
+  }
+
+  .login-icon {
+    width: 5.2vw;
+    height: 5.2vw;
+  }
+    header .logo-title img {
+    height: 4vh;
+    margin-left: 0;
+  }
 }
