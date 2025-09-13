@@ -201,24 +201,7 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
   }
 </script>
 
-<script>
-  const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-  const profileImageUrl = localStorage.getItem('profileImage');
 
-  
-  const authContainer = document.getElementById('auth-container');
-
-  if (isLoggedIn && profileImageUrl) {
-    authContainer.innerHTML = '';
-
-    const icon = document.createElement('img');
-    icon.classList.add('login-icon');
-    icon.src = profileImageUrl;
-    icon.alt = 'Profil utilisateur';
-
-    authContainer.appendChild(icon);
-  }
-</script>
 <!-- at the bottom of every page that has the header -->
 <script type="module">
   import { enhanceHeader } from "../JS_Files/roles.js";

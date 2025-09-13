@@ -551,6 +551,9 @@ body.role-admin .menu-group {
   .light-content .text-block p {
     font-size: 2.9vw;
   }
+  p {
+    font-size: 2vw;
+  }
 }
 
 @media screen and (max-width: 620px) {
@@ -578,6 +581,9 @@ body.role-admin .menu-group {
     font-size: 1.8vw;
     padding: 1vw 1.2vw;
   }   
+  p {
+    font-size: 2.5vw;
+  }
 }
 
 @media screen and (max-width: 518px) {
@@ -725,6 +731,13 @@ body.role-admin .menu-group {
   justify-content: center;
   align-items: right;
 }
+p {
+    font-size: 2.5vw;
+  }
+  footer .social-icons img {
+    width: 6vw;
+    height: 6vw;
+  }
 }
 /* optional */
 .admin-only {   
@@ -746,5 +759,6 @@ body.role-admin .menu-group {
   border-radius: 0.5vh;
   transition: all 0.3s ease;
   position: relative;
-  top: 0.4vh; 
+  top: 0.4vh;
+   
 }
