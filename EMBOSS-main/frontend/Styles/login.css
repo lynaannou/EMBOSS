@@ -104,6 +104,14 @@ nav a:hover {
   display: block;
 }
 
+.login h3 {
+  font-family: 'Italiana';
+  color: #212D49;
+  margin-bottom: 3vh;
+  font-size: 6.9vw;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
 .login h1 {
   font-family: 'Italiana';
   color: #212D49;
@@ -315,7 +323,18 @@ footer .social-icons img:hover {
     transform: scale(0.5); /* Réduit la taille à 75% */
     
   }
-  
+  .login h2 {
+    margin-bottom: 0;
+    font-size: 2vw;
+    margin-top: 10px;
+  }
+  .login-link a {
+    font-size: 2vw;
+    margin-top: 10px;
+  }
+  .login form button {
+    font-weight: 600;
+  }
 }
 
 .g_id_signin {
@@ -328,7 +347,7 @@ footer .social-icons img:hover {
  
 }
 
-@media screen and (max-width: 399px) {
+@media screen and (max-width: 520px) {
    header .logo-title img {
     height: 4vh;
     margin-left: 0;
@@ -411,5 +430,50 @@ footer .social-icons img:hover {
   /* Ce bloc est parfois nécessaire pour centrer l'iframe interne */
   .g_id_signin > div {
     margin: 0 auto !important;
+  }
+  .login form button {
+    font-size: 5vw;
+    padding: 1.5vh 2vw;
+    border: 0.7vw solid #DBD3D0;
+    border-radius: 3vw;
+    width: 65%;
+    font-weight: 600;
+    color: #e0dcda;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+  }
+  .login form input,
+  .login form textarea {
+    font-size: 2.5vw;
+    padding: 2.2vw 2vw;
+    border-radius: 9px;
+  }
+  .login form label {
+    font-size: 3vw;
+  }
+  .left-section {
+    padding: 3vw;
+  }
+  .login-link h2 {
+    font-size: 3vw;
+    color: #b9a59e;
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+  .login-link a,
+  .login a {
+    font-size: 3vw;
+    margin-top: 10px;
+  }
+  p {
+    font-size: 3vw;
+  }
+  footer .social-icons img {
+    width: 6vw;
+    height: 6vw;
+  }
+  .section-title-with-lines h1 {
+    font-size: 4vw;
+    font-weight: 500;
   }
 }

@@ -14,6 +14,7 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contacts - EMBOSS</title>
+  <link rel="icon" type="image/png" href="logo-EMBOSS-nouveau.png">
   <link rel="stylesheet" href="../Styles/info-contact.css" />
 </head>
 <body>

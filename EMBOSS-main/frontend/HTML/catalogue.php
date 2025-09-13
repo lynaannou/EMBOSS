@@ -20,6 +20,7 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="logo-EMBOSS-nouveau.png">
   <title>Catalogue - EMBOSS MÉTAL SERVICES</title>
   <link rel="stylesheet" href="../Styles/catalogue.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Italiana&family=Numans&display=swap" rel="stylesheet">

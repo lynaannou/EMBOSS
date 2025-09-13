@@ -77,29 +77,29 @@ nav a:hover {
   flex-wrap: wrap;
   gap: 0;
   justify-content: space-between;
-  height: 150vh;
+  height: auto;
 }
 
 .left-section {
-  padding: 5vh 6vw;
-  flex: 1;
+  padding: 5vw 6vw;
+
   width: 50%;
 }
 
 .right-section {
-  height: 100%;
   width: 45%;
   border-radius: 4vw 13vw 4vw 4vw;
   overflow: hidden;
   position: relative;
   padding: 0;
   margin: 0;
+  flex: 1;             /* prend l’espace restant */
+  min-height: 100%;    /* garantit qu’elle ne s’écrase pas */
 }
 
 .bk-image {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -212,7 +212,7 @@ nav a:hover {
 .social-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 2vh;
+  margin-top: 4vw;
 }
 
 .social-buttons a {
@@ -299,7 +299,7 @@ footer .social-icons img {
 @media screen and (max-width: 399px) {
   
   header .logo-title img {
-    height: 4vh;
+    height: 10vw;
     margin-left: 0;
   }
 
@@ -313,8 +313,8 @@ footer .social-icons img {
   }
 
   nav a {
-    font-size: 1.5vw;
-    margin-left: 1.5vw;
+    font-size: 2.2vw;
+    margin-left: 2.2vw;
   } 
 
   .sign-up {
@@ -328,12 +328,6 @@ footer .social-icons img {
     width: 55%;
     padding: 5vw;
   }
-
-  .right-section {
-    width: 45%;
-    height: auto;
-    padding: 5vw;
-  } 
   
 }
 
@@ -351,6 +345,7 @@ footer .social-icons img {
   font-weight: 400;
   cursor: pointer;
   line-height: 1.2;
+  margin-bottom: 1vw;
 }
 
 
@@ -361,5 +356,97 @@ footer .social-icons img {
   margin: 0;             /* ✅ Supprime l’alignement bancal par défaut */
   vertical-align: middle
 }
+.g_id_signin {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: auto !important;
+  margin: 0 auto !important;
+  border-radius: 9999px;
+ 
+}
+@media screen and (max-width: 860px) {
+  
+  .g_id_signin {
+    transform: scale(0.7); /* Réduit la taille à 75% */
+    
+  }
+  
+}
 
+@media screen and (max-width: 520px) {
+  
+  
+  .g_id_signin {
+    width: 80% !important;
+    max-width: 300px;
+    margin-top: 2vh !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transform: scale(0.5);
+  }
+  .sign-up form label:not(.checkbox-label label) {
+    font-size: 2.7vw;
+  }
+  .sign-up form input,
+  .sign-up form textarea {
+    font-size: 2vw;
+  }
+  .checkbox-label label {
+    font-size: 2vw;
+  }
+  .checkbox-label input[type="checkbox"] {
+    width: 3vw;
+    height: 3vw;
+  }
+  .login-link h2 {
+    font-size: 2.1vw;
+  }
+  .login-link a {
+    font-size: 2.1vw;
+  }
+  .sign-up form button {
+    font-size: 4vw;
+    padding: 1.5vw 3vw;
+    border: 0.5vw solid #DBD3D0;
+    border-radius: 3vw;
+  }
+}
+@media screen and (max-width: 399px) {
+  
+   .sign-up form input,
+  .sign-up form textarea {
+    font-size: 3vw;
+    border-radius: 5.5px;
+  }
+    .right-section {
+    display: none !important;
+  }
+
+  .left-section {
+    width: 100% !important; /* pour qu’elle prenne toute la largeur */
+  }
+  .login-link h2 {
+    font-size: 2.5vw;
+    color: #a79a95;
+  }
+  .login-link a {
+    font-size: 2.5vw;
+  }
+  .checkbox-label label {
+    font-size: 2.5vw;
+  }
+  p {
+    font-size: 2.5vw;
+  }
+  footer .social-icons img {
+    width: 5vw;
+    height: 5vw;
+  }
+  .sign-up form button {
+    font-size: 5vw;
+    padding: 2vw 3vw;
+  }
+}
 

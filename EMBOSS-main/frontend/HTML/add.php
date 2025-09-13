@@ -22,6 +22,8 @@ $models = $stmt->fetchAll(PDO::FETCH_ASSOC); // tu définis bien $models ici
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EMBOSS MÉTAL SERVICES</title>
   <link rel="stylesheet" href="../Styles/add.css" />
+  <link rel="icon" type="image/png" href="logo-EMBOSS-nouveau.png">
+
 </head>
 <body>
      <header>
