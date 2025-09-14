@@ -228,6 +228,22 @@ foreach ($raw_variantes as $row) {
   // runs on DOMContentLoaded inside roles.js automatically;
   // importing once per page is enough.
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const h2 = document.querySelector(".page-product-left h2");
+    if (h2) {
+      const text = h2.textContent.trim();
+      
+      // Vérifie : contient un espace + plus de 6 caractères
+      if (text.includes(" ") || text.length > 7) {
+        h2.style.whiteSpace = "nowrap";  // ✅ reste sur une seule ligne
+        h2.style.fontSize = "6vw";       // ✅ taille forcée
+        h2.style.top = "-5vw";           // ✅ position modifiée
+        h2.style.position = "relative";  // au cas où ce n’est pas déjà défini
+      }
+    }
+  });
+</script>
 
 </body>
 
